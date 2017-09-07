@@ -1,0 +1,72 @@
+#include "stdafx.h"
+#include "DPB_test.h"
+
+
+DPB_test::DPB_test(vector<GeneralTest*>* TestsVectorLocalRef, bool DP_DNP_ref, float End, float Start, float PointsRateRef)
+{
+	KeyboardState = SDL_GetKeyboardState(NULL);
+
+	DP_DNP = DP_DNP_ref;
+	TestsVectorRef = TestsVectorLocalRef;
+
+	ButtonChoser(EveryButton, 25, 15);
+
+	string TestString;
+
+	if (DP_DNP)
+		TestString = "DPress ";
+	else
+		TestString = "DNPress ";
+
+	StringToRender = TestString + GetStringFromButton(UintButton);
+	ColorToRender = { 225,225,225,225 };
+	Timer = 0;
+	MaxStartTimer = Start;
+	MaxEndTimer = End;
+	PointsRate = PointsRateRef;
+
+
+}
+
+
+DPB_test::~DPB_test()
+{
+}
+
+bool DPB_test::EventTick(float DeltaMilliSeconds)
+{
+	Timer += DeltaMilliSeconds;
+
+	if (!KeyboardState[UintButton] && Timer > MaxStartTimer)
+	{
+		if (DP_DNP)
+			Points += PointsRate * DeltaMilliSeconds * 0.001;
+		ColorToRender = { 225,0,0,225 };
+	}
+
+	if (!KeyboardState[UintButton] && Timer < MaxStartTimer)
+		ColorToRender = { Uint8(200 * (Timer / MaxStartTimer)), Uint8(200 * (1 - Timer / MaxStartTimer)) , 0 , 225 };
+	
+
+	if (KeyboardState[UintButton])
+	{
+		if (!DP_DNP)
+			Points += PointsRate * DeltaMilliSeconds * 0.001;
+		ColorToRender = { 0,225,0,225 };
+	}
+
+	if (Timer >= MaxEndTimer)
+		bIsDelete = true;
+
+	return true;
+}
+
+void DPB_test::ReChargeTest(float Input1, float Input2, float Input3, float Input4)
+{
+	Timer = 0;
+	ButtonChoser(EveryButton, 25, 15);
+	StringToRender = GetStringFromButton(UintButton);
+	MaxStartTimer = Input1;
+	MaxEndTimer = Input2;
+	PointsRate = Input3;
+}
