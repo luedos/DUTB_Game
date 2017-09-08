@@ -18,7 +18,10 @@ public:
 
 	void CleanupThing() override { SDL_DestroyTexture(MyTexture); }
 
-	
+	void SetPosition(int x, int y) override { 
+		MyRect.x = x;
+		MyRect.y = y;
+	}
 
 };
 

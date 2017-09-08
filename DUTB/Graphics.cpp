@@ -22,7 +22,7 @@ Graphics::~Graphics()
 {
 }
 
-void Graphics::RenderEverything()
+void Graphics::RenderEverything(float DeltaTime)
 {
 	// Очистка рендера
 	SDL_RenderClear(MyRenderer);
@@ -61,7 +61,13 @@ void Graphics::RenderEverything()
 			LocalRect.y += 50;
 		}
 
-		MainTests.at(i)->MyRect = LocalRect;
+		if (MainTests.at(i)->FirstCreated)
+		{
+			MainTests.at(i)->SetPosition(LocalRect.x, LocalRect.y);
+			MainTests.at(i)->FirstCreated = false;
+		}
+		else
+			MainTests.at(i)->InterpPosition(LocalRect.x, LocalRect.y, DeltaTime, 1.25f);
 
 		LocalRect.x += LocalRect.w + 15;
 	}
@@ -80,7 +86,13 @@ void Graphics::RenderEverything()
 			LocalRect.y += 50;
 		}
 
-		SideTests.at(i)->MyRect = LocalRect;
+		if (SideTests.at(i)->FirstCreated)
+		{
+			SideTests.at(i)->SetPosition(LocalRect.x, LocalRect.y);
+			SideTests.at(i)->FirstCreated = false;
+		}
+		else
+			SideTests.at(i)->InterpPosition(LocalRect.x, LocalRect.y, DeltaTime, 1.25f);
 
 		LocalRect.x += LocalRect.w + 15;
 	}
@@ -155,7 +167,7 @@ int Graphics::CreateWindow(int WindowSizeX, int WindowSizeY)
 	BackgroundRect.w = WindowSizeX;
 	BackgroundRect.h = WindowSizeY;
 
-	RenderEverything();
+	RenderEverything(1);
 
 	return 0;
 }

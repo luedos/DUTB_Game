@@ -4,6 +4,7 @@
 #include "DUB_Test.h"
 #include "Graphics.h"
 #include "DPB_test.h"
+#include "TestLevel.h"
 
 
 enum ETests {
@@ -117,7 +118,7 @@ public:
 
 	vector<GeneralTest*> TestsVector;
 
-
+	LevelClass* MyLevel = nullptr;
 
 private:
 	Delegate MyDelegate;

@@ -1,14 +1,11 @@
-﻿  Game.cpp
+﻿  TestLevel.cpp
+c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\buttontest.h(70): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(118): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(126): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(170): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(179): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(195): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(216): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(218): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(229): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(231): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\game.cpp(258): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(57): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(64): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   DUTB.vcxproj -> C:\Users\vlol\source\repos\DUTB\Debug\DUTB.exe
   DUTB.vcxproj -> C:\Users\vlol\source\repos\DUTB\Debug\DUTB.pdb (Partial PDB)

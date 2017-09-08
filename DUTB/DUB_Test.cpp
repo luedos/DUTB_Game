@@ -25,6 +25,8 @@ DUB_Test::~DUB_Test()
 
 bool DUB_Test::EventTick(float DeltaMilliSeconds)
 {
+	Points = 0;
+
 	DelayTimer += DeltaMilliSeconds;
 	
 	Chanser += DeltaMilliSeconds * DUB_ChanserSpeed * 0.001;
@@ -50,15 +52,15 @@ bool DUB_Test::EventTick(float DeltaMilliSeconds)
 	}
 
 	if (!Pointers_Buttons)
-		StringToRender = GetStringFromButton(UintButton);
+		ButtonString = GetStringFromButton(UintButton);
 
 	if (DelayTimer >= DUB_MaxDelay && !KeyboardState[UintButton])
 	{
 		DelayTimer = DUB_MaxDelay;
 		TextColor = { 225,0,0,225 };
-		Points += PointsRate * DeltaMilliSeconds * 0.001;
+		Points = PointsRate * DeltaMilliSeconds * 0.001;
 
-		StringToRender += " DUTB";
+		SideString = " DUTB";
 
 	}
 	
@@ -69,7 +71,7 @@ bool DUB_Test::EventTick(float DeltaMilliSeconds)
 		{
 			TextColor = { 0,225,0,225 };
 			if (!Pointers_Buttons)
-				StringToRender += " Good";
+				SideString = " Good";
 
 		}
 		else
@@ -79,7 +81,7 @@ bool DUB_Test::EventTick(float DeltaMilliSeconds)
 				TextColor = { Uint8(200 * (1 - lol / DUB_MaxDelay)), Uint8(225 * lol / DUB_MaxDelay), 0 , 225 };
 				//if (!Pointers_Buttons)
 				//	StringToRender += " " + to_string(lol);
-				StringToRender += " DUTB";
+				SideString = " DUTB";
 			}
 	
 	return true;

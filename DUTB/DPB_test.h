@@ -17,7 +17,9 @@ public:
 
 	void ReChargeTest(float Input1, float Input2, float Input3, float Input4) override;
 
-	string StringToRender;
+	string ButtonString;
+
+	string SideString;
 
 	SDL_Color ColorToRender;
 

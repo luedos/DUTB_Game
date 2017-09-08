@@ -16,6 +16,9 @@ public:
 		StaticColor = NewStaticColor;
 		MyRect = *InRect;
 		SomeToRender = InCharToLocate;
+
+		SetFont(48);
+
 	}
 
 	RenThing_Text(const char* InCharToLocate, SDL_Color* NewDynamicColor, SDL_Rect* InRect, bool InReplaceble = false) {
@@ -25,6 +28,7 @@ public:
 		MyRect = *InRect;
 		SomeToRender = InCharToLocate;
 
+		SetFont(48);
 	}
 
 
@@ -44,13 +48,26 @@ public:
 		else
 			ColorToUse = *DynamicColor;
 
-		Surface = TTF_RenderText_Solid(Font, SomeToRender, ColorToUse);
+
+		Surface = TTF_RenderText_Blended(Font, SomeToRender, ColorToUse);
 		MyTexture = SDL_CreateTextureFromSurface(RenRef, Surface);
 		SDL_FreeSurface(Surface);
 		SDL_QueryTexture(MyTexture, NULL, NULL, &MyRect.w, &MyRect.h);
 	}
 
-	TTF_Font* Font = TTF_OpenFont("../DUTB/Fonts/RiseOfKingdom.ttf", 48);
+	void SetPosition(int x, int y) override {
+		MyRect.x = x;
+		MyRect.y = y;
+	}
+
+	void SetFont(int ptsizeRef) { 
+		TTF_CloseFont(Font);
+		Font = TTF_OpenFont("../DUTB/Fonts/RiseOfKingdom.ttf", ptsizeRef); 
+	}
+
+	TTF_Font* Font;
+
+
 
 	const char* SomeToRender;
 

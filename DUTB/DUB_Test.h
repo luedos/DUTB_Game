@@ -24,7 +24,9 @@ public:
 
 	void DUButtonChoser();
 
-	string StringToRender;
+	string SideString;
+
+	string ButtonString;
 
 	SDL_Color TextColor;
 

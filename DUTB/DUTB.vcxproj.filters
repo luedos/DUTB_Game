@@ -54,6 +54,15 @@
     <ClInclude Include="DPB_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenThing_EasyCanvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -72,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DPB_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

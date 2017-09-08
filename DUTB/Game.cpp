@@ -52,7 +52,7 @@ void Game::AddTest(ETests WhichTest, int PowerLevel)
 
 		TestTest->ReChargeTest(30, 500, 800, 1500);
 
-		TestTest->MyThing = MyGraph.AddDynamicText(1, TestTest->StringToRender.c_str(), &TestTest->TextColor, &MyRect);
+		TestTest->MyThing = MyGraph.AddDynamicText(1, TestTest->ButtonString.c_str(), &TestTest->TextColor, &MyRect);
 
 		TestsVector.push_back(TestTest);
 
@@ -63,7 +63,7 @@ void Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DPB_test* TestTest = new DPB_test(&TestsVector);
 
-		TestTest->MyThing = MyGraph.AddDynamicText(2, TestTest->StringToRender.c_str(), &TestTest->ColorToRender, &MyRect);
+		TestTest->MyThing = MyGraph.AddCanvas_TextText(2, TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect);
 
 		TestsVector.push_back(TestTest);
 
@@ -74,7 +74,7 @@ void Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DPB_test* TestTest = new DPB_test(&TestsVector, false);
 
-		TestTest->MyThing = MyGraph.AddDynamicText(2, TestTest->StringToRender.c_str(), &TestTest->ColorToRender, &MyRect);
+		TestTest->MyThing = MyGraph.AddCanvas_TextText(2, TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect);
 
 		TestsVector.push_back(TestTest);
 
@@ -90,28 +90,28 @@ void Game::AddTest(ETests WhichTest, int PowerLevel)
 void Game::EventTick(float DeltaTime)
 {
 
-	//while (SDL_PollEvent(&MyEvent))
-	//{
-	//	SDL_PumpEvents();
-	//	if (MyEvent.button.button == SDL_QUIT)
-	//		ExitGame();
-	//	
-	//
-	//
-	//}
-	//if(event.button.button == SDL_SCANCODE_H)
-	//cout << "Hey!!" << endl;
+	while (SDL_PollEvent(&MyEvent))
+	{
+		SDL_PumpEvents();
+		if (MyEvent.type == SDL_QUIT)
+		{
+			ExitGame();
+		}
+	
+	
+	}
+	
 
 	TickEveryTest(DeltaTime);
 	GeneratorTick(DeltaTime);
 	DeltaTestTick(DeltaTime);
 
-	MyGraph.RenderEverything();
+	MyGraph.RenderEverything(DeltaTime);
 }
 
 void Game::TickEveryTest(float DeltaTime)
 {
-	GamePoints = 0.f;
+	
 
 	vector<GeneralTest*> TestsToDeleteArray;
 
@@ -135,13 +135,27 @@ void Game::NewGame()
 {
 	MyGraph.CreateWindow(800, 600);
 
-	AddDeltaTests(ETests::DUBButtons, 1, 0);
-	AddDeltaTests(ETests::DUBButtons, 1, 0);
-	//AddDeltaTests(ETests::DNPButton, 1, 0);
+	if (MyLevel != nullptr)
+	{
+		delete MyLevel;
+		MyLevel = nullptr;
+	}
+
+	MyLevel = new TestLevel(this);
+	
+	NewRound();
 
 
-	AddGeneratorTest(ETests::DNPButton, 2, 1000, 100);
-	//AddGeneratorTest(ETests::DNPButton, 1, 1000, 10);
+}
+
+void Game::NewRound()
+{
+	ClearTests();
+	ClearGenerators();
+
+	GamePoints = 0;
+
+	MyLevel->StartLevel();
 
 	SDL_Color NewColor = { 225, 225, 225, 225 };
 
@@ -153,24 +167,15 @@ void Game::NewGame()
 	NewRect.h = 64;
 
 	MyGraph.AddDynamicText(3, TextPoints.c_str(), &NewColor, &NewRect);
-
-
-}
-
-void Game::NewRound()
-{
-
-
 }
 
 void Game::ExitGame()
 {
 	MyGraph.DestroyEveryThing();
+	ClearTests();
 
-	for (int i = 0; i < TestsVector.size(); i++)
-		delete TestsVector.at(i);
+	ClearGenerators();
 
-	TestsVector.clear();
 	Quit = true;
 }
 
