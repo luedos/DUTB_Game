@@ -156,6 +156,7 @@
     <ClInclude Include="GeneralTest.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="LevelClass.h" />
+    <ClInclude Include="PNTButtons_Test.h" />
     <ClInclude Include="RenThing_EasyCanvas.h" />
     <ClInclude Include="RenThing_ImageChangable.h" />
     <ClInclude Include="RenThing_Text.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="DUTB.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="PNTButtons_Test.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

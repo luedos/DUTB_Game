@@ -5,13 +5,15 @@
 #include "Graphics.h"
 #include "DPB_test.h"
 #include "TestLevel.h"
+#include "PNTButtons_Test.h"
 
 
 enum ETests {
 	DUBPointers,
 	DUBButtons,
 	DPButton,
-	DNPButton
+	DNPButton,
+	PNTButton
 };
 
 struct GeneratorStruct

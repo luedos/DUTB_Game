@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 	}
 
 
-	//SDL_Window* MyWindow = SDL_CreateWindow("Don't unpress that Button", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 512, 512, SDL_WINDOW_SHOWN);
+	//SDL_Window* MyWindow = SDL_CreateWindow("Don't unpress that Button", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 64, 64, SDL_WINDOW_SHOWN);
 	//if (MyWindow == nullptr)
 	//{
 	//	std::cout << "SDL_CreateWindow Error:" << SDL_GetError() << std::endl;
@@ -50,8 +50,35 @@ int main(int argc, char* argv[])
 	//	std::cout << "SDL_CreateRenderer Error:" << SDL_GetError() << std::endl;
 	//	return 5;
 	//}
-
-
+	//
+	//const Uint8 *KeyboardState;
+	//
+	//KeyboardState = SDL_GetKeyboardState(NULL);
+	//
+	//bool QuitTest = false;
+	//
+	//SDL_Event MyEvent;
+	//
+	//while (!QuitTest)
+	//{
+	//	if (KeyboardState[SDL_SCANCODE_Q])
+	//		QuitTest = true;
+	//
+	//	if (KeyboardState[SDL_KEYDOWN])
+	//		cout << "Some button down" << endl;
+	//
+	//	while (SDL_PollEvent(&MyEvent))
+	//	{
+	//		SDL_PumpEvents();
+	//		if (MyEvent.type == SDL_QUIT)
+	//			QuitTest = true;
+	//			
+	//		if (MyEvent.type == SDL_KEYDOWN)
+	//			cout << "Some button from event down" << endl;
+	//	
+	//	
+	//	}
+	//}
 	
 
 
@@ -110,81 +137,6 @@ int main(int argc, char* argv[])
 
 
 
-	//SDL_Window* MyWindow = SDL_CreateWindow("Don't unpress that Button", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
-	//if (MyWindow == nullptr)
-	//{
-	//	std::cout << "SDL_CreateWindow Error:" << SDL_GetError() << std::endl;
-	//	return 4;
-	//}
-	//
-	//SDL_Renderer* MyRenderer = SDL_CreateRenderer(MyWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	//if (MyRenderer == nullptr)
-	//{
-	//	std::cout << "SDL_CreateRenderer Error:" << SDL_GetError() << std::endl;
-	//	return 5;
-	//}
-	//
-	//
-	//SomeString = "SomeStringShit";
-	//
-	//SDL_Rect BackgroundRect;
-	//BackgroundRect.x = 0;
-	//BackgroundRect.y = 0;
-	//BackgroundRect.w = 800;
-	//BackgroundRect.h = 600;
-	//
-	//SDL_Texture* BackGroundTexture = IMG_LoadTexture(MyRenderer, "../DUTB/Textures/Back.png");
-	//
-	//SDL_Color MyColor;
-	//MyColor = { 225, 225, 225, 225 };
-	//
-	//TTF_Font* Font = TTF_OpenFont("../DUTB/Fonts/Xenotron.ttf", 48);
-	//
-	//SDL_Rect MyRect;
-	//MyRect.x = 50;
-	//MyRect.y = 50;
-	//MyRect.w = 400;
-	//MyRect.h = 100;
-	//
-	//SDL_Texture* MyTexture;
-	//SDL_Surface* Surface;
-	//
-	//while (SomeString != "exit")
-	//{
-	//
-	//	cin >> SomeString;
-	//	cout << SomeString.c_str() << endl;
-	//
-	//	MyRect.x = 50;
-	//	MyRect.y = 50;
-	//	MyRect.w = 400;
-	//	MyRect.h = 100;
-	//
-	//	SDL_RenderClear(MyRenderer);
-	//
-	//	SDL_RenderCopy(MyRenderer, BackGroundTexture, NULL, &BackgroundRect);
-	//
-	//	//-----------------||---------------------
-	//
-	//	Surface = TTF_RenderText_Blended(Font, SomeString.c_str(), MyColor);
-	//
-	//
-	//
-	//	MyTexture = SDL_CreateTextureFromSurface(MyRenderer, Surface);
-	//	SDL_FreeSurface(Surface);
-	//	SDL_QueryTexture(MyTexture, NULL, NULL, &MyRect.w, &MyRect.h);
-	//	SDL_RenderCopy(MyRenderer, MyTexture, NULL, &MyRect);
-	//
-	//
-	//	MyRect.x = 50;
-	//	MyRect.y = 150;
-	//	MyRect.w = 800;
-	//	MyRect.h = 100;
-	//
-	//	SDL_RenderCopy(MyRenderer, MyTexture, NULL, &MyRect);
-	//
-	//	SDL_RenderPresent(MyRenderer);
-	//}
 
 
 

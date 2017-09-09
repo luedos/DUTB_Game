@@ -99,7 +99,7 @@ public:
 
 	}
 
-	RenThing* AddDynamicImage(int Level, char *FileName, SDL_Rect* InRect, int* InIntRef, bool DoesReplaceble = false, int RenderMode_X_Y_Both_Ref= 0) {
+	RenThing* AddDynamicImage(int Level, char *FileName, SDL_Rect* InRect, int* InIntRef, bool DoesReplaceble = false, int RenderMode_X_Y_Both_Ref= 0, SDL_Color* ColoRef = nullptr) {
 		switch (Level)
 		{
 		case 1:
@@ -107,7 +107,7 @@ public:
 			SDL_Rect TestRect = *InRect;
 			TestRect.x = MainBoard.x + MainBoard.w;
 			TestRect.y = MainBoard.y + MainBoard.h;
-			MainTests.push_back(new RenThing_ImageChangable(MyRenderer, FileName, &TestRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref));
+			MainTests.push_back(new RenThing_ImageChangable(MyRenderer, FileName, &TestRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref, ColoRef));
 			return MainTests.back();
 		}
 		case 2:

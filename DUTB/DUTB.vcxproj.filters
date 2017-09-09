@@ -63,6 +63,9 @@
     <ClInclude Include="RenThing_EasyCanvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PNTButtons_Test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PNTButtons_Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -14,6 +14,8 @@ public:
 
 	vector<GeneralTest*>* TestsVectorRef;
 
+	SDL_Event MyEvent;
+
 	const Uint8 *KeyboardState;
 
 	// Массив всех кнопок, используется в частности для функции определения названия кнопки из uint8 кода

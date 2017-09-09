@@ -37,7 +37,7 @@ void Game::AddTest(ETests WhichTest, int PowerLevel)
 
 		TestTest->ReChargeTest(30, 500, 800, 1500);
 
-		TestTest->MyThing = MyGraph.AddDynamicImage(1, "../DUTB/Textures/Pointers.png", &MyRect, &TestTest->IntPointer);
+		TestTest->MyThing = MyGraph.AddDynamicImage(1, "../DUTB/Textures/Pointers.png", &MyRect, &TestTest->IntPointer, false, 0, &TestTest->TextColor);
 
 		TestsVector.push_back(TestTest);
 
@@ -80,6 +80,17 @@ void Game::AddTest(ETests WhichTest, int PowerLevel)
 
 		break;
 	}
+	case ETests::PNTButton:
+	{
+		PNTButtons_Test* TestTest = new PNTButtons_Test(&TestsVector, 4, 2000, 1300);
+
+		TestTest->MyThing = MyGraph.AddCanvas_TextText(2, TestTest->MainString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyRect);
+
+		TestsVector.push_back(TestTest);
+
+		break;
+	}
+
 
 	default:
 		break;
@@ -90,16 +101,16 @@ void Game::AddTest(ETests WhichTest, int PowerLevel)
 void Game::EventTick(float DeltaTime)
 {
 
-	while (SDL_PollEvent(&MyEvent))
-	{
-		SDL_PumpEvents();
-		if (MyEvent.type == SDL_QUIT)
-		{
-			ExitGame();
-		}
-	
-	
-	}
+	//while (SDL_PollEvent(&MyEvent))
+	//{
+	//	SDL_PumpEvents();
+	//	if (MyEvent.type == SDL_QUIT)
+	//	{
+	//		ExitGame();
+	//	}
+	//
+	//
+	//}
 	
 
 	TickEveryTest(DeltaTime);

@@ -4,13 +4,25 @@
 class RenThing_ImageChangable : public RenThing
 {
 public:
-	RenThing_ImageChangable(SDL_Renderer* Ren, const char *File, SDL_Rect* InRect, int* InInt, bool InReplaceble = false, int RenderMode_X_Y_Both = 0) {
+	RenThing_ImageChangable(SDL_Renderer* Ren, const char *File, SDL_Rect* InRect, int* InInt, bool InReplaceble = false, int RenderMode_X_Y_Both = 0, SDL_Color* ColorRef = nullptr) {
+
+		SDL_Color TestColor = { 225, 225, 225, 225 };
+
+		if (ColorRef == nullptr)
+			MyColor = &TestColor;
+		else
+			MyColor = ColorRef;
+
+		
 
 		RenderMode = RenderMode_X_Y_Both;
 
 		IntRef = InInt;
 
 		MyTexture = IMG_LoadTexture(Ren, File);
+
+		
+
 		MyRect = *InRect;
 		bReplaceble = InReplaceble;
 
@@ -45,6 +57,8 @@ public:
 			break;
 		}
 
+		SDL_SetTextureColorMod(MyTexture, MyColor->r, MyColor->g, MyColor->b);
+
 		SDL_RenderCopy(RenRef, MyTexture, &StandartRect, &MyRect); }
 
 	void CleanupThing() override { SDL_DestroyTexture(MyTexture); }
@@ -60,4 +74,5 @@ public:
 
 	int* IntRef;
 
+	SDL_Color* MyColor;
 };
