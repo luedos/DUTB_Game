@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "TestLevel.h"
-#include "Game.h"
+#include "GM_Game.h"
 
-TestLevel::TestLevel(Game* GameRef)
+TestLevel::TestLevel(GM_Game* GameRef)
 {
 	MyGame = GameRef;
 }

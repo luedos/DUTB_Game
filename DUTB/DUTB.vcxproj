@@ -153,6 +153,8 @@
     <ClInclude Include="DPB_test.h" />
     <ClInclude Include="DUB_Test.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameMode.h" />
+    <ClInclude Include="GM_Game.h" />
     <ClInclude Include="GeneralTest.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="LevelClass.h" />
@@ -171,6 +173,7 @@
     <ClCompile Include="DUB_Test.cpp" />
     <ClCompile Include="DUTB.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GM_Game.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="PNTButtons_Test.cpp" />
     <ClCompile Include="stdafx.cpp">

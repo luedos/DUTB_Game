@@ -1,6 +1,20 @@
-﻿  PNTButtons_Test.cpp
+﻿  GM_Game.cpp
 c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\buttontest.h(72): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\pntbuttons_test.cpp(50): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(57): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(64): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(129): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(137): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(195): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(211): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(232): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(234): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(245): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(247): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(274): warning C4018: '<': signed/unsigned mismatch
   DUTB.vcxproj -> C:\Users\vlol\source\repos\DUTB\Debug\DUTB.exe
   DUTB.vcxproj -> C:\Users\vlol\source\repos\DUTB\Debug\DUTB.pdb (Partial PDB)

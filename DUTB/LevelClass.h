@@ -11,7 +11,6 @@ public:
 
 protected:
 
-	class Game* MyGame;
 
 
 };

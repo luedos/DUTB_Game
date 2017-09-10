@@ -4,12 +4,15 @@ class TestLevel :
 	public LevelClass
 {
 public:
-	TestLevel(class Game* GameRef);
+	TestLevel(class GM_Game* GameRef);
 	~TestLevel();
 
 	void StartLevel() override;
 
 	void EventTick(float DeltaTime);
+
+
+	class GM_Game* MyGame;
 
 };
 
