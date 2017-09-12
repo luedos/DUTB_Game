@@ -31,5 +31,9 @@ public:
 	string SideString;
 
 	SDL_Color MyColor;
+
+	bool LastPressed;
+
+	bool NewPressed;
 };
 

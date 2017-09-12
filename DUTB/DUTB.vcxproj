@@ -159,6 +159,7 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="LevelClass.h" />
     <ClInclude Include="PNTButtons_Test.h" />
+    <ClInclude Include="RenThing_Button.h" />
     <ClInclude Include="RenThing_EasyCanvas.h" />
     <ClInclude Include="RenThing_ImageChangable.h" />
     <ClInclude Include="RenThing_Text.h" />

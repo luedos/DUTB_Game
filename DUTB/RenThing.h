@@ -5,7 +5,7 @@
 class RenThing
 
 {
-
+	
 public:
 
 	RenThing() {}

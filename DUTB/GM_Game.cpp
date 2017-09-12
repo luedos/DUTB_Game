@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "GM_Game.h"
 #include <iostream>
+#include "Game.h"
 
 using namespace std;
 
-GM_Game::GM_Game(Graphics* GraphRef)
+GM_Game::GM_Game(Graphics* GraphRef, Game* GameRef)
 {
-
+	MyGame = GameRef;
 
 	MyGraph = GraphRef;
 
@@ -61,7 +62,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	// Do press button
 	case ETests::DPButton:
 	{
-		DPB_test* TestTest = new DPB_test(&TestsVector);
+		DPB_test* TestTest = new DPB_test(&TestsVector, true, 2000, 1500);
 
 		TestTest->MyThing = MyGraph->AddCanvas_TextText(2, TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect);
 
@@ -72,7 +73,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	// Do not press button
 	case ETests::DNPButton:
 	{
-		DPB_test* TestTest = new DPB_test(&TestsVector, false);
+		DPB_test* TestTest = new DPB_test(&TestsVector, false, 2000, 1500);
 
 		TestTest->MyThing = MyGraph->AddCanvas_TextText(2, TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect);
 
@@ -82,7 +83,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	}
 	case ETests::PNTButton:
 	{
-		PNTButtons_Test* TestTest = new PNTButtons_Test(&TestsVector, 4, 2000, 1300);
+		PNTButtons_Test* TestTest = new PNTButtons_Test(&TestsVector, 4, 2500, 1700);
 
 		TestTest->MyThing = MyGraph->AddCanvas_TextText(2, TestTest->MainString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyRect);
 
@@ -101,16 +102,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 void GM_Game::GM_EventTick(float DeltaTime)
 {
 
-	//while (SDL_PollEvent(&MyEvent))
-	//{
-	//	SDL_PumpEvents();
-	//	if (MyEvent.type == SDL_QUIT)
-	//	{
-	//		ExitGame();
-	//	}
-	//
-	//
-	//}
+
 	
 
 	TickEveryTest(DeltaTime);
@@ -153,10 +145,10 @@ void GM_Game::GM_Start()
 	}
 
 	MyLevel = new TestLevel(this);
+
+	
 	
 	NewRound();
-
-
 }
 
 void GM_Game::NewRound()
@@ -178,6 +170,13 @@ void GM_Game::NewRound()
 	NewRect.h = 64;
 
 	MyGraph->AddDynamicText(3, TextPoints.c_str(), &NewColor, &NewRect);
+
+	NewRect.x = 400;
+	NewRect.y = 500;
+	NewRect.w = 100;
+	NewRect.h = 64;
+
+	MyGame->AddButton(EButtons::Exit, &NewRect);
 }
 
 void GM_Game::GM_End()

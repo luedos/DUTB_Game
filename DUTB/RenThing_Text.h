@@ -9,7 +9,7 @@ using namespace std;
 class RenThing_Text : public RenThing
 {
 public:
-
+	
 	RenThing_Text(const char* InCharToLocate, SDL_Color NewStaticColor, SDL_Rect* InRect, bool InReplaceble = false) {
 		bReplaceble = InReplaceble;
 		UseStaticColor = true;

@@ -5,6 +5,7 @@
 #include "RenThing_Text.h"
 #include "RenThing_ImageChangable.h"
 #include "RenThing_EasyCanvas.h"
+#include "RenThing_Button.h"
 
 using namespace std;
 
@@ -157,6 +158,21 @@ public:
 		}
 	}
 
+	template<class T, class M>
+	RenThing_Button* AddButton(T* MyClass, M MyMethod, const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color BGColorRef = { 150,150,150,120 }, SDL_Color BGColor_PressedRef = {100,100,100,180}) {
+		
+		
+
+
+		RenThing_Button* TestTest = new RenThing_Button(ButtonTextRef, InRect, &BGColorRef, &BGColor_PressedRef);
+
+		TestTest->ConnectNew(MyClass, MyMethod);
+
+		ButtonsArray.push_back(TestTest);
+		return ButtonsArray.back();
+
+	}
+
 	void RenderEverything(float DeltaTime);
 
 	void ClearEverything();
@@ -169,6 +185,8 @@ public:
 
 	void ReReplace();
 
+	vector<RenThing_Button*> ButtonsArray;
+
 private:
 
 	SDL_Renderer* MyRenderer;
@@ -179,6 +197,8 @@ private:
 	vector<RenThing*> SideTests;
 
 	vector<RenThing*> RestThings;
+
+
 
 	SDL_Rect MainBoard;
 	SDL_Rect SideBoard;

@@ -57,7 +57,7 @@ class GM_Game : public GameMode
 {
 public:
 	
-	GM_Game(Graphics* GraphRef);
+	GM_Game(Graphics* GraphRef, class Game* GameRef);
 	~GM_Game();
 
 	void GM_EventTick(float DeltaTime) override;
@@ -68,7 +68,7 @@ public:
 
 	void AddTest(ETests WhichTest, int PowerLevel);
 
-	SDL_Event MyEvent;
+
 
 	void TickEveryTest(float DeltaTime);
 
@@ -114,6 +114,8 @@ public:
 	}
 
 	Graphics* MyGraph;
+
+	class Game* MyGame;
 
 	vector<GeneralTest*> TestsVector;
 

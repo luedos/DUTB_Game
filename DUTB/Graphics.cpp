@@ -44,6 +44,9 @@ void Graphics::RenderEverything(float DeltaTime)
 	for (int i = 0; i < RestThings.size(); i++)
 		RestThings.at(i)->PrepareThing(MyRenderer);
 
+	for (int i = 0; i < ButtonsArray.size(); i++)
+		ButtonsArray.at(i)->PrepareThing(MyRenderer);
+
 	// Создание ректа для упрощения назначения мест у главных и второстепенных штук
 	SDL_Rect LocalRect;
 	LocalRect.x = MainBoard.x;
@@ -106,6 +109,9 @@ void Graphics::RenderEverything(float DeltaTime)
 
 	for (int i = 0; i < RestThings.size(); i++)
 		RestThings.at(i)->RenderThing(MyRenderer);
+
+	for (int i = 0; i < ButtonsArray.size(); i++)
+		ButtonsArray.at(i)->RenderThing(MyRenderer);
 
 	// Ренедер рендера
 	SDL_RenderPresent(MyRenderer);

@@ -14,7 +14,9 @@ PNTButtons_Test::PNTButtons_Test(vector<GeneralTest*>* TestsVectorLocalRef, int 
 
 	ButtonChoser(EveryButton, 25, 15);
 
+	LastPressed = false;
 
+	NewPressed = false;
 
 	MainString = GetStringFromButton(UintButton);
 }
@@ -30,17 +32,21 @@ bool PNTButtons_Test::EventTick(float DeltaMilliSeconds)
 
 	Timer += DeltaMilliSeconds;
 
-	while (SDL_PollEvent(&MyEvent))
+	NewPressed = KeyboardState[UintButton];
+
+
+	if (NewPressed != LastPressed)
 	{
-		SDL_PumpEvents();
-		if (MyEvent.type == SDL_KEYDOWN && MyEvent.button.button == UintButton)
+		if (NewPressed)
 		{
 			PressNumber--;
 			if (PressNumber < 0)
 				Points += PointsRate / 4;
 		}
+		LastPressed = NewPressed;
 	}
-	
+
+
 	if (Timer < StartTime)
 		MyColor = { Uint8(225 * (1.f - Timer / StartTime)) , Uint8(225 * (Timer / StartTime)) , 0 ,225 };
 
