@@ -35,11 +35,11 @@ void Graphics::RenderEverything(float DeltaTime)
 	SDL_RenderCopy(MyRenderer, BackGroundTexture, NULL, &BackgroundRect);
 
 	// Подготавка каждой штуки в трех массивах
-	for (int i = 0; i < MainTests.size(); i++)
-		MainTests.at(i)->PrepareThing(MyRenderer);
-
-	for (int i = 0; i < SideTests.size(); i++)
-		SideTests.at(i)->PrepareThing(MyRenderer);
+	for (int i = 0; i < CanvasVector.size(); i++)
+	{
+		CanvasVector.at(i)->DeltaTime = DeltaTime;
+		CanvasVector.at(i)->PrepareThing(MyRenderer);
+	}
 
 	for (int i = 0; i < RestThings.size(); i++)
 		RestThings.at(i)->PrepareThing(MyRenderer);
@@ -47,65 +47,11 @@ void Graphics::RenderEverything(float DeltaTime)
 	for (int i = 0; i < ButtonsArray.size(); i++)
 		ButtonsArray.at(i)->PrepareThing(MyRenderer);
 
-	// Создание ректа для упрощения назначения мест у главных и второстепенных штук
-	SDL_Rect LocalRect;
-	LocalRect.x = MainBoard.x;
-	LocalRect.y = MainBoard.y;
-
-	// Оба цикла служат для переназначения позиций штук
-	for (int i = 0; i < MainTests.size(); i++)
-	{
-		LocalRect.w = MainTests.at(i)->MyRect.w;
-		LocalRect.h = MainTests.at(i)->MyRect.h;
-
-		if (LocalRect.x + LocalRect.w > MainBoard.x + MainBoard.w)
-		{
-			LocalRect.x = MainBoard.x;
-			LocalRect.y += 50;
-		}
-
-		if (MainTests.at(i)->FirstCreated)
-		{
-			MainTests.at(i)->SetPosition(LocalRect.x, LocalRect.y);
-			MainTests.at(i)->FirstCreated = false;
-		}
-		else
-			MainTests.at(i)->InterpPosition(LocalRect.x, LocalRect.y, DeltaTime, 1.25f);
-
-		LocalRect.x += LocalRect.w + 15;
-	}
-
-	LocalRect.x = SideBoard.x;
-	LocalRect.y = SideBoard.y;
-
-	for (int i = 0; i < SideTests.size(); i++)
-	{
-		LocalRect.w = SideTests.at(i)->MyRect.w;
-		LocalRect.h = SideTests.at(i)->MyRect.h;
-
-		if (LocalRect.x + LocalRect.w > SideBoard.x + SideBoard.w)
-		{
-			LocalRect.x = SideBoard.x;
-			LocalRect.y += 50;
-		}
-
-		if (SideTests.at(i)->FirstCreated)
-		{
-			SideTests.at(i)->SetPosition(LocalRect.x, LocalRect.y);
-			SideTests.at(i)->FirstCreated = false;
-		}
-		else
-			SideTests.at(i)->InterpPosition(LocalRect.x, LocalRect.y, DeltaTime, 1.25f);
-
-		LocalRect.x += LocalRect.w + 15;
-	}
+	
 
 	// Непосредственный рендер всех штук
-	for (int i = 0; i < MainTests.size(); i++)
-		MainTests.at(i)->RenderThing(MyRenderer);
-
-	for (int i = 0; i < SideTests.size(); i++)
-		SideTests.at(i)->RenderThing(MyRenderer);
+	for (int i = 0; i < CanvasVector.size(); i++)
+		CanvasVector.at(i)->RenderThing(MyRenderer);
 
 	for (int i = 0; i < RestThings.size(); i++)
 		RestThings.at(i)->RenderThing(MyRenderer);
@@ -119,21 +65,13 @@ void Graphics::RenderEverything(float DeltaTime)
 
 void Graphics::ClearEverything()
 {
-	for (int i = 0; i < MainTests.size(); i++)
+	for (int i = 0; i < CanvasVector.size(); i++)
 	{
-		MainTests.at(i)->CleanupThing();
-		delete MainTests.at(i);
+		CanvasVector.at(i)->CleanupThing();
+		delete CanvasVector.at(i);
 	}
 
-	MainTests.clear();
-
-	for (int i = 0; i < SideTests.size(); i++)
-	{
-		SideTests.at(i)->CleanupThing();
-		delete SideTests.at(i);
-	}
-
-	SideTests.clear();
+	CanvasVector.clear();
 
 	for (int i = 0; i < RestThings.size(); i++)
 	{
@@ -142,6 +80,15 @@ void Graphics::ClearEverything()
 	}
 
 	RestThings.clear();
+
+	for (int i = 0; i < ButtonsArray.size(); i++)
+	{
+		ButtonsArray.at(i)->CleanupThing();
+		delete ButtonsArray.at(i);
+	}
+
+	ButtonsArray.clear();
+
 }
 
 void Graphics::DestroyEveryThing()
@@ -182,26 +129,27 @@ bool Graphics::DeleteRenThing(RenThing * ThingToDelete)
 {
 	bool bFind = false;
 
-	for (int i = 0; i < MainTests.size(); i++)
-		if (MainTests.at(i) == ThingToDelete)
+	for (int i = 0; i < CanvasVector.size(); i++)
+		if (CanvasVector.at(i) == ThingToDelete)
 		{
-			MainTests.at(i)->CleanupThing();
-			delete MainTests.at(i);
-			MainTests.erase(MainTests.begin() + i);
+			CanvasVector.at(i)->CleanupThing();
+			delete CanvasVector.at(i);
+			CanvasVector.erase(CanvasVector.begin() + i);
 			bFind = true;
 			break;
-		}
-
+	}
 	if (!bFind)
-		for (int i = 0; i < SideTests.size(); i++)
-			if (SideTests.at(i) == ThingToDelete)
+	for (int i = 0; i < CanvasVector.size(); i++)
+		for(int ii = 0; ii < CanvasVector.at(i)->MyThingVector.size(); ii++)
+			if (CanvasVector.at(i)->MyThingVector.at(ii) == ThingToDelete)
 			{
-				SideTests.at(i)->CleanupThing();
-				delete SideTests.at(i);
-				SideTests.erase(SideTests.begin() + i);
+				CanvasVector.at(i)->MyThingVector.at(ii)->CleanupThing();
+				delete CanvasVector.at(i)->MyThingVector.at(ii);
+				CanvasVector.at(i)->MyThingVector.erase(CanvasVector.at(i)->MyThingVector.begin() + ii);
 				bFind = true;
 				break;
 			}
+
 
 	if (!bFind)
 		for (int i = 0; i < RestThings.size(); i++)
@@ -211,6 +159,16 @@ bool Graphics::DeleteRenThing(RenThing * ThingToDelete)
 				delete RestThings.at(i);
 				RestThings.erase(RestThings.begin() + i);
 				bFind = true;
+				break;
+			}
+	if(!bFind)
+		for(int i = 0; i < ButtonsArray.size(); i++)
+			if (ButtonsArray.at(i) == ThingToDelete)
+			{
+				ButtonsArray.at(i)->CleanupThing();
+				delete ButtonsArray.at(i);
+				ButtonsArray.erase(ButtonsArray.begin() + i);
+				bFind = true; 
 				break;
 			}
 

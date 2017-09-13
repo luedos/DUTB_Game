@@ -126,5 +126,8 @@ private:
 
 	vector<GeneratorStruct> Generator;
 	vector<DeltaTestsStruct> DeltaTests;
+
+	RenThing_Canvas* RenCanvas1 = nullptr;
+	RenThing_Canvas* RenCanvas2 = nullptr;
 };
 

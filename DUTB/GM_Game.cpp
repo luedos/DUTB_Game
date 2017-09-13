@@ -38,7 +38,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 
 		TestTest->ReChargeTest(30, 500, 800, 1500);
 
-		TestTest->MyThing = MyGraph->AddDynamicImage(1, "../DUTB/Textures/Pointers.png", &MyRect, &TestTest->IntPointer, false, 0, &TestTest->TextColor);
+		TestTest->MyThing = MyGraph->AddDynamicImage("../DUTB/Textures/Pointers.png", &MyRect, &TestTest->IntPointer, RenCanvas1, false, 0, &TestTest->TextColor);
 
 		TestsVector.push_back(TestTest);
 
@@ -53,7 +53,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 
 		TestTest->ReChargeTest(30, 500, 800, 1500);
 
-		TestTest->MyThing = MyGraph->AddDynamicText(1, TestTest->ButtonString.c_str(), &TestTest->TextColor, &MyRect);
+		TestTest->MyThing = MyGraph->AddDynamicText(TestTest->ButtonString.c_str(), &TestTest->TextColor, &MyRect, RenCanvas1);
 
 		TestsVector.push_back(TestTest);
 
@@ -64,7 +64,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DPB_test* TestTest = new DPB_test(&TestsVector, true, 2000, 1500);
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(2, TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect);
+		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect, RenCanvas2);
 
 		TestsVector.push_back(TestTest);
 
@@ -75,7 +75,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DPB_test* TestTest = new DPB_test(&TestsVector, false, 2000, 1500);
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(2, TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect);
+		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect, RenCanvas2);
 
 		TestsVector.push_back(TestTest);
 
@@ -85,7 +85,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		PNTButtons_Test* TestTest = new PNTButtons_Test(&TestsVector, 4, 2500, 1700);
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(2, TestTest->MainString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyRect);
+		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->MainString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyRect, RenCanvas2);
 
 		TestsVector.push_back(TestTest);
 
@@ -136,8 +136,23 @@ void GM_Game::TickEveryTest(float DeltaTime)
 
 void GM_Game::GM_Start()
 {
+	MyGraph->ClearEverything();
+	
 
 
+		SDL_Rect TestRect;
+		TestRect.x = 50;
+		TestRect.y = 50;
+		TestRect.w = 500;
+		TestRect.h = 200;
+
+		RenCanvas1 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
+
+		TestRect.y = 300;
+		TestRect.h = 300;
+
+		RenCanvas2 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
+	
 	if (MyLevel != nullptr)
 	{
 		delete MyLevel;
@@ -169,7 +184,7 @@ void GM_Game::NewRound()
 	NewRect.w = 64;
 	NewRect.h = 64;
 
-	MyGraph->AddDynamicText(3, TextPoints.c_str(), &NewColor, &NewRect);
+	MyGraph->AddDynamicText(TextPoints.c_str(), &NewColor, &NewRect);
 
 	NewRect.x = 400;
 	NewRect.y = 500;

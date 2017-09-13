@@ -6,6 +6,7 @@
 #include "RenThing_ImageChangable.h"
 #include "RenThing_EasyCanvas.h"
 #include "RenThing_Button.h"
+#include "RenThing_Canvas.h"
 
 using namespace std;
 
@@ -17,145 +18,88 @@ public:
 	Graphics();
 	~Graphics();
 
-	RenThing* AddStaticText(int Level,const char* InCharRef, SDL_Color InStatColor, SDL_Rect* InRect, bool DoesReplaceble = false) {
-		switch (Level)
-		{
-		case 1:
-		{
-			SDL_Rect TestRect = *InRect;
-			TestRect.x = MainBoard.x + MainBoard.w;
-			TestRect.y = MainBoard.y + MainBoard.h;
-			MainTests.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, DoesReplaceble));
-			return MainTests.back();
-		}
-		case 2:
-		{
-			SDL_Rect TestRect = *InRect;
-			TestRect.x = SideBoard.x + SideBoard.w;
-			TestRect.y = SideBoard.y + SideBoard.h;
-			SideTests.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, DoesReplaceble));
-			return SideTests.back();
-		}
-		default:
+	RenThing* AddStaticText(const char* InCharRef, SDL_Color InStatColor, SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, bool DoesReplaceble = false) {
+
+		if (CanvasRef == nullptr)
 		{
 			RestThings.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, DoesReplaceble));
 			return RestThings.back();
 		}
-		}
-		
+		else
+		{
+
+			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, DoesReplaceble));
+			return CanvasRef->MyThingVector.back();
+		}		
 	}
 
-	RenThing* AddDynamicText(int Level, const char* InCharRef, SDL_Color* InDynColor, SDL_Rect* InRect, bool DoesReplaceble = false) {
-		switch (Level)
-		{
-		case 1:
-		{
-			SDL_Rect TestRect = *InRect;
-			TestRect.x = MainBoard.x + MainBoard.w;
-			TestRect.y = MainBoard.y + MainBoard.h;
-			MainTests.push_back(new RenThing_Text(InCharRef, InDynColor, &TestRect, DoesReplaceble));
-			return MainTests.back();
-		}
-		case 2:
-		{
-			SDL_Rect TestRect = *InRect;
-			TestRect.x = SideBoard.x + SideBoard.w;
-			TestRect.y = SideBoard.y + SideBoard.h;
-			SideTests.push_back(new RenThing_Text(InCharRef, InDynColor, &TestRect, DoesReplaceble));
-			return SideTests.back();
-		}
-		default:
+	RenThing* AddDynamicText(const char* InCharRef, SDL_Color* InDynColor, SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, bool DoesReplaceble = false) {
+
+		if (CanvasRef == nullptr)
 		{
 			RestThings.push_back(new RenThing_Text(InCharRef, InDynColor, InRect, DoesReplaceble));
 			return RestThings.back();
 		}
+		else
+		{
+
+			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InDynColor, InRect, DoesReplaceble));
+			return CanvasRef->MyThingVector.back();
 		}
 	}
 
-	RenThing* AddStaticImage(int Level, char *FileName ,SDL_Rect* InRect, bool DoesReplaceble = false) {
-		switch (Level)
-		{
-		case 1:
-		{
-			SDL_Rect TestRect = *InRect;
-			TestRect.x = MainBoard.x + MainBoard.w;
-			TestRect.y = MainBoard.y + MainBoard.h;
-			MainTests.push_back(new RenThing_Image(MyRenderer, FileName, &TestRect, DoesReplaceble));
-			return MainTests.back();
-		}
-		case 2:
-		{
-			SDL_Rect TestRect = *InRect;
-			TestRect.x = SideBoard.x + SideBoard.w;
-			TestRect.y = SideBoard.y + SideBoard.h;
-			SideTests.push_back(new RenThing_Image(MyRenderer, FileName, &TestRect, DoesReplaceble));
-			return SideTests.back();
-		}
-		default:
+	RenThing* AddStaticImage(char *FileName ,SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, bool DoesReplaceble = false) {
+
+		if (CanvasRef == nullptr)
 		{
 			RestThings.push_back(new RenThing_Image(MyRenderer, FileName, InRect, DoesReplaceble));
 			return RestThings.back();
 		}
-		}
+		else
+		{
 
+			CanvasRef->MyThingVector.push_back(new RenThing_Image(MyRenderer, FileName, InRect, DoesReplaceble));
+			return CanvasRef->MyThingVector.back();
+		}
 	}
 
-	RenThing* AddDynamicImage(int Level, char *FileName, SDL_Rect* InRect, int* InIntRef, bool DoesReplaceble = false, int RenderMode_X_Y_Both_Ref= 0, SDL_Color* ColoRef = nullptr) {
-		switch (Level)
+	RenThing* AddDynamicImage(char *FileName, SDL_Rect* InRect, int* InIntRef, RenThing_Canvas* CanvasRef = nullptr, bool DoesReplaceble = false, int RenderMode_X_Y_Both_Ref= 0, SDL_Color* ColoRef = nullptr) {
+		
+		if (CanvasRef == nullptr)
 		{
-		case 1:
-		{
-			SDL_Rect TestRect = *InRect;
-			TestRect.x = MainBoard.x + MainBoard.w;
-			TestRect.y = MainBoard.y + MainBoard.h;
-			MainTests.push_back(new RenThing_ImageChangable(MyRenderer, FileName, &TestRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref, ColoRef));
-			return MainTests.back();
-		}
-		case 2:
-		{
-			SDL_Rect TestRect = *InRect;
-			TestRect.x = SideBoard.x + SideBoard.w;
-			TestRect.y = SideBoard.y + SideBoard.h;
-			SideTests.push_back(new RenThing_ImageChangable(MyRenderer, FileName, &TestRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref));
-			return SideTests.back();
-		}
-		default:
-		{
-			RestThings.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref));
+			RestThings.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref, ColoRef));
 			return RestThings.back();
 		}
-		}
-		
+		else
+		{
+
+			CanvasRef->MyThingVector.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref, ColoRef));
+			return CanvasRef->MyThingVector.back();
+		}		
 	}
 
-	RenThing* AddCanvas_TextText(int Level, const char* InCharToLocate_UpRef, SDL_Color* NewDynamicColor_UpRef,
+	RenThing* AddCanvas_TextText(const char* InCharToLocate_UpRef, SDL_Color* NewDynamicColor_UpRef,
 		const char* InCharToLocate_BottomRef, SDL_Color* NewDynamicColor_BottomRef,
-		SDL_Rect* InRectRef, bool InReplacebleRef = false) {
+		SDL_Rect* InRectRef, RenThing_Canvas* CanvasRef = nullptr, bool InReplacebleRef = false) {
 
-		switch (Level)
-		{
-		case 1:
-		{
-			SDL_Rect TestRect = *InRectRef;
-			TestRect.x = MainBoard.x + MainBoard.w;
-			TestRect.y = MainBoard.y + MainBoard.h;
-			MainTests.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, &TestRect, InReplacebleRef));
-			return MainTests.back();
-		}
-		case 2:
-		{
-			SDL_Rect TestRect = *InRectRef;
-			TestRect.x = SideBoard.x + SideBoard.w;
-			TestRect.y = SideBoard.y + SideBoard.h;
-			SideTests.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, &TestRect, InReplacebleRef));
-			return SideTests.back();
-		}
-		default:
+		if (CanvasRef == nullptr)
 		{
 			RestThings.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef, InReplacebleRef));
 			return RestThings.back();
 		}
+		else
+		{
+
+			CanvasRef->MyThingVector.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef, InReplacebleRef));
+			return CanvasRef->MyThingVector.back();
 		}
+
+	}
+
+	RenThing_Canvas* AddCanvas(SDL_Rect* InRect, bool DoBackGround = false, const char* BackGroundFile = nullptr)
+	{
+		CanvasVector.push_back(new RenThing_Canvas(InRect, DoBackGround, MyRenderer, BackGroundFile));
+		return CanvasVector.back();
 	}
 
 	template<class T, class M>
@@ -187,14 +131,14 @@ public:
 
 	vector<RenThing_Button*> ButtonsArray;
 
+	
+
 private:
+
+	vector<RenThing_Canvas*> CanvasVector;
 
 	SDL_Renderer* MyRenderer;
 	SDL_Window* MyWindow;
-
-	vector<RenThing*> MainTests;
-
-	vector<RenThing*> SideTests;
 
 	vector<RenThing*> RestThings;
 
