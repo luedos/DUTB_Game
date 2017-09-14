@@ -5,6 +5,8 @@
 Game::Game()
 {
 	//GM_Gameplay = GM_Game(&GameGraphics);
+
+	GameplayLevel = new TestLevel(&GM_Gameplay);
 }
 
 
@@ -21,6 +23,10 @@ void Game::AddButton(EButtons Button, SDL_Rect* InRect)
 		GameGraphics.AddButton(this, &Game::ExitGame, "Exit", InRect);
 		break;
 	}
+	case EButtons::Play:
+	{
+		GameGraphics.AddButton(this, &Game::NewRound, "PlayGame", InRect);
+	}
 
 
 	default:
@@ -32,6 +38,21 @@ void Game::AddButton(EButtons Button, SDL_Rect* InRect)
 void Game::NewGame()
 {
 	GameGraphics.CreateWindow(800, 600);
+
+	GM_NowPlaying = &GM_StartScreen;
+
+	GM_StartScreen.GM_Start();
+
+}
+
+void Game::NewRound()
+{
+	GM_StartScreen.GM_End();
+
+	delete GM_Gameplay.MyLevel;
+	GM_Gameplay.MyLevel = GameplayLevel;
+
+	GM_NowPlaying = &GM_Gameplay;
 
 	GM_Gameplay.GM_Start();
 }
@@ -64,19 +85,30 @@ void Game::EventTick(float DeltaTime)
 				GameGraphics.ButtonsArray.at(i)->ButtonUnpressed(x, y);
 		}
 	}
-	GM_Gameplay.GM_EventTick(DeltaTime);
+	GM_NowPlaying->GM_EventTick(DeltaTime);
+
+	GameGraphics.RenderEverything(DeltaTime);
+
+	//GM_Gameplay.GM_EventTick(DeltaTime);
 }
 
 void Game::ExitGame()
 {
 	Quit = true;
 
-	GameGraphics.DestroyEveryThing();
-
+	GM_StartScreen.GM_End();
 
 	GM_Gameplay.GM_End();
 
+	GameGraphics.DestroyEveryThing();
+
+
+
+
+
 }
+
+
 
 RenThing_Button* Game::FindButton(int x, int y)
 {

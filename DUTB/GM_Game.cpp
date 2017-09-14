@@ -109,7 +109,7 @@ void GM_Game::GM_EventTick(float DeltaTime)
 	GeneratorTick(DeltaTime);
 	DeltaTestTick(DeltaTime);
 
-	MyGraph->RenderEverything(DeltaTime);
+
 }
 
 void GM_Game::TickEveryTest(float DeltaTime)
@@ -153,13 +153,11 @@ void GM_Game::GM_Start()
 
 		RenCanvas2 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
 	
-	if (MyLevel != nullptr)
-	{
-		delete MyLevel;
-		MyLevel = nullptr;
-	}
+	if (MyLevel == nullptr)
+		MyLevel = new TestLevel(this);
+	
 
-	MyLevel = new TestLevel(this);
+
 
 	
 	
@@ -197,10 +195,14 @@ void GM_Game::NewRound()
 void GM_Game::GM_End()
 {
 
+	delete MyLevel;
+	MyLevel = nullptr;
+
 	ClearTests();
 
 	ClearGenerators();
 
+	MyGraph->ClearEverything();
 
 }
 

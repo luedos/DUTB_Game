@@ -46,11 +46,11 @@ struct DeltaTestsStruct
 
 };
 
-struct LevelStruct
-{
-	vector<DeltaTestsStruct> StartDeltaTests;
-	vector<GeneratorStruct> StartGeneratorTests;
-};
+//struct LevelStruct
+//{
+//	vector<DeltaTestsStruct> StartDeltaTests;
+//	vector<GeneratorStruct> StartGeneratorTests;
+//};
 
 class GM_Game : public GameMode
 
@@ -74,7 +74,7 @@ public:
 
 	void NewRound();
 
-	LevelStruct GameLevel;
+	//LevelStruct GameLevel;
 
 	float GamePoints = 0;
 

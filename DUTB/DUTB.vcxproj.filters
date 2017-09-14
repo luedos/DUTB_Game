@@ -78,6 +78,9 @@
     <ClInclude Include="RenThing_Canvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GM_StartMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -105,6 +108,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GM_StartMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

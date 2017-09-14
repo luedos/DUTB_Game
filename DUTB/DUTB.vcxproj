@@ -156,6 +156,7 @@
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="GM_Game.h" />
     <ClInclude Include="GeneralTest.h" />
+    <ClInclude Include="GM_StartMenu.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="LevelClass.h" />
     <ClInclude Include="PNTButtons_Test.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="DUTB.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GM_Game.cpp" />
+    <ClCompile Include="GM_StartMenu.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="PNTButtons_Test.cpp" />
     <ClCompile Include="stdafx.cpp">
