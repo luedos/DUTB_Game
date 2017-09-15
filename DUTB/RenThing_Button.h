@@ -43,12 +43,14 @@ class RenThing_Button : public RenThing
 public:
 	
 
-	RenThing_Button(const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color* BGColorRef, SDL_Color* BGColor_PressedRef){
+	RenThing_Button(const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color* BGColorRef, SDL_Color* BGColor_PressedRef, SDL_Color* BGColor_HoveredRef){
 		MyRect = *InRect;
 
 		ButtonText = ButtonTextRef;
 
-		BGColor = *BGColorRef;
+		BGColor_Idle = *BGColorRef;
+
+		BGColor_Hovered = *BGColor_HoveredRef;
 
 		BGColor_Pressed = *BGColor_PressedRef;
 
@@ -101,14 +103,9 @@ public:
 			}
 		}
 
-		SDL_Color LocalColor;
 
-		if (IsPressed)
-			LocalColor = BGColor_Pressed;
-		else
-			LocalColor = BGColor;
 
-		SDL_SetTextureColorMod(BackgroundTexture, LocalColor.r, LocalColor.g, LocalColor.b);
+		SDL_SetTextureColorMod(BackgroundTexture, BGColor->r, BGColor->g, BGColor->b);
 
 	}
 
@@ -119,6 +116,18 @@ public:
 
 	virtual void ButtonPressed() {
 		IsPressed = true;
+	}
+
+	virtual void ButtonHovered(int x, int y) {
+		if (!IsPressed && MyRect.x < x && MyRect.y < y && MyRect.x + MyRect.w > x && MyRect.y + MyRect.h > y)
+			BGColor = &BGColor_Hovered;
+		else
+			if (IsPressed)
+				BGColor = &BGColor_Pressed;
+			else
+				BGColor = &BGColor_Idle;
+		
+
 	}
 
 	virtual void ButtonUnpressed(int x, int y) {
@@ -136,7 +145,11 @@ public:
 
 	SDL_Surface* Surface;
 
-	SDL_Color BGColor;
+	SDL_Color* BGColor;
+
+	SDL_Color BGColor_Idle;
+
+	SDL_Color BGColor_Hovered;
 
 	SDL_Color BGColor_Pressed;
 

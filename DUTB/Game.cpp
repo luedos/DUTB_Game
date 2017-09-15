@@ -27,6 +27,10 @@ void Game::AddButton(EButtons Button, SDL_Rect* InRect)
 	{
 		GameGraphics.AddButton(this, &Game::NewRound, "PlayGame", InRect);
 	}
+	case EButtons::ExitToMenu:
+	{
+
+	}
 
 
 	default:
@@ -57,12 +61,32 @@ void Game::NewRound()
 	GM_Gameplay.GM_Start();
 }
 
+void Game::SetGameMode(EGameMode GameModeRef)
+{
+
+
+	GM_NowPlaying->GM_End();
+
+	switch (GameModeRef)
+	{
+	case EGameMode::StartMenuGM:
+	{
+
+	}
+	default:
+		break;
+	}
+}
+
 void Game::EventTick(float DeltaTime)
 {
 
 	while (SDL_PollEvent(&MyEvent))
 	{
 		SDL_PumpEvents();
+
+		GM_NowPlaying->GM_Event(&MyEvent);
+
 		if (MyEvent.type == SDL_QUIT)
 		{
 			ExitGame();

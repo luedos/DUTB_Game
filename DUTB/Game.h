@@ -5,10 +5,15 @@
 enum EButtons
 {
 	Play,
+	ExitToMenu,
 	Exit
 };
 
-
+enum EGameMode
+{
+	GameGM,
+	StartMenuGM
+};
 
 
 class Game
@@ -26,6 +31,8 @@ public:
 	void ExitGame();
 
 	void NewRound();
+
+	void SetGameMode(EGameMode GameModeRef);
 
 	bool Quit = false;
 

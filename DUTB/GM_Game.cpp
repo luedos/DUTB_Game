@@ -11,7 +11,7 @@ GM_Game::GM_Game(Graphics* GraphRef, Game* GameRef)
 
 	MyGraph = GraphRef;
 
-
+	KeyboardState = SDL_GetKeyboardState(NULL);
 	//AddGeneratorTest(ETests::DPButton, 1, 1000.f, 15.f);
 	
 }
@@ -101,14 +101,20 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 
 void GM_Game::GM_EventTick(float DeltaTime)
 {
+	//if (KeyboardState[SDL_SCANCODE_ESCAPE])
+	//{
+	//	if (bTickTests)
+	//		GP_Pause();
+	//	else
+	//		UnPause();
+	//}
 
-
-	
-
-	TickEveryTest(DeltaTime);
-	GeneratorTick(DeltaTime);
-	DeltaTestTick(DeltaTime);
-
+	if (bTickTests)
+	{
+		TickEveryTest(DeltaTime);
+		GeneratorTick(DeltaTime);
+		DeltaTestTick(DeltaTime);
+	}
 
 }
 
@@ -202,8 +208,21 @@ void GM_Game::GM_End()
 
 	ClearGenerators();
 
+	PauseRenThings.clear();
+
 	MyGraph->ClearEverything();
 
+}
+
+void GM_Game::GM_Event(SDL_Event* EventRef)
+{
+	if (EventRef->type == SDL_KEYUP && EventRef->button.button == SDL_SCANCODE_ESCAPE)
+	{
+		if (bTickTests)
+			GP_Pause();
+		else
+			UnPause();
+	}
 }
 
 void GM_Game::ClearTests()
@@ -308,6 +327,49 @@ void GM_Game::DeltaTestTick(float DeltaTime)
 			}
 		}
 	}
+}
+
+void GM_Game::GP_Pause()
+{
+	
+
+	bTickTests = false;
+
+	SDL_Rect TestRect;
+	TestRect.x = 0;
+	TestRect.y = 0;
+	TestRect.w = 800;
+	TestRect.h = 600;
+
+	SDL_Color TestColor = { 180,180,180,60 };
+
+	PauseRenThings.push_back(MyGraph->AddStaticImage("../DUTB/Textures/SimpleWhite.png", &TestRect, nullptr, &TestColor));
+
+	TestRect.x = 50;
+	TestRect.y = 30;
+	
+	TestColor = { 200,200,200,225 };
+
+	PauseRenThings.push_back(MyGraph->AddStaticText("Pause Menu", TestColor, &TestRect));
+
+	TestRect.y = 100;
+	TestRect.w = 240;
+	TestRect.h = 50;
+	PauseRenThings.push_back(MyGraph->AddButton(this, &GM_Game::UnPause, "Return", &TestRect));
+
+	TestRect.y = 170;
+
+	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &TestRect));
+}
+
+void GM_Game::UnPause()
+{
+	for (int i = 0; i < PauseRenThings.size(); i++)
+		MyGraph->DeleteRenThing(PauseRenThings.at(i));
+	
+	PauseRenThings.clear();
+
+	bTickTests = true;
 }
 
 

@@ -45,19 +45,21 @@ void Graphics::RenderEverything(float DeltaTime)
 		RestThings.at(i)->PrepareThing(MyRenderer);
 
 	for (int i = 0; i < ButtonsArray.size(); i++)
-		ButtonsArray.at(i)->PrepareThing(MyRenderer);
+	{
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		ButtonsArray.at(i)->ButtonHovered(x, y);
 
+		ButtonsArray.at(i)->PrepareThing(MyRenderer);
+	}
 	
 
-	// Непосредственный рендер всех штук
-	for (int i = 0; i < CanvasVector.size(); i++)
-		CanvasVector.at(i)->RenderThing(MyRenderer);
 
-	for (int i = 0; i < RestThings.size(); i++)
-		RestThings.at(i)->RenderThing(MyRenderer);
 
-	for (int i = 0; i < ButtonsArray.size(); i++)
-		ButtonsArray.at(i)->RenderThing(MyRenderer);
+	for (int i = 0; i < RenderOrder.size(); i++)
+		RenderOrder.at(i)->RenderThing(MyRenderer);
+
+
 
 	// Ренедер рендера
 	SDL_RenderPresent(MyRenderer);
@@ -86,6 +88,8 @@ void Graphics::ClearEverything()
 		ButtonsArray.at(i)->CleanupThing();
 		delete ButtonsArray.at(i);
 	}
+
+	RenderOrder.clear();
 
 	ButtonsArray.clear();
 
@@ -128,6 +132,13 @@ int Graphics::CreateWindow(int WindowSizeX, int WindowSizeY)
 bool Graphics::DeleteRenThing(RenThing * ThingToDelete)
 {
 	bool bFind = false;
+
+	for(int i = 0; i < RenderOrder.size(); i++)
+		if (RenderOrder.at(i) == ThingToDelete)
+		{
+			RenderOrder.erase(RenderOrder.begin() + i);
+			break;
+		}
 
 	for (int i = 0; i < CanvasVector.size(); i++)
 		if (CanvasVector.at(i) == ThingToDelete)
@@ -177,6 +188,8 @@ bool Graphics::DeleteRenThing(RenThing * ThingToDelete)
 		ThingToDelete->CleanupThing();
 		delete ThingToDelete;
 	}
+
+	
 
 	return bFind;
 }

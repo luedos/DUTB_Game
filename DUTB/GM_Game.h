@@ -1,8 +1,6 @@
 #pragma once
-#include "NewIncludes/DelegateClass.h"
-#include "SDL2/include/SDL.h"
+
 #include "DUB_Test.h"
-#include "Graphics.h"
 #include "DPB_test.h"
 #include "TestLevel.h"
 #include "PNTButtons_Test.h"
@@ -66,6 +64,8 @@ public:
 
 	void GM_End() override;
 
+	void GM_Event(SDL_Event* EventRef) override;
+
 	void AddTest(ETests WhichTest, int PowerLevel);
 
 
@@ -121,13 +121,22 @@ public:
 
 	LevelClass* MyLevel = nullptr;
 
+	void GP_Pause();
+
+	void UnPause();
+
+	bool bTickTests = true;
+
+	const Uint8 *KeyboardState;
+
 private:
-	Delegate MyDelegate;
 
 	vector<GeneratorStruct> Generator;
 	vector<DeltaTestsStruct> DeltaTests;
 
 	RenThing_Canvas* RenCanvas1 = nullptr;
 	RenThing_Canvas* RenCanvas2 = nullptr;
+
+	vector<RenThing*> PauseRenThings;
 };
 

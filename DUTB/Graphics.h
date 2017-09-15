@@ -23,12 +23,14 @@ public:
 		if (CanvasRef == nullptr)
 		{
 			RestThings.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, DoesReplaceble));
+			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
 			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, DoesReplaceble));
+			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}		
 	}
@@ -38,27 +40,31 @@ public:
 		if (CanvasRef == nullptr)
 		{
 			RestThings.push_back(new RenThing_Text(InCharRef, InDynColor, InRect, DoesReplaceble));
+			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
 			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InDynColor, InRect, DoesReplaceble));
+			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
 	}
 
-	RenThing* AddStaticImage(char *FileName ,SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, bool DoesReplaceble = false) {
+	RenThing* AddStaticImage(char *FileName ,SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, SDL_Color* ColorRef = nullptr, bool DoesReplaceble = false) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_Image(MyRenderer, FileName, InRect, DoesReplaceble));
+			RestThings.push_back(new RenThing_Image(MyRenderer, FileName, InRect, ColorRef, DoesReplaceble));
+			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_Image(MyRenderer, FileName, InRect, DoesReplaceble));
+			CanvasRef->MyThingVector.push_back(new RenThing_Image(MyRenderer, FileName, InRect, ColorRef, DoesReplaceble));
+			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
 	}
@@ -68,12 +74,14 @@ public:
 		if (CanvasRef == nullptr)
 		{
 			RestThings.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref, ColoRef));
+			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
 			CanvasRef->MyThingVector.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref, ColoRef));
+			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}		
 	}
@@ -85,12 +93,14 @@ public:
 		if (CanvasRef == nullptr)
 		{
 			RestThings.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef, InReplacebleRef));
+			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
 			CanvasRef->MyThingVector.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef, InReplacebleRef));
+			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
 
@@ -99,20 +109,22 @@ public:
 	RenThing_Canvas* AddCanvas(SDL_Rect* InRect, bool DoBackGround = false, const char* BackGroundFile = nullptr)
 	{
 		CanvasVector.push_back(new RenThing_Canvas(InRect, DoBackGround, MyRenderer, BackGroundFile));
+		RenderOrder.push_back(CanvasVector.back());
 		return CanvasVector.back();
 	}
 
 	template<class T, class M>
-	RenThing_Button* AddButton(T* MyClass, M MyMethod, const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color BGColorRef = { 150,150,150,120 }, SDL_Color BGColor_PressedRef = {100,100,100,180}) {
+	RenThing_Button* AddButton(T* MyClass, M MyMethod, const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color BGColorRef = { 150,150,150,120 }, SDL_Color BGColor_PressedRef = { 100,100,100,180 }, SDL_Color BGColor_HoveredRef = {120,120,120,150}) {
 		
 		
 
 
-		RenThing_Button* TestTest = new RenThing_Button(ButtonTextRef, InRect, &BGColorRef, &BGColor_PressedRef);
+		RenThing_Button* TestTest = new RenThing_Button(ButtonTextRef, InRect, &BGColorRef, &BGColor_PressedRef, &BGColor_HoveredRef);
 
 		TestTest->ConnectNew(MyClass, MyMethod);
 
 		ButtonsArray.push_back(TestTest);
+		RenderOrder.push_back(ButtonsArray.back());
 		return ButtonsArray.back();
 
 	}
@@ -149,6 +161,8 @@ private:
 
 	SDL_Texture* BackGroundTexture;
 	SDL_Rect BackgroundRect;
+
+	vector<RenThing*> RenderOrder;
 
 
 };
