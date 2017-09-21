@@ -42,7 +42,7 @@ bool DPB_test::EventTick(float DeltaMilliSeconds)
 	if (!KeyboardState[UintButton] && Timer > MaxStartTimer)
 	{
 		if (DP_DNP)
-			Points = PointsRate * DeltaMilliSeconds * 0.001;
+			Points = -PointsRate * DeltaMilliSeconds * 0.001;
 		ColorToRender = { 225,0,0,225 };
 	}
 
@@ -53,7 +53,7 @@ bool DPB_test::EventTick(float DeltaMilliSeconds)
 	if (KeyboardState[UintButton])
 	{
 		if (!DP_DNP)
-			Points = PointsRate * DeltaMilliSeconds * 0.001;
+			Points = -PointsRate * DeltaMilliSeconds * 0.001;
 		ColorToRender = { 0,225,0,225 };
 	}
 

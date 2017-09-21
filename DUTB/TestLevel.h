@@ -9,10 +9,13 @@ public:
 
 	void StartLevel() override;
 
-	void EventTick(float DeltaTime);
+	void EventTick(float DeltaTime) override;
+
+	void FireLevel() override;
+
+	void PlaceLevel() override;
 
 
-	class GM_Game* MyGame;
 
 };
 

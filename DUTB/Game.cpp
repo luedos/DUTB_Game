@@ -5,8 +5,6 @@
 Game::Game()
 {
 	//GM_Gameplay = GM_Game(&GameGraphics);
-
-	GameplayLevel = new TestLevel(&GM_Gameplay);
 }
 
 
@@ -53,8 +51,7 @@ void Game::NewRound()
 {
 	GM_StartScreen.GM_End();
 
-	delete GM_Gameplay.MyLevel;
-	GM_Gameplay.MyLevel = GameplayLevel;
+
 
 	GM_NowPlaying = &GM_Gameplay;
 
@@ -71,11 +68,39 @@ void Game::SetGameMode(EGameMode GameModeRef)
 	{
 	case EGameMode::StartMenuGM:
 	{
-
+		GM_NowPlaying = &GM_StartScreen;
+	}
+	case EGameMode::GameGM:
+	{
+		GM_NowPlaying = &GM_Gameplay;
 	}
 	default:
 		break;
 	}
+
+	GM_NowPlaying->GM_Start();
+}
+
+void Game::PlaceLevelButtons()
+{
+	GameGraphics.ClearEverything();
+
+	SDL_Rect NewRect;
+	NewRect.x = 50;
+	NewRect.y = 50;
+	NewRect.w = 250;
+	NewRect.h = 64;
+
+	GameGraphics.AddStaticText("Choose Level", { 225,225,225,225 }, &NewRect);
+
+	NewRect.y = 150;
+
+	GameGraphics.AddButton(&Level2, &Level_1::FireLevel, "First Level", &NewRect);
+	
+	NewRect.y = 250;
+	
+	GameGraphics.AddButton(&Level1, &TestLevel::FireLevel, "Test Level", &NewRect);
+
 }
 
 void Game::EventTick(float DeltaTime)

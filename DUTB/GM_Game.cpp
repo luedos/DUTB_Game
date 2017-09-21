@@ -135,75 +135,83 @@ void GM_Game::TickEveryTest(float DeltaTime)
 	for (int i = 0; i < TestsToDeleteArray.size(); i++)
 		DeleteTest(TestsToDeleteArray.at(i));
 
+	Percent = GamePoints / MaxPoints;
+
 	TextPoints = to_string(int(GamePoints));
 
-	
+	GameTime -= DeltaTime;
+
+	TextGameTime = to_string(int(GameTime / 1000));
+	//"Level Time : " + 
+
+	if (GameTime < 0)
+		WinGameMenu();
+
+	if (GamePoints <= 0)
+		GameOver();
 }
 
 void GM_Game::GM_Start()
 {
-	MyGraph->ClearEverything();
-	
-
-
-		SDL_Rect TestRect;
-		TestRect.x = 50;
-		TestRect.y = 50;
-		TestRect.w = 500;
-		TestRect.h = 200;
-
-		RenCanvas1 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
-
-		TestRect.y = 300;
-		TestRect.h = 300;
-
-		RenCanvas2 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
-	
-	if (MyLevel == nullptr)
-		MyLevel = new TestLevel(this);
-	
-
-
-
-	
-	
-	NewRound();
-}
-
-void GM_Game::NewRound()
-{
 	ClearTests();
 	ClearGenerators();
 
-	GamePoints = 0;
+	MyGraph->ClearEverything();
+
+	bTickTests = true;
+
+	SDL_Rect TestRect;
+	TestRect.x = 50;
+	TestRect.y = 50;
+	TestRect.w = 500;
+	TestRect.h = 200;
+
+	RenCanvas1 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
+
+	TestRect.y = 200;
+	TestRect.h = 200;
+
+	RenCanvas2 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
 
 	MyLevel->StartLevel();
+
+	GamePoints = MaxPoints;
 
 	SDL_Color NewColor = { 225, 225, 225, 225 };
 
 	SDL_Rect NewRect;
 
 	NewRect.x = 50;
-	NewRect.y = 500;
+	NewRect.y = 400;
 	NewRect.w = 64;
 	NewRect.h = 64;
 
 	MyGraph->AddDynamicText(TextPoints.c_str(), &NewColor, &NewRect);
 
 	NewRect.x = 400;
-	NewRect.y = 500;
+	NewRect.y = 400;
 	NewRect.w = 100;
 	NewRect.h = 64;
 
-	MyGame->AddButton(EButtons::Exit, &NewRect);
+	MyGraph->AddStaticText(TextGameTime.c_str(), NewColor, &NewRect);
+
+	NewRect.x = 50;
+	NewRect.y = 500;
+	NewRect.h = 50;
+	NewRect.w = 700;
+
+	MyGraph->AddPercentBar(&NewRect, &Percent);
+}
+
+void GM_Game::NewRound()
+{
+
 }
 
 void GM_Game::GM_End()
 {
 
-	delete MyLevel;
-	MyLevel = nullptr;
-
+	
 	ClearTests();
 
 	ClearGenerators();
@@ -370,6 +378,75 @@ void GM_Game::UnPause()
 	PauseRenThings.clear();
 
 	bTickTests = true;
+}
+
+void GM_Game::GameOver()
+{
+	ClearTests();
+	ClearGenerators();
+	MyGraph->ClearEverything();
+
+	bTickTests = false;
+
+	SDL_Rect NewRect;
+	NewRect.x = 50;
+	NewRect.y = 50;
+	NewRect.w = 200;
+	NewRect.h = 64;
+
+	MyGraph->AddStaticText("Game Over", { 225, 0, 0 }, &NewRect);
+
+	NewRect.y = 120;
+	
+	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &NewRect);
+
+	NewRect.y = 200;
+
+	MyGraph->AddButton(this, &GM_Game::GM_Start, "Try Again", &NewRect);
+}
+
+void GM_Game::WinGameMenu()
+{
+	bTickTests = false;
+
+	ClearTests();
+	ClearGenerators();
+	MyGraph->ClearEverything();
+
+	SDL_Rect NewRect;
+	NewRect.x = 50;
+	NewRect.y = 50;
+	NewRect.w = 200;
+	NewRect.h = 50;
+
+	MyGraph->AddStaticText("Level passed", { 15,225,15,225 }, &NewRect);
+
+	NewRect.y = 150;
+
+	MyGraph->AddButton(this, &GM_Game::LevelChooseMenu, "Choose level", &NewRect);
+
+	NewRect.y = 220;
+
+	MyGraph->AddButton(MyGame, &Game::ExitGame, "ExitGame", &NewRect);
+}
+
+void GM_Game::LevelChooseMenu()
+{
+	
+
+	SDL_Rect NewRect;
+	NewRect.x = 50;
+	NewRect.y = 350;
+	NewRect.w = 250;
+	NewRect.h = 64;
+
+
+
+	MyGame->PlaceLevelButtons();
+
+	MyGraph->AddButton(this, &GM_Game::WinGameMenu, "Back", &NewRect);
+
+	
 }
 
 

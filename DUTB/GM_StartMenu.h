@@ -1,5 +1,5 @@
 #pragma once
-#include "GameMode.h"
+#include "GM_Game.h"
 #include "Graphics.h"
 
 class GM_StartMenu :
@@ -16,6 +16,10 @@ public:
 	void GM_Start() override;
 
 	void GM_End() override;
+
+	void StartMenu();
+
+	void LevelChoose();
 
 
 	Graphics* MyGraph;

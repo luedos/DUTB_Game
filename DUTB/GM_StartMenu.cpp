@@ -76,6 +76,22 @@ void GM_StartMenu::GM_Start()
 	b = 0;
 	g = 0;
 
+	StartMenu();
+}
+
+void GM_StartMenu::GM_End()
+{
+	MyGraph->ClearEverything();
+
+
+
+
+}
+
+void GM_StartMenu::StartMenu()
+{
+	MyGraph->ClearEverything();
+
 	SDL_Rect TestRect;
 	TestRect.x = 50;
 	TestRect.y = 40;
@@ -86,14 +102,24 @@ void GM_StartMenu::GM_Start()
 
 	TestRect.y = 100;
 
-	MyGame->AddButton(EButtons::Play, &TestRect);
+	MyGraph->AddButton(this, &GM_StartMenu::LevelChoose, "Chose level", &TestRect);
 
 	TestRect.y = 170;
 
 	MyGame->AddButton(EButtons::Exit, &TestRect);
 }
 
-void GM_StartMenu::GM_End()
+void GM_StartMenu::LevelChoose()
 {
-	MyGraph->ClearEverything();
+	SDL_Rect NewRect;
+	NewRect.x = 50;
+	NewRect.y = 350;
+	NewRect.w = 250;
+	NewRect.h = 64;
+
+	MyGame->PlaceLevelButtons();
+
+	MyGraph->AddButton(this, &GM_StartMenu::StartMenu, "Back", &NewRect);
 }
+
+

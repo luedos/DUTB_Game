@@ -36,7 +36,11 @@ public:
 
 	bool Quit = false;
 
-	LevelClass* GameplayLevel;
+	TestLevel Level1 = TestLevel(&GM_Gameplay);
+
+	Level_1 Level2 = Level_1(&GM_Gameplay);
+
+	void PlaceLevelButtons();
 
 private:
 

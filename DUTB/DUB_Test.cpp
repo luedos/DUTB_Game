@@ -58,7 +58,7 @@ bool DUB_Test::EventTick(float DeltaMilliSeconds)
 	{
 		DelayTimer = DUB_MaxDelay;
 		TextColor = { 225,0,0,225 };
-		Points = PointsRate * DeltaMilliSeconds * 0.001;
+		Points = -PointsRate * DeltaMilliSeconds * 0.001;
 
 		SideString = " DUTB";
 

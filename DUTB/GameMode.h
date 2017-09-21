@@ -17,4 +17,5 @@ public:
 	
 	virtual void GM_Event(SDL_Event* EventRef) {}
 
+
 };

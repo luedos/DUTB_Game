@@ -3,6 +3,7 @@
 #include "DUB_Test.h"
 #include "DPB_test.h"
 #include "TestLevel.h"
+#include "Level_1.h"
 #include "PNTButtons_Test.h"
 #include "GameMode.h"
 
@@ -76,9 +77,15 @@ public:
 
 	//LevelStruct GameLevel;
 
-	float GamePoints = 0;
+	float MaxPoints;
+
+	float GamePoints;
+
+	float Percent;
 
 	string TextPoints;
+
+	string TextGameTime;
 
 	void ClearTests();
 
@@ -125,9 +132,17 @@ public:
 
 	void UnPause();
 
+	void GameOver();
+
+	void WinGameMenu();
+
 	bool bTickTests = true;
 
 	const Uint8 *KeyboardState;
+
+	float GameTime;
+
+	void LevelChooseMenu();
 
 private:
 

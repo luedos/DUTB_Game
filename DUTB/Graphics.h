@@ -7,6 +7,7 @@
 #include "RenThing_EasyCanvas.h"
 #include "RenThing_Button.h"
 #include "RenThing_Canvas.h"
+#include "RenThing_PercentBar.h"
 
 using namespace std;
 
@@ -113,12 +114,25 @@ public:
 		return CanvasVector.back();
 	}
 
+	RenThing* AddPercentBar(SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, RenThing_Canvas* CanvasRef = nullptr, bool InReplaceble = false)
+	{
+		if (CanvasRef == nullptr)
+		{
+			RestThings.push_back(new RenThing_PercentBar(MyRenderer, InRect, PercetRef, BackColorRef, FrontColorRef, InReplaceble));
+			RenderOrder.push_back(RestThings.back());
+			return RestThings.back();
+		}
+		else
+		{
+			CanvasRef->MyThingVector.push_back(new RenThing_PercentBar(MyRenderer, InRect, PercetRef, BackColorRef, FrontColorRef, InReplaceble));
+			RenderOrder.push_back(CanvasRef->MyThingVector.back());
+			return CanvasRef->MyThingVector.back();
+		}
+	}
+
 	template<class T, class M>
 	RenThing_Button* AddButton(T* MyClass, M MyMethod, const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color BGColorRef = { 150,150,150,120 }, SDL_Color BGColor_PressedRef = { 100,100,100,180 }, SDL_Color BGColor_HoveredRef = {120,120,120,150}) {
 		
-		
-
-
 		RenThing_Button* TestTest = new RenThing_Button(ButtonTextRef, InRect, &BGColorRef, &BGColor_PressedRef, &BGColor_HoveredRef);
 
 		TestTest->ConnectNew(MyClass, MyMethod);

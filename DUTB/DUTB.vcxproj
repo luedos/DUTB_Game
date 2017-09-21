@@ -159,11 +159,13 @@
     <ClInclude Include="GM_StartMenu.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="LevelClass.h" />
+    <ClInclude Include="Level_1.h" />
     <ClInclude Include="PNTButtons_Test.h" />
     <ClInclude Include="RenThing_Button.h" />
     <ClInclude Include="RenThing_Canvas.h" />
     <ClInclude Include="RenThing_EasyCanvas.h" />
     <ClInclude Include="RenThing_ImageChangable.h" />
+    <ClInclude Include="RenThing_PercentBar.h" />
     <ClInclude Include="RenThing_Text.h" />
     <ClInclude Include="RenThing.h" />
     <ClInclude Include="RenThing_Image.h" />
@@ -179,6 +181,8 @@
     <ClCompile Include="GM_Game.cpp" />
     <ClCompile Include="GM_StartMenu.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="LevelClass.cpp" />
+    <ClCompile Include="Level_1.cpp" />
     <ClCompile Include="PNTButtons_Test.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

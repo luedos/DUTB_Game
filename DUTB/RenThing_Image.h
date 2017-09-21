@@ -14,8 +14,11 @@ public:
 	MyRect = *InRect;
 	bReplaceble = InReplaceble;
 
-	if(ColorRef!= nullptr)
+	if (ColorRef != nullptr)
+	{
 		SDL_SetTextureColorMod(MyTexture, ColorRef->r, ColorRef->g, ColorRef->b);
+		SDL_SetTextureAlphaMod(MyTexture, ColorRef->a);
+	}
 	}
 
 	void RenderThing(SDL_Renderer* RenRef) override { SDL_RenderCopy(RenRef, MyTexture, NULL, &MyRect); }

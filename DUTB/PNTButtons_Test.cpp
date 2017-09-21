@@ -41,7 +41,7 @@ bool PNTButtons_Test::EventTick(float DeltaMilliSeconds)
 		{
 			PressNumber--;
 			if (PressNumber < 0)
-				Points += PointsRate / 4;
+				Points -= PointsRate / 4;
 		}
 		LastPressed = NewPressed;
 	}
@@ -53,7 +53,7 @@ bool PNTButtons_Test::EventTick(float DeltaMilliSeconds)
 	if (Timer > StartTime && PressNumber != 0)
 	{
 		MyColor = { 225, 0, 0, 225 };
-		Points += DeltaMilliSeconds * PointsRate * 0.001;
+		Points -= DeltaMilliSeconds * PointsRate * 0.001;
 	}
 	else
 		MyColor = { 0,225,0,225 };

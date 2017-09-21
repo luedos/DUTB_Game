@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 	}
 
 
-	//SDL_Window* MyWindow = SDL_CreateWindow("Don't unpress that Button", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 64, 64, SDL_WINDOW_SHOWN);
+	//SDL_Window* MyWindow = SDL_CreateWindow("Don't unpress that Button", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 512, 512, SDL_WINDOW_SHOWN);
 	//if (MyWindow == nullptr)
 	//{
 	//	std::cout << "SDL_CreateWindow Error:" << SDL_GetError() << std::endl;
@@ -51,6 +51,18 @@ int main(int argc, char* argv[])
 	//	return 5;
 	//}
 	//
+	//SDL_Texture* BackTexture = IMG_LoadTexture(MyRenderer, "../DUTB/Textures/Point.png");
+	//
+	//SDL_Texture* SimpleWhiteTex = IMG_LoadTexture(MyRenderer, "../DUTB/Textures/Lines.png");
+	//
+	//SDL_Rect TestRect;
+	//TestRect.x = 0;
+	//TestRect.y = 0;
+	//TestRect.w = 512;
+	//TestRect.h = 512;
+	//
+	//
+	//
 	//const Uint8 *KeyboardState;
 	//
 	//KeyboardState = SDL_GetKeyboardState(NULL);
@@ -61,6 +73,8 @@ int main(int argc, char* argv[])
 	//
 	//while (!QuitTest)
 	//{
+	//	SDL_RenderClear(MyRenderer);
+	//
 	//	if (KeyboardState[SDL_SCANCODE_Q])
 	//		QuitTest = true;
 	//
@@ -78,23 +92,39 @@ int main(int argc, char* argv[])
 	//	
 	//	
 	//	}
+	//
+	//	SDL_RenderCopy(MyRenderer, SimpleWhiteTex, NULL, &TestRect);
+	//
+	//	SDL_SetTextureAlphaMod(BackTexture, 10);
+	//
+	//	SDL_RenderCopy(MyRenderer, BackTexture, NULL, &TestRect);
+	//
+	//
+	//
+	//
+	//
+	//
+	//	SDL_RenderPresent(MyRenderer);
 	//}
-	
-
+	//
+	//SDL_DestroyTexture(SimpleWhiteTex);
+	//SDL_DestroyTexture(BackTexture);
+	//SDL_DestroyRenderer(MyRenderer);
+	//SDL_DestroyWindow(MyWindow);
 
 	bool bDoStaff = true;
 
 	string SomeString = "blah blah";
 
-	cout << "Start game? \n  Yes/No" << endl;
+	cout << "Start game? \n  Y/N" << endl;
 
-	while (SomeString != "Yes" && SomeString != "No")
+	while (SomeString != "Y" && SomeString != "N")
 	{
 		cin >> SomeString;
-		if (!(SomeString == "Yes" || SomeString == "No"))
+		if (SomeString != "Y" && SomeString != "N")
 			cout << "Print again" << endl;
 	}
-	if (SomeString == "Yes")
+	if (SomeString == "Y")
 		bDoStaff = true;
 	else
 		bDoStaff = false;

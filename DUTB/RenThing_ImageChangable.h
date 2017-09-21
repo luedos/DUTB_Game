@@ -59,6 +59,8 @@ public:
 
 		SDL_SetTextureColorMod(MyTexture, MyColor->r, MyColor->g, MyColor->b);
 
+		SDL_SetTextureAlphaMod(MyTexture, MyColor->a);
+
 		SDL_RenderCopy(RenRef, MyTexture, &StandartRect, &MyRect); }
 
 	void CleanupThing() override { SDL_DestroyTexture(MyTexture); }

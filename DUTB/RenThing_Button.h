@@ -107,6 +107,8 @@ public:
 
 		SDL_SetTextureColorMod(BackgroundTexture, BGColor->r, BGColor->g, BGColor->b);
 
+		SDL_SetTextureAlphaMod(BackgroundTexture, BGColor->a);
+
 	}
 
 	void SetPosition(int x, int y) override {
@@ -126,6 +128,7 @@ public:
 				BGColor = &BGColor_Pressed;
 			else
 				BGColor = &BGColor_Idle;
+		
 		
 
 	}

@@ -1,16 +1,20 @@
 #pragma once
 
+
 class LevelClass
 {
 public:
-	LevelClass() {}
+	LevelClass();
 
 	virtual void StartLevel() {}
 
-	virtual void EventTick() {}
+	virtual void EventTick(float DeltaTime) {}
 
-protected:
+	virtual void FireLevel();
 
+	virtual void PlaceLevel();
+
+	class GM_Game* MyGame;
 
 
 };
