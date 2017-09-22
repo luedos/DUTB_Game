@@ -119,9 +119,6 @@
     <ClCompile Include="GM_StartMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LevelClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Level_1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

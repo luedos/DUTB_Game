@@ -81,10 +81,11 @@ public:
 		MyRect.y = y;
 	}
 
-	RenThing_Image* MyBackground = nullptr;
+	float DeltaTime = 0.00001f;
 
 	vector<RenThing*> MyThingVector;
 
-	float DeltaTime = 0.00001f;
+private:
 
+	RenThing_Image* MyBackground = nullptr;
 };

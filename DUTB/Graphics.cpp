@@ -3,18 +3,7 @@
 
 
 Graphics::Graphics()
-{
-
-	MainBoard.x = 50;
-	MainBoard.y = 50;
-	MainBoard.w = 700;
-	MainBoard.h = 150;
-
-	SideBoard.x = 50;
-	SideBoard.y = MainBoard.y + MainBoard.h + 50;
-	SideBoard.w = 700;
-	SideBoard.h = 300;
-	
+{	
 }
 
 
@@ -52,14 +41,9 @@ void Graphics::RenderEverything(float DeltaTime)
 
 		ButtonsArray.at(i)->PrepareThing(MyRenderer);
 	}
-	
-
-
 
 	for (int i = 0; i < RenderOrder.size(); i++)
 		RenderOrder.at(i)->RenderThing(MyRenderer);
-
-
 
 	// Ренедер рендера
 	SDL_RenderPresent(MyRenderer);
@@ -92,7 +76,6 @@ void Graphics::ClearEverything()
 	RenderOrder.clear();
 
 	ButtonsArray.clear();
-
 }
 
 void Graphics::DestroyEveryThing()
@@ -183,18 +166,5 @@ bool Graphics::DeleteRenThing(RenThing * ThingToDelete)
 				break;
 			}
 
-	if (!bFind)
-	{
-		ThingToDelete->CleanupThing();
-		delete ThingToDelete;
-	}
-
-	
-
 	return bFind;
-}
-
-void Graphics::ReReplace()
-{
-
 }

@@ -24,12 +24,6 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	//if(IMG_Init(SDL_INIT_EVERYTHING) != 0)
-	//{
-	//	std::cout << "IMG_Init Error:" << IMG_GetError() << std::endl;
-	//	return 2;
-	//}
-
 	if (TTF_Init() != 0)
 	{
 		std::cout << "IMG_Init Error:" << IMG_GetError() << std::endl;
@@ -112,11 +106,11 @@ int main(int argc, char* argv[])
 	//SDL_DestroyRenderer(MyRenderer);
 	//SDL_DestroyWindow(MyWindow);
 
-	bool bDoStaff = true;
+
 
 	string SomeString = "blah blah";
 
-	cout << "Start game? \n  Y/N" << endl;
+	cout << "Start game? \n    Y/N" << endl;
 
 	while (SomeString != "Y" && SomeString != "N")
 	{
@@ -125,14 +119,6 @@ int main(int argc, char* argv[])
 			cout << "Print again" << endl;
 	}
 	if (SomeString == "Y")
-		bDoStaff = true;
-	else
-		bDoStaff = false;
-
-
-	//SDL_Event MyEvent;
-
-	if (bDoStaff)
 	{
 		float InTime = 1.f;
 		Game MyGame;
@@ -143,18 +129,7 @@ int main(int argc, char* argv[])
 		{
 			auto BeginTime = chrono::high_resolution_clock::now();
 
-			//while (SDL_PollEvent(&MyEvent))
-			//{
-			//	SDL_PumpEvents();
-			//	if (MyEvent.button.button == SDL_QUIT)
-			//		MyGame.ExitGame();
-			//
-			//
-			//
-			//}
 			MyGame.EventTick(InTime / 1000000.f);
-
-
 
 			auto EndTime = chrono::high_resolution_clock::now();
 			InTime = chrono::duration_cast<chrono::nanoseconds>(EndTime - BeginTime).count();
@@ -163,13 +138,6 @@ int main(int argc, char* argv[])
 		MyGame.ExitGame();
 		SDL_Quit();
 	}
-
-
-
-
-
-
-
 
 	system("Pause");
 	

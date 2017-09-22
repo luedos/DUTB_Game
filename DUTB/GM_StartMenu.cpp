@@ -10,6 +10,11 @@ GM_StartMenu::GM_StartMenu(Graphics* MyGraphRef, Game* MyGameRef)
 
 	ColorRate = 150;
 
+	HeaderTextColor = { 225, 0 , 0, 225 };
+
+	r = 225;
+	b = 0;
+	g = 0;
 }
 
 
@@ -70,46 +75,32 @@ void GM_StartMenu::GM_EventTick(float DeltaTime)
 
 void GM_StartMenu::GM_Start()
 {
-	HeaderTextColor = { 225, 0 , 0, 225 };
+	MyGraph->ClearEverything();
 
-	r = 225;
-	b = 0;
-	g = 0;
+	SDL_Rect NewRect;
+	NewRect.x = 50;
+	NewRect.y = 40;
+	NewRect.h = 60;
+	NewRect.w = 220;
 
-	StartMenu();
+	MyGraph->AddDynamicText("Don't Unpress That Button", &HeaderTextColor, &NewRect);
+
+	NewRect.y = 100;
+
+	MyGraph->AddButton(this, &GM_StartMenu::LevelChooseMenu, "Chose level", &NewRect);
+
+	NewRect.y = 170;
+
+	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit", &NewRect);
 }
 
 void GM_StartMenu::GM_End()
 {
 	MyGraph->ClearEverything();
-
-
-
-
 }
 
-void GM_StartMenu::StartMenu()
-{
-	MyGraph->ClearEverything();
 
-	SDL_Rect TestRect;
-	TestRect.x = 50;
-	TestRect.y = 40;
-	TestRect.h = 60;
-	TestRect.w = 220;
-
-	MyGraph->AddDynamicText("Don't Unpress That Button", &HeaderTextColor, &TestRect);
-
-	TestRect.y = 100;
-
-	MyGraph->AddButton(this, &GM_StartMenu::LevelChoose, "Chose level", &TestRect);
-
-	TestRect.y = 170;
-
-	MyGame->AddButton(EButtons::Exit, &TestRect);
-}
-
-void GM_StartMenu::LevelChoose()
+void GM_StartMenu::LevelChooseMenu()
 {
 	SDL_Rect NewRect;
 	NewRect.x = 50;
@@ -119,7 +110,7 @@ void GM_StartMenu::LevelChoose()
 
 	MyGame->PlaceLevelButtons();
 
-	MyGraph->AddButton(this, &GM_StartMenu::StartMenu, "Back", &NewRect);
+	MyGraph->AddButton(this, &GM_StartMenu::GM_Start, "Back", &NewRect);
 }
 
 

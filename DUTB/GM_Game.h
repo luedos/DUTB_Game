@@ -45,12 +45,6 @@ struct DeltaTestsStruct
 
 };
 
-//struct LevelStruct
-//{
-//	vector<DeltaTestsStruct> StartDeltaTests;
-//	vector<GeneratorStruct> StartGeneratorTests;
-//};
-
 class GM_Game : public GameMode
 
 {
@@ -69,31 +63,17 @@ public:
 
 	void AddTest(ETests WhichTest, int PowerLevel);
 
-
-
-	void TickEveryTest(float DeltaTime);
-
-	void NewRound();
-
-	//LevelStruct GameLevel;
-
-	float MaxPoints;
-
-	float GamePoints;
-
-	float Percent;
-
-	string TextPoints;
-
-	string TextGameTime;
+	void SetLevelVars(float MaxPointsRef, float GameTimeRef) {
+		MaxPoints = MaxPointsRef;
+		GameTime = GameTimeRef;
+		GamePoints = MaxPoints;
+	}
 
 	void ClearTests();
 
 	void ClearGenerators();
 
 	bool DeleteTest(GeneralTest* TestToDelete);
-
-	void GeneratorTick(float DeltaTime);
 
 	void AddGeneratorTest(ETests TestRef, int LevelRef, float MaxDeltaRef, float ChanserSpeedRef, float CheckRateRef = 1000.f, int NumberOfCallsRef = 0)
 	{
@@ -107,8 +87,6 @@ public:
 		Generator.push_back(NewGenerator);
 	}
 
-	void DeltaTestTick(float DeltaTime);
-
 	void AddDeltaTests(ETests TestRef, int LevelRef, float MS_DeltaTimeRate, int NumbersOfCall = 1)
 	{
 		DeltaTestsStruct NewDeltaTest;
@@ -120,10 +98,6 @@ public:
 		DeltaTests.push_back(NewDeltaTest);
 	}
 
-	Graphics* MyGraph;
-
-	class Game* MyGame;
-
 	vector<GeneralTest*> TestsVector;
 
 	LevelClass* MyLevel = nullptr;
@@ -132,19 +106,32 @@ public:
 
 	void UnPause();
 
-	void GameOver();
+	void GameOverMenu();
 
 	void WinGameMenu();
-
-	bool bTickTests = true;
-
-	const Uint8 *KeyboardState;
-
-	float GameTime;
 
 	void LevelChooseMenu();
 
 private:
+	void TickEveryTest(float DeltaTime);
+
+	void DeltaTestTick(float DeltaTime);
+
+	void GeneratorTick(float DeltaTime);
+
+	bool bTickTests = true;
+
+	float GameTime;
+
+	float MaxPoints;
+
+	float GamePoints;
+
+	float Percent;
+
+	string TextPoints;
+
+	string TextGameTime;
 
 	vector<GeneratorStruct> Generator;
 	vector<DeltaTestsStruct> DeltaTests;

@@ -6,7 +6,7 @@ class RenThing_PercentBar : public RenThing
 public:
 
 
-	RenThing_PercentBar(SDL_Renderer* Ren, SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, bool InReplaceble = false) {
+	RenThing_PercentBar(SDL_Renderer* Ren, SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr) {
 
 		Percent = PercetRef;
 
@@ -15,7 +15,6 @@ public:
 		FrontTexture = IMG_LoadTexture(Ren, "../DUTB/Textures/SimpleWhite.png");
 
 		MyRect = *InRect;
-		bReplaceble = InReplaceble;
 
 
 
@@ -58,6 +57,8 @@ public:
 		FrontRect.x = x;
 		FrontRect.y = y;
 	}
+
+private:
 
 	SDL_Rect FrontRect;
 

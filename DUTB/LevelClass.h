@@ -4,17 +4,14 @@
 class LevelClass
 {
 public:
-	LevelClass();
+	LevelClass() {}
 
 	virtual void StartLevel() {}
 
-	virtual void EventTick(float DeltaTime) {}
+	virtual void FireLevel() {}
 
-	virtual void FireLevel();
+	virtual void PlaceLevel() {}
 
-	virtual void PlaceLevel();
-
+protected:
 	class GM_Game* MyGame;
-
-
 };

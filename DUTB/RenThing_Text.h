@@ -10,8 +10,7 @@ class RenThing_Text : public RenThing
 {
 public:
 	
-	RenThing_Text(const char* InCharToLocate, SDL_Color NewStaticColor, SDL_Rect* InRect, bool InReplaceble = false) {
-		bReplaceble = InReplaceble;
+	RenThing_Text(const char* InCharToLocate, SDL_Color NewStaticColor, SDL_Rect* InRect) {
 		UseStaticColor = true;
 		StaticColor = NewStaticColor;
 		MyRect = *InRect;
@@ -21,8 +20,7 @@ public:
 
 	}
 
-	RenThing_Text(const char* InCharToLocate, SDL_Color* NewDynamicColor, SDL_Rect* InRect, bool InReplaceble = false) {
-		bReplaceble = InReplaceble;
+	RenThing_Text(const char* InCharToLocate, SDL_Color* NewDynamicColor, SDL_Rect* InRect) {
 		UseStaticColor = false;
 		DynamicColor = NewDynamicColor;
 		MyRect = *InRect;
@@ -65,9 +63,9 @@ public:
 		Font = TTF_OpenFont("../DUTB/Fonts/RiseOfKingdom.ttf", ptsizeRef); 
 	}
 
+private:
+
 	TTF_Font* Font;
-
-
 
 	const char* SomeToRender;
 
@@ -76,7 +74,7 @@ public:
 	SDL_Color StaticColor;
 	SDL_Color* DynamicColor;
 
-	bool UseStaticColor = true;
+	bool UseStaticColor;
 
 
 };

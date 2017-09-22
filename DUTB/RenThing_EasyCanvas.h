@@ -8,11 +8,7 @@ public:
 
 	RenThing_EasyCanvas(const char* InCharToLocate_Up, SDL_Color* NewDynamicColor_Up, 
 		const char* InCharToLocate_Bottom, SDL_Color* NewDynamicColor_Bottom, 
-		SDL_Rect* InRect, bool InReplaceble = false) {
-		
-		//CleanupThing();
-
-		bReplaceble = InReplaceble;
+		SDL_Rect* InRect) {
 
 		MyRect = *InRect;
 
@@ -74,6 +70,7 @@ public:
 		BottomText->SetPosition(x + (MyRect.w - BottomText->MyRect.w) / 2, y + 0.65 * MyRect.h);
 	}
 
+private:
 
 	SDL_Rect UpRect;
 	RenThing_Text* UpText = nullptr;

@@ -2,19 +2,6 @@
 #include "GM_Game.h"
 #include "GM_StartMenu.h"
 
-enum EButtons
-{
-	Play,
-	ExitToMenu,
-	Exit
-};
-
-enum EGameMode
-{
-	GameGM,
-	StartMenuGM
-};
-
 
 class Game
 {
@@ -22,17 +9,11 @@ public:
 	Game();
 	~Game();
 
-	void AddButton(EButtons Button, SDL_Rect* InRect);
-
 	void NewGame();
 
 	void EventTick(float DeltaTime);
 
 	void ExitGame();
-
-	void NewRound();
-
-	void SetGameMode(EGameMode GameModeRef);
 
 	bool Quit = false;
 
@@ -42,11 +23,15 @@ public:
 
 	void PlaceLevelButtons();
 
+	void GoStartMenu();
+
+	void GoGameplay();
+
 private:
 
-	SDL_Event MyEvent;
-
 	Graphics GameGraphics;
+
+	SDL_Event MyEvent;
 
 	GM_Game GM_Gameplay = GM_Game(&GameGraphics, this);
 

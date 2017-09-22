@@ -181,7 +181,6 @@
     <ClCompile Include="GM_Game.cpp" />
     <ClCompile Include="GM_StartMenu.cpp" />
     <ClCompile Include="Graphics.cpp" />
-    <ClCompile Include="LevelClass.cpp" />
     <ClCompile Include="Level_1.cpp" />
     <ClCompile Include="PNTButtons_Test.cpp" />
     <ClCompile Include="stdafx.cpp">

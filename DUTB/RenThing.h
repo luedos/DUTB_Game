@@ -29,7 +29,5 @@ public:
 	SDL_Texture* MyTexture;
 
 	bool FirstCreated = true;
-
-	bool bReplaceble = false;
 };
 

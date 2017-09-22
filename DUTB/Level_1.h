@@ -11,8 +11,6 @@ public:
 
 	void StartLevel() override;
 
-	void EventTick(float DeltaTime) override;
-
 	void FireLevel() override;
 
 	void PlaceLevel() override;

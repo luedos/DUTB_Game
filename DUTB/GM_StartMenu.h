@@ -17,20 +17,13 @@ public:
 
 	void GM_End() override;
 
-	void StartMenu();
+	void LevelChooseMenu();
 
-	void LevelChoose();
-
-
-	Graphics* MyGraph;
-
-	class Game* MyGame;
-
-	SDL_Color HeaderTextColor;
-
+private:
 	float r, g, b;
 
 	float ColorRate;
 
+	SDL_Color HeaderTextColor;
 };
 

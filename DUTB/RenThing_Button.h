@@ -142,9 +142,16 @@ public:
 		IsPressed = false;
 	}
 
-	TTF_Font* Font;
+	void SetFont(int ptsizeRef) {
+		TTF_CloseFont(Font);
+		Font = TTF_OpenFont("../DUTB/Fonts/RiseOfKingdom.ttf", ptsizeRef);
+	}
 
 	const char* ButtonText;
+
+private:
+
+	TTF_Font* Font;
 
 	SDL_Surface* Surface;
 
@@ -160,14 +167,7 @@ public:
 
 	bool IsPressed = false;
 
-	//const char* BackgroundFile;
-
 	SDL_Texture* BackgroundTexture = nullptr;
-
-	void SetFont(int ptsizeRef) {
-		TTF_CloseFont(Font);
-		Font = TTF_OpenFont("../DUTB/Fonts/RiseOfKingdom.ttf", ptsizeRef);
-	}
 
 	Button_IContainer* MyContainer = nullptr;
 };

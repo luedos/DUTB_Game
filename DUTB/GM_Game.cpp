@@ -11,9 +11,6 @@ GM_Game::GM_Game(Graphics* GraphRef, Game* GameRef)
 
 	MyGraph = GraphRef;
 
-	KeyboardState = SDL_GetKeyboardState(NULL);
-	//AddGeneratorTest(ETests::DPButton, 1, 1000.f, 15.f);
-	
 }
 
 
@@ -36,9 +33,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DUB_Test* TestTest = new DUB_Test(&TestsVector, 10.f);
 
-		TestTest->ReChargeTest(30, 500, 800, 1500);
-
-		TestTest->MyThing = MyGraph->AddDynamicImage("../DUTB/Textures/Pointers.png", &MyRect, &TestTest->IntPointer, RenCanvas1, false, 0, &TestTest->TextColor);
+		TestTest->MyThing = MyGraph->AddDynamicImage("../DUTB/Textures/Pointers.png", &MyRect, &TestTest->IntPointer, RenCanvas1, 0, &TestTest->TextColor);
 
 		TestsVector.push_back(TestTest);
 
@@ -47,11 +42,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	//Do not unpress button :: Buttons
 	case ETests::DUBButtons:
 	{
-		DUB_Test* TestTest = new DUB_Test(&TestsVector, 10.f);
-
-		TestTest->Pointers_Buttons = false;
-
-		TestTest->ReChargeTest(30, 500, 800, 1500);
+		DUB_Test* TestTest = new DUB_Test(&TestsVector, 10.f, false);
 
 		TestTest->MyThing = MyGraph->AddDynamicText(TestTest->ButtonString.c_str(), &TestTest->TextColor, &MyRect, RenCanvas1);
 
@@ -81,18 +72,17 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 
 		break;
 	}
+	// Press N times Button
 	case ETests::PNTButton:
 	{
 		PNTButtons_Test* TestTest = new PNTButtons_Test(&TestsVector, 4, 2500, 1700);
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->MainString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyRect, RenCanvas2);
+		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyRect, RenCanvas2);
 
 		TestsVector.push_back(TestTest);
 
 		break;
 	}
-
-
 	default:
 		break;
 	}
@@ -101,27 +91,16 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 
 void GM_Game::GM_EventTick(float DeltaTime)
 {
-	//if (KeyboardState[SDL_SCANCODE_ESCAPE])
-	//{
-	//	if (bTickTests)
-	//		GP_Pause();
-	//	else
-	//		UnPause();
-	//}
-
 	if (bTickTests)
 	{
 		TickEveryTest(DeltaTime);
 		GeneratorTick(DeltaTime);
 		DeltaTestTick(DeltaTime);
 	}
-
 }
 
 void GM_Game::TickEveryTest(float DeltaTime)
 {
-	
-
 	vector<GeneralTest*> TestsToDeleteArray;
 
 	for (int i = 0; i < TestsVector.size(); i++) {
@@ -141,14 +120,14 @@ void GM_Game::TickEveryTest(float DeltaTime)
 
 	GameTime -= DeltaTime;
 
-	TextGameTime = to_string(int(GameTime / 1000));
-	//"Level Time : " + 
-
+	TextGameTime = "Level Time : ";
+	TextGameTime += to_string(int(GameTime / 1000.f));
+	
 	if (GameTime < 0)
 		WinGameMenu();
 
 	if (GamePoints <= 0)
-		GameOver();
+		GameOverMenu();
 }
 
 void GM_Game::GM_Start()
@@ -169,7 +148,6 @@ void GM_Game::GM_Start()
 	RenCanvas1 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
 
 	TestRect.y = 200;
-	TestRect.h = 200;
 
 	RenCanvas2 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
 
@@ -179,47 +157,33 @@ void GM_Game::GM_Start()
 
 	SDL_Color NewColor = { 225, 225, 225, 225 };
 
-	SDL_Rect NewRect;
+	
+	TestRect.y = 400;
 
-	NewRect.x = 50;
-	NewRect.y = 400;
-	NewRect.w = 64;
-	NewRect.h = 64;
+	MyGraph->AddDynamicText(TextPoints.c_str(), &NewColor, &TestRect);
 
-	MyGraph->AddDynamicText(TextPoints.c_str(), &NewColor, &NewRect);
+	TestRect.x = 300;
 
-	NewRect.x = 400;
-	NewRect.y = 400;
-	NewRect.w = 100;
-	NewRect.h = 64;
+	MyGraph->AddStaticText(TextGameTime.c_str(), NewColor, &TestRect);
 
-	MyGraph->AddStaticText(TextGameTime.c_str(), NewColor, &NewRect);
+	TestRect.x = 50;
+	TestRect.y = 500;
+	TestRect.h = 50;
+	TestRect.w = 700;
 
-	NewRect.x = 50;
-	NewRect.y = 500;
-	NewRect.h = 50;
-	NewRect.w = 700;
-
-	MyGraph->AddPercentBar(&NewRect, &Percent);
-}
-
-void GM_Game::NewRound()
-{
-
+	MyGraph->AddPercentBar(&TestRect, &Percent);
 }
 
 void GM_Game::GM_End()
-{
+{	
+	bTickTests = false;
 
-	
 	ClearTests();
-
 	ClearGenerators();
 
 	PauseRenThings.clear();
 
 	MyGraph->ClearEverything();
-
 }
 
 void GM_Game::GM_Event(SDL_Event* EventRef)
@@ -236,8 +200,10 @@ void GM_Game::GM_Event(SDL_Event* EventRef)
 void GM_Game::ClearTests()
 {
 	for (int i = 0; i < TestsVector.size(); i++)
+	{
+		MyGraph->DeleteRenThing(TestsVector.at(i)->MyThing);
 		delete TestsVector.at(i);
-
+	}
 	TestsVector.clear();
 }
 
@@ -339,8 +305,6 @@ void GM_Game::DeltaTestTick(float DeltaTime)
 
 void GM_Game::GP_Pause()
 {
-	
-
 	bTickTests = false;
 
 	SDL_Rect TestRect;
@@ -380,13 +344,9 @@ void GM_Game::UnPause()
 	bTickTests = true;
 }
 
-void GM_Game::GameOver()
+void GM_Game::GameOverMenu()
 {
-	ClearTests();
-	ClearGenerators();
-	MyGraph->ClearEverything();
-
-	bTickTests = false;
+	GM_End();
 
 	SDL_Rect NewRect;
 	NewRect.x = 50;
@@ -407,11 +367,7 @@ void GM_Game::GameOver()
 
 void GM_Game::WinGameMenu()
 {
-	bTickTests = false;
-
-	ClearTests();
-	ClearGenerators();
-	MyGraph->ClearEverything();
+	GM_End();
 
 	SDL_Rect NewRect;
 	NewRect.x = 50;
@@ -432,21 +388,15 @@ void GM_Game::WinGameMenu()
 
 void GM_Game::LevelChooseMenu()
 {
-	
-
 	SDL_Rect NewRect;
 	NewRect.x = 50;
 	NewRect.y = 350;
 	NewRect.w = 250;
 	NewRect.h = 64;
 
-
-
 	MyGame->PlaceLevelButtons();
 
 	MyGraph->AddButton(this, &GM_Game::WinGameMenu, "Back", &NewRect);
-
-	
 }
 
 

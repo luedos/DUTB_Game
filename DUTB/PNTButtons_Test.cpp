@@ -18,7 +18,7 @@ PNTButtons_Test::PNTButtons_Test(vector<GeneralTest*>* TestsVectorLocalRef, int 
 
 	NewPressed = false;
 
-	MainString = GetStringFromButton(UintButton);
+	ButtonString = GetStringFromButton(UintButton);
 }
 
 
@@ -46,17 +46,19 @@ bool PNTButtons_Test::EventTick(float DeltaMilliSeconds)
 		LastPressed = NewPressed;
 	}
 
-
-	if (Timer < StartTime)
-		MyColor = { Uint8(225 * (1.f - Timer / StartTime)) , Uint8(225 * (Timer / StartTime)) , 0 ,225 };
-
-	if (Timer > StartTime && PressNumber != 0)
-	{
-		MyColor = { 225, 0, 0, 225 };
-		Points -= DeltaMilliSeconds * PointsRate * 0.001;
-	}
-	else
+	if (PressNumber = 0)
 		MyColor = { 0,225,0,225 };
+	else
+		if (PressNumber < 0)
+			MyColor = { 225,0,0,225 };
+		else
+			if (Timer < StartTime)
+				MyColor = { Uint8(225 * (1.f - Timer / StartTime)) , Uint8(225 * (Timer / StartTime)) , 0 ,225 };
+			else
+			{
+				MyColor = { 225, 0, 0, 225 };
+				Points -= DeltaMilliSeconds * PointsRate * 0.001;
+			}
 
 
 	if (Timer > EndTime)
@@ -65,9 +67,4 @@ bool PNTButtons_Test::EventTick(float DeltaMilliSeconds)
 	SideString = to_string(PressNumber) + " Times";
 
 	return true;
-}
-
-void PNTButtons_Test::ReChargeTest(float Input1, float Input2, float Input3, float Input4)
-{
-
 }

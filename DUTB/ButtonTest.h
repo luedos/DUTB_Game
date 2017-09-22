@@ -10,13 +10,11 @@ class ButtonTest : public GeneralTest
 public:
 	ButtonTest() {}
 
-	Uint8 UintButton;
 
-	vector<GeneralTest*>* TestsVectorRef;
 
-	SDL_Event MyEvent;
+	string ButtonString;
 
-	const Uint8 *KeyboardState;
+	string SideString;
 
 	// Массив всех кнопок, используется в частности для функции определения названия кнопки из uint8 кода
 	Uint8 EveryButton[30] = { SDL_SCANCODE_Q, SDL_SCANCODE_W, SDL_SCANCODE_E, SDL_SCANCODE_R, SDL_SCANCODE_T,
@@ -24,7 +22,7 @@ public:
 		SDL_SCANCODE_Z, SDL_SCANCODE_X, SDL_SCANCODE_C, SDL_SCANCODE_V, SDL_SCANCODE_B,
 		SDL_SCANCODE_Y, SDL_SCANCODE_U, SDL_SCANCODE_I, SDL_SCANCODE_O, SDL_SCANCODE_P, 
 		SDL_SCANCODE_H, SDL_SCANCODE_J, SDL_SCANCODE_K, SDL_SCANCODE_L, SDL_SCANCODE_N, 
-		SDL_SCANCODE_M, SDL_SCANCODE_UP, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_SCANCODE_RIGHT };
+		SDL_SCANCODE_M, SDL_SCANCODE_UP, SDL_SCANCODE_RIGHT, SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT };
 
 	// Только для функции определения названия кнопки из uint8 кода
 	string EveryString[30] = { "Q", "W" ,"E" ,"R" ,"T",
@@ -32,7 +30,7 @@ public:
 		"Z" ,"X" ,"C" ,"V" ,"B", 
 		"Y" ,"U" ,"I" ,"O" ,"P", 
 		"H" ,"J" ,"K" ,"L" ,"N", 
-		"M" ,"UP" ,"DOWN" ,"LEFT" ,"RIGHT" };
+		"M" ,"UP" ,"RIGHT" ,"DOWN" ,"LEFT"  };
 
 	// Функция определения названия кнопки из uint8 кода
 	string GetStringFromButton(Uint8 ButtonRef)
@@ -41,6 +39,8 @@ public:
 			if (ButtonRef == EveryButton[i])
 				return EveryString[i];
 
+		
+		cout << "Not find" << endl;
 		return "NONE";
 	}
 
@@ -85,5 +85,11 @@ public:
 		return Chance;
 	}
 
+protected:
 
+	Uint8 UintButton;
+
+	vector<GeneralTest*>* TestsVectorRef;
+
+	const Uint8 *KeyboardState;
 };

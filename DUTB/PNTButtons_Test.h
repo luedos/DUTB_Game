@@ -14,8 +14,6 @@ public:
 
 	bool EventTick(float DeltaMilliSeconds) override;
 
-	void ReChargeTest(float Input1, float Input2, float Input3, float Input4) override;
-
 	float StartTime;
 
 	float EndTime;
@@ -25,10 +23,6 @@ public:
 	int MaxPressNumber;
 
 	int PressNumber = 0;
-
-	string MainString;
-
-	string SideString;
 
 	SDL_Color MyColor;
 

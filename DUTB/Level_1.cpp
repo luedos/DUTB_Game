@@ -23,19 +23,13 @@ void Level_1::StartLevel()
 	MyGame->AddGeneratorTest(ETests::PNTButton, 2, 1000, 10);
 	MyGame->AddGeneratorTest(ETests::DNPButton, 2, 1000, 10);
 
-	MyGame->MaxPoints = 500;
-
-	MyGame->GameTime = 120000;
-}
-
-void Level_1::EventTick(float DeltaTime)
-{
+	MyGame->SetLevelVars(500, 120000);
 }
 
 void Level_1::FireLevel()
 {
 	PlaceLevel();
-	MyGame->MyGame->SetGameMode(EGameMode::GameGM);
+	MyGame->MyGame->GoGameplay();
 
 }
 

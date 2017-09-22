@@ -11,8 +11,6 @@ DPB_test::DPB_test(vector<GeneralTest*>* TestsVectorLocalRef, bool DP_DNP_ref, f
 
 	ButtonChoser(EveryButton, 25, 15);
 
-
-
 	if (DP_DNP)
 		SideString = "DPress ";
 	else
@@ -39,36 +37,27 @@ bool DPB_test::EventTick(float DeltaMilliSeconds)
 
 	Points = 0;
 
-	if (!KeyboardState[UintButton] && Timer > MaxStartTimer)
-	{
-		if (DP_DNP)
-			Points = -PointsRate * DeltaMilliSeconds * 0.001;
-		ColorToRender = { 225,0,0,225 };
-	}
-
-	if (!KeyboardState[UintButton] && Timer < MaxStartTimer)
-		ColorToRender = { Uint8(200 * (Timer / MaxStartTimer)), Uint8(200 * (1 - Timer / MaxStartTimer)) , 0 , 225 };
-	
 
 	if (KeyboardState[UintButton])
 	{
+		ColorToRender = { 0,225,0,225 };
 		if (!DP_DNP)
 			Points = -PointsRate * DeltaMilliSeconds * 0.001;
-		ColorToRender = { 0,225,0,225 };
 	}
+	else
+		if(Timer < MaxStartTimer)
+			ColorToRender = { Uint8(200 * (Timer / MaxStartTimer)), Uint8(200 * (1 - Timer / MaxStartTimer)) , 0 , 225 };
+		else
+		{
+			if (DP_DNP)
+				Points = -PointsRate * DeltaMilliSeconds * 0.001;
+			ColorToRender = { 225,0,0,225 };
+		}
+
+
 
 	if (Timer >= MaxEndTimer)
 		bIsDelete = true;
 
 	return true;
-}
-
-void DPB_test::ReChargeTest(float Input1, float Input2, float Input3, float Input4)
-{
-	Timer = 0;
-	ButtonChoser(EveryButton, 25, 15);
-	ButtonString = GetStringFromButton(UintButton);
-	MaxStartTimer = Input1;
-	MaxEndTimer = Input2;
-	PointsRate = Input3;
 }

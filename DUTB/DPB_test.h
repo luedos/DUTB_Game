@@ -15,15 +15,7 @@ public:
 
 	bool EventTick(float DeltaMilliSeconds) override;
 
-	void ReChargeTest(float Input1, float Input2, float Input3, float Input4) override;
-
-	string ButtonString;
-
-	string SideString;
-
 	SDL_Color ColorToRender;
-
-	bool DP_DNP = true;
 
 private:
 
@@ -36,6 +28,6 @@ private:
 	// Когда тест закончится
 	float MaxEndTimer;
 
-
+	bool DP_DNP;
 };
 

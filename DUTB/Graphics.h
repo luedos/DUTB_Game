@@ -19,69 +19,69 @@ public:
 	Graphics();
 	~Graphics();
 
-	RenThing* AddStaticText(const char* InCharRef, SDL_Color InStatColor, SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, bool DoesReplaceble = false) {
+	RenThing* AddStaticText(const char* InCharRef, SDL_Color InStatColor, SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, DoesReplaceble));
+			RestThings.push_back(new RenThing_Text(InCharRef, InStatColor, InRect));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, DoesReplaceble));
+			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InStatColor, InRect));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}		
 	}
 
-	RenThing* AddDynamicText(const char* InCharRef, SDL_Color* InDynColor, SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, bool DoesReplaceble = false) {
+	RenThing* AddDynamicText(const char* InCharRef, SDL_Color* InDynColor, SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_Text(InCharRef, InDynColor, InRect, DoesReplaceble));
+			RestThings.push_back(new RenThing_Text(InCharRef, InDynColor, InRect));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InDynColor, InRect, DoesReplaceble));
+			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InDynColor, InRect));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
 	}
 
-	RenThing* AddStaticImage(char *FileName ,SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, SDL_Color* ColorRef = nullptr, bool DoesReplaceble = false) {
+	RenThing* AddStaticImage(char *FileName ,SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, SDL_Color* ColorRef = nullptr) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_Image(MyRenderer, FileName, InRect, ColorRef, DoesReplaceble));
+			RestThings.push_back(new RenThing_Image(MyRenderer, FileName, InRect, ColorRef));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_Image(MyRenderer, FileName, InRect, ColorRef, DoesReplaceble));
+			CanvasRef->MyThingVector.push_back(new RenThing_Image(MyRenderer, FileName, InRect, ColorRef));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
 	}
 
-	RenThing* AddDynamicImage(char *FileName, SDL_Rect* InRect, int* InIntRef, RenThing_Canvas* CanvasRef = nullptr, bool DoesReplaceble = false, int RenderMode_X_Y_Both_Ref= 0, SDL_Color* ColoRef = nullptr) {
+	RenThing* AddDynamicImage(char *FileName, SDL_Rect* InRect, int* InIntRef, RenThing_Canvas* CanvasRef = nullptr, int RenderMode_X_Y_Both_Ref= 0, SDL_Color* ColoRef = nullptr) {
 		
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref, ColoRef));
+			RestThings.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, RenderMode_X_Y_Both_Ref, ColoRef));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, DoesReplaceble, RenderMode_X_Y_Both_Ref, ColoRef));
+			CanvasRef->MyThingVector.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, RenderMode_X_Y_Both_Ref, ColoRef));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}		
@@ -89,18 +89,18 @@ public:
 
 	RenThing* AddCanvas_TextText(const char* InCharToLocate_UpRef, SDL_Color* NewDynamicColor_UpRef,
 		const char* InCharToLocate_BottomRef, SDL_Color* NewDynamicColor_BottomRef,
-		SDL_Rect* InRectRef, RenThing_Canvas* CanvasRef = nullptr, bool InReplacebleRef = false) {
+		SDL_Rect* InRectRef, RenThing_Canvas* CanvasRef = nullptr) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef, InReplacebleRef));
+			RestThings.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef, InReplacebleRef));
+			CanvasRef->MyThingVector.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
@@ -114,17 +114,17 @@ public:
 		return CanvasVector.back();
 	}
 
-	RenThing* AddPercentBar(SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, RenThing_Canvas* CanvasRef = nullptr, bool InReplaceble = false)
+	RenThing* AddPercentBar(SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, RenThing_Canvas* CanvasRef = nullptr)
 	{
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_PercentBar(MyRenderer, InRect, PercetRef, BackColorRef, FrontColorRef, InReplaceble));
+			RestThings.push_back(new RenThing_PercentBar(MyRenderer, InRect, PercetRef, BackColorRef, FrontColorRef));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
-			CanvasRef->MyThingVector.push_back(new RenThing_PercentBar(MyRenderer, InRect, PercetRef, BackColorRef, FrontColorRef, InReplaceble));
+			CanvasRef->MyThingVector.push_back(new RenThing_PercentBar(MyRenderer, InRect, PercetRef, BackColorRef, FrontColorRef));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
@@ -153,11 +153,7 @@ public:
 
 	bool DeleteRenThing(RenThing* ThingToDelete);
 
-	void ReReplace();
-
 	vector<RenThing_Button*> ButtonsArray;
-
-	
 
 private:
 
@@ -168,16 +164,9 @@ private:
 
 	vector<RenThing*> RestThings;
 
-
-
-	SDL_Rect MainBoard;
-	SDL_Rect SideBoard;
-
 	SDL_Texture* BackGroundTexture;
 	SDL_Rect BackgroundRect;
 
 	vector<RenThing*> RenderOrder;
-
-
 };
 
