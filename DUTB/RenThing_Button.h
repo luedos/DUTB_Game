@@ -41,10 +41,12 @@ class RenThing_Button : public RenThing
 {
 
 public:
-	
+	RenThing_Button() {}
 
-	RenThing_Button(const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color* BGColorRef, SDL_Color* BGColor_PressedRef, SDL_Color* BGColor_HoveredRef){
+	RenThing_Button(const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color* BGColorRef, SDL_Color* BGColor_PressedRef, SDL_Color* BGColor_HoveredRef, int LevelRenderRef = 1){
 		MyRect = *InRect;
+
+		LevelRender = LevelRenderRef;
 
 		ButtonText = ButtonTextRef;
 
@@ -69,7 +71,10 @@ public:
 	}
 
 
-	void CleanupThing() override {}
+	void CleanupThing() override {
+		SDL_DestroyTexture(MyTexture);
+		SDL_DestroyTexture(BackgroundTexture);
+	}
 
 	void RenderThing(SDL_Renderer* RenRef) override {
 
@@ -133,13 +138,13 @@ public:
 
 	}
 
-	virtual void ButtonUnpressed(int x, int y) {
-
-		if (MyRect.x < x && MyRect.y < y && MyRect.x + MyRect.w > x && MyRect.y + MyRect.h > y)
-			if (MyContainer != nullptr)
-				MyContainer->Call();
+	virtual void ButtonUnpressed(int x, int y, bool IsOnThis) {
 
 		IsPressed = false;
+
+		if(IsOnThis)
+			if (MyContainer != nullptr)
+				MyContainer->Call();		
 	}
 
 	void SetFont(int ptsizeRef) {
@@ -149,7 +154,7 @@ public:
 
 	const char* ButtonText;
 
-private:
+protected:
 
 	TTF_Font* Font;
 

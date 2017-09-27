@@ -92,6 +92,20 @@ void GM_StartMenu::GM_Start()
 	NewRect.y = 170;
 
 	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit", &NewRect);
+
+	NewRect.y = 250;
+
+	RenThing_Button_DDMenu* TestOne = MyGraph->AddDDMenu("Resolution", &NewRect);
+	TestOne->AddDDButton(MyGraph, &Graphics::Resolution800x600, "800x600");
+	TestOne->AddDDButton(MyGraph, &Graphics::Resolution1280x720, "1280x720");
+	TestOne->AddDDButton(MyGraph, &Graphics::Resolution1600x900, "1600x900");
+
+	NewRect.y = 400;
+
+
+	TestOne = MyGraph->AddDDMenu("Screen Mode", &NewRect);
+	TestOne->AddDDButton(MyGraph, &Graphics::WindFullscreen, "Fullscreen");
+	TestOne->AddDDButton(MyGraph, &Graphics::WindWindowed, "Windowed");
 }
 
 void GM_StartMenu::GM_End()

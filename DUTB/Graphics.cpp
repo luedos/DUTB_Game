@@ -11,6 +11,29 @@ Graphics::~Graphics()
 {
 }
 
+void Graphics::ChangeWindowSize(int x, int y)
+{
+	X_Resolution = x;
+	Y_Resolution = y;
+	SDL_SetWindowSize(MyWindow, x, y);
+
+	if(!bIsFullscreen)
+	SDL_SetWindowPosition(MyWindow, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+
+}
+void Graphics::ChangeWindowMode(bool IsFullscreen)
+{
+	bIsFullscreen = IsFullscreen;
+
+	if(IsFullscreen)
+	SDL_SetWindowFullscreen(MyWindow, SDL_WINDOW_FULLSCREEN);
+	else
+	{
+		SDL_SetWindowFullscreen(MyWindow, 0);
+		SDL_SetWindowPosition(MyWindow, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+	}
+}
+
 void Graphics::RenderEverything(float DeltaTime)
 {
 	// Очистка рендера
@@ -42,8 +65,10 @@ void Graphics::RenderEverything(float DeltaTime)
 		ButtonsArray.at(i)->PrepareThing(MyRenderer);
 	}
 
-	for (int i = 0; i < RenderOrder.size(); i++)
-		RenderOrder.at(i)->RenderThing(MyRenderer);
+	for (int i = 0; i < 3; i++)
+		for (int ii = 0; ii < RenderOrder.size(); ii++)
+			if (RenderOrder.at(ii)->LevelRender == i)
+				RenderOrder.at(ii)->RenderThing(MyRenderer);
 
 	// Ренедер рендера
 	SDL_RenderPresent(MyRenderer);
@@ -101,6 +126,9 @@ int Graphics::CreateWindow(int WindowSizeX, int WindowSizeY)
 		std::cout << "SDL_CreateRenderer Error:" << SDL_GetError() << std::endl;
 		return 5;
 	}
+
+	X_Resolution = WindowSizeX;
+	Y_Resolution = WindowSizeY;
 
 	BackgroundRect.x = 0;
 	BackgroundRect.y = 0;

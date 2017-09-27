@@ -27,6 +27,15 @@ public:
 
 	void GoGameplay();
 
+	void TestFunc() { GameGraphics.ChangeWindowMode(!GameGraphics.bIsFullscreen); }
+
+	void TestFunc2() {
+		if (GameGraphics.X_Resolution == 800)
+			GameGraphics.ChangeWindowSize(1600, 900);
+		else
+			GameGraphics.ChangeWindowSize(800, 600);
+	}
+
 private:
 
 	Graphics GameGraphics;

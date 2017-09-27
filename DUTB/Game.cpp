@@ -82,8 +82,13 @@ void Game::EventTick(float DeltaTime)
 			int x, y;
 			SDL_GetMouseState(&x, &y);
 
+			RenThing_Button* TestButton = FindButton(x, y);
+			if (TestButton != nullptr)
+				TestButton->ButtonUnpressed(x, y, true);
+
 			for (int i = 0; i < GameGraphics.ButtonsArray.size(); i++)
-				GameGraphics.ButtonsArray.at(i)->ButtonUnpressed(x, y);
+				if(GameGraphics.ButtonsArray.at(i) != TestButton)
+					GameGraphics.ButtonsArray.at(i)->ButtonUnpressed(x, y, false);
 		}
 	}
 	GM_NowPlaying->GM_EventTick(DeltaTime);
@@ -106,13 +111,19 @@ RenThing_Button* Game::FindButton(int x, int y)
 {
 	SDL_Rect* TestRect;
 
-	for (int i = 0; i < GameGraphics.ButtonsArray.size(); i++)
+	RenThing_Button* TestButton = nullptr;
+	int TestRenLevel = 0;
+
+	for (int i = GameGraphics.ButtonsArray.size() - 1; i > -1; i--)
 	{
 		TestRect = &GameGraphics.ButtonsArray.at(i)->MyRect;
 
-		if (TestRect->x < x && TestRect->y < y && TestRect->x + TestRect->w > x && TestRect->y + TestRect->h > y)
-			return GameGraphics.ButtonsArray.at(i);
+		if (TestRect->x < x && TestRect->y < y && TestRect->x + TestRect->w > x && TestRect->y + TestRect->h > y && GameGraphics.ButtonsArray.at(i)->LevelRender >= TestRenLevel)
+		{
+			TestButton = GameGraphics.ButtonsArray.at(i);
+			TestRenLevel = GameGraphics.ButtonsArray.at(i)->LevelRender;
+		}
 	}
 
-	return nullptr;
+	return TestButton;
 }

@@ -1,19 +1,200 @@
-﻿  GM_Game.cpp
+﻿  DUTB.cpp
 c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\buttontest.h(72): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(15): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(53): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(60): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(92): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(94): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(24): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(40): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(47): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(55): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(73): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(94): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(129): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(26): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\dutb.cpp(135): warning C4244: '=': conversion from '__int64' to 'float', possible loss of data
+  Generating Code...
+  Compiling...
+  TestLevel.cpp
+c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\buttontest.h(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(73): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(94): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(129): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(26): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Level_1.cpp
+c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\buttontest.h(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(73): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(94): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(129): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(26): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Graphics.cpp
+c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(73): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(94): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(129): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(26): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(50): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(56): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(69): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(79): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(87): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(95): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(147): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(154): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(164): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(165): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(177): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\graphics.cpp(187): warning C4018: '<': signed/unsigned mismatch
+  Game.cpp
+c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\buttontest.h(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(73): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(94): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(129): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(26): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\game.cpp(89): warning C4018: '<': signed/unsigned mismatch
+  GM_StartMenu.cpp
+c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\buttontest.h(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(73): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(94): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(129): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(26): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_startmenu.cpp(31): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_startmenu.cpp(37): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_startmenu.cpp(46): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_startmenu.cpp(52): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_startmenu.cpp(61): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\gm_startmenu.cpp(67): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(144): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  c:\users\vlol\source\repos\dutb\dutb\gm_startmenu.cpp(99): note: see reference to function template instantiation 'void RenThing_Button_DDMenu::AddDDButton<Graphics,void(__thiscall Graphics::* )(void)>(T *,M,const char *)' being compiled
+          with
+          [
+              T=Graphics,
+              M=void (__thiscall Graphics::* )(void)
+          ]
+  GM_Game.cpp
+c:\users\vlol\source\repos\dutb\dutb\renthing.h(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\buttontest.h(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(17): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(73): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(76): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(94): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(104): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_button_ddmenu.h(129): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(26): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(42): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(106): warning C4018: '<': signed/unsigned mismatch
 c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(114): warning C4018: '<': signed/unsigned mismatch
 c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(148): warning C4129: 'D': unrecognized character escape sequence
@@ -29,11 +210,7 @@ c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(243): warning C4244: '+=': conv
 c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(254): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(256): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(283): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(339): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(343): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-  Skipping... (no relevant changes detected)
-  Game.cpp
-  GM_StartMenu.cpp
-  DUTB.cpp
   DUTB.vcxproj -> C:\Users\vlol\source\repos\DUTB\Debug\DUTB.exe
   DUTB.vcxproj -> C:\Users\vlol\source\repos\DUTB\Debug\DUTB.pdb (Partial PDB)

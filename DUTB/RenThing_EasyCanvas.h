@@ -6,9 +6,11 @@ class RenThing_EasyCanvas : public RenThing
 {
 public:
 
-	RenThing_EasyCanvas(const char* InCharToLocate_Up, SDL_Color* NewDynamicColor_Up, 
+	RenThing_EasyCanvas(const char* InCharToLocate_Up, SDL_Color* NewDynamicColor_Up,
 		const char* InCharToLocate_Bottom, SDL_Color* NewDynamicColor_Bottom, 
-		SDL_Rect* InRect) {
+		SDL_Rect* InRect, int LevelRenderRef = 1) {
+
+		LevelRender = LevelRenderRef;
 
 		MyRect = *InRect;
 

@@ -10,7 +10,10 @@ class RenThing_Text : public RenThing
 {
 public:
 	
-	RenThing_Text(const char* InCharToLocate, SDL_Color NewStaticColor, SDL_Rect* InRect) {
+	RenThing_Text(const char* InCharToLocate, SDL_Color NewStaticColor, SDL_Rect* InRect, int LevelRenderRef = 1) {
+
+		LevelRender = LevelRenderRef;
+
 		UseStaticColor = true;
 		StaticColor = NewStaticColor;
 		MyRect = *InRect;
@@ -20,7 +23,10 @@ public:
 
 	}
 
-	RenThing_Text(const char* InCharToLocate, SDL_Color* NewDynamicColor, SDL_Rect* InRect) {
+	RenThing_Text(const char* InCharToLocate, SDL_Color* NewDynamicColor, SDL_Rect* InRect, int LevelRenderRef = 1) {
+
+		LevelRender = LevelRenderRef;
+
 		UseStaticColor = false;
 		DynamicColor = NewDynamicColor;
 		MyRect = *InRect;

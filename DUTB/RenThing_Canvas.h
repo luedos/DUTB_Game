@@ -9,8 +9,10 @@ class RenThing_Canvas : public RenThing
 {
 public:
 
-	RenThing_Canvas(SDL_Rect* InRect, bool DoBackGround = false, SDL_Renderer* RenRef = nullptr, const char* BackGroundFile = nullptr) {
+	RenThing_Canvas(SDL_Rect* InRect, bool DoBackGround = false, SDL_Renderer* RenRef = nullptr, const char* BackGroundFile = nullptr, int LevelRenderRef = 1) {
 	
+		LevelRender = LevelRenderRef;
+
 		MyRect = *InRect;
 
 		if (DoBackGround && RenRef != nullptr && BackGroundFile != nullptr)

@@ -4,7 +4,9 @@
 class RenThing_ImageChangable : public RenThing
 {
 public:
-	RenThing_ImageChangable(SDL_Renderer* Ren, const char *File, SDL_Rect* InRect, int* InInt, int RenderMode_X_Y_Both = 0, SDL_Color* ColorRef = nullptr) {
+	RenThing_ImageChangable(SDL_Renderer* Ren, const char *File, SDL_Rect* InRect, int* InInt, int RenderMode_X_Y_Both = 0, SDL_Color* ColorRef = nullptr, int LevelRenderRef = 1) {
+
+		LevelRender = LevelRenderRef;
 
 		SDL_Color TestColor = { 225, 225, 225, 225 };
 

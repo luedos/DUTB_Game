@@ -6,7 +6,9 @@ class RenThing_PercentBar : public RenThing
 public:
 
 
-	RenThing_PercentBar(SDL_Renderer* Ren, SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr) {
+	RenThing_PercentBar(SDL_Renderer* Ren, SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, int LevelRenderRef = 1) {
+
+		LevelRender = LevelRenderRef;
 
 		Percent = PercetRef;
 

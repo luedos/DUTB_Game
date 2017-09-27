@@ -9,7 +9,9 @@ class RenThing_Image : public RenThing
 public:
 
 
-	RenThing_Image(SDL_Renderer* Ren, const char *File, SDL_Rect* InRect, SDL_Color* ColorRef = nullptr) { 
+	RenThing_Image(SDL_Renderer* Ren, const char *File, SDL_Rect* InRect, SDL_Color* ColorRef = nullptr, int LevelRenderRef = 0) {
+		LevelRender = LevelRenderRef;
+
 	MyTexture = IMG_LoadTexture(Ren, File);
 	MyRect = *InRect;
 

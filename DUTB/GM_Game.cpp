@@ -331,6 +331,10 @@ void GM_Game::GP_Pause()
 
 	TestRect.y = 170;
 
+	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::GoStartMenu, "Main Menu", &TestRect));
+
+	TestRect.y = 250;
+
 	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &TestRect));
 }
 
@@ -357,12 +361,16 @@ void GM_Game::GameOverMenu()
 	MyGraph->AddStaticText("Game Over", { 225, 0, 0 }, &NewRect);
 
 	NewRect.y = 120;
-	
-	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &NewRect);
+
+	MyGraph->AddButton(this, &GM_Game::GM_Start, "Try Again", &NewRect);
 
 	NewRect.y = 200;
 
-	MyGraph->AddButton(this, &GM_Game::GM_Start, "Try Again", &NewRect);
+	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::GoStartMenu, "Main Menu", &NewRect));
+
+	NewRect.y = 280;
+
+	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &NewRect);
 }
 
 void GM_Game::WinGameMenu()
