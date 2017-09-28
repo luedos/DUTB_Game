@@ -17,6 +17,9 @@ void Graphics::ChangeWindowSize(int x, int y)
 	Y_Resolution = y;
 	SDL_SetWindowSize(MyWindow, x, y);
 
+	BackgroundRect.w = x;
+	BackgroundRect.h = y;
+
 	if(!bIsFullscreen)
 	SDL_SetWindowPosition(MyWindow, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 
@@ -42,6 +45,7 @@ void Graphics::RenderEverything(float DeltaTime)
 	// Если текстура фона отсутствует, загрузить текстуру
 	if(BackGroundTexture == nullptr)
 		BackGroundTexture = IMG_LoadTexture(MyRenderer, "../DUTB/Textures/Back.png");
+
 
 	// Рендер фона
 	SDL_RenderCopy(MyRenderer, BackGroundTexture, NULL, &BackgroundRect);

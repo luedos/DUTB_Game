@@ -43,8 +43,13 @@ class RenThing_Button : public RenThing
 public:
 	RenThing_Button() {}
 
-	RenThing_Button(const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color* BGColorRef, SDL_Color* BGColor_PressedRef, SDL_Color* BGColor_HoveredRef, int LevelRenderRef = 1){
-		MyRect = *InRect;
+	RenThing_Button(const char* ButtonTextRef, SDL_Color* BGColorRef, 
+		SDL_Color* BGColor_PressedRef, SDL_Color* BGColor_HoveredRef, 
+		Coordinates* InCoordinates, int* ResolXRef, int* ResolYRef, int LevelRenderRef = 1){
+
+		MyCoordinates = *InCoordinates;
+		XResol = ResolXRef;
+		YResol = ResolYRef;
 
 		LevelRender = LevelRenderRef;
 
@@ -94,6 +99,8 @@ public:
 
 		SDL_QueryTexture(MyTexture, NULL, NULL, &TextRect.w, &TextRect.h);
 
+		ResetCoord();
+
 		TextRect.x = MyRect.x + float(MyRect.w - TextRect.w) / 2;
 
 		TextRect.y = MyRect.y + float(MyRect.h - TextRect.h) / 2;
@@ -117,8 +124,20 @@ public:
 	}
 
 	void SetPosition(int x, int y) override {
-		MyRect.x = x;
-		MyRect.y = y;
+
+		int LocalX = x;
+		int LocalY = y;
+
+
+		if (MyCoordinates.bRelativeX)
+			MyCoordinates.X = float(LocalX) / *XResol;
+		else
+			MyCoordinates.X = LocalX;
+
+		if (MyCoordinates.bRelativeY)
+			MyCoordinates.Y = float(LocalY) / *YResol;
+		else
+			MyCoordinates.Y = LocalY;
 	}
 
 	virtual void ButtonPressed() {

@@ -77,35 +77,41 @@ void GM_StartMenu::GM_Start()
 {
 	MyGraph->ClearEverything();
 
-	SDL_Rect NewRect;
-	NewRect.x = 50;
-	NewRect.y = 40;
-	NewRect.h = 60;
-	NewRect.w = 220;
+	Coordinates TestCoord;
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeY = true;
 
-	MyGraph->AddDynamicText("Don't Unpress That Button", &HeaderTextColor, &NewRect);
+	TestCoord.X = 0.1;
+	TestCoord.W = 0.8;
+	TestCoord.Y = 0.05;
+	TestCoord.H = 50;
 
-	NewRect.y = 100;
+	MyGraph->AddDynamicText("Don't Unpress That Button", &HeaderTextColor, &TestCoord);
 
-	MyGraph->AddButton(this, &GM_StartMenu::LevelChooseMenu, "Chose level", &NewRect);
+	TestCoord.Y = 0.2;
+	TestCoord.W = 0.3;
 
-	NewRect.y = 170;
+	MyGraph->AddButton(this, &GM_StartMenu::LevelChooseMenu, "Chose level", &TestCoord);
 
-	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit", &NewRect);
+	TestCoord.Y = 0.3;
 
-	NewRect.y = 250;
+	RenThing_Button_DDMenu* TestOne = MyGraph->AddDDMenu("Screen Mode", &TestCoord);
+	TestOne->AddDDButton(MyGraph, &Graphics::WindFullscreen, "Fullscreen");
+	TestOne->AddDDButton(MyGraph, &Graphics::WindWindowed, "Windowed");
 
-	RenThing_Button_DDMenu* TestOne = MyGraph->AddDDMenu("Resolution", &NewRect);
+	TestCoord.Y = 0.4;
+
+	TestOne = MyGraph->AddDDMenu("Resolution", &TestCoord);
 	TestOne->AddDDButton(MyGraph, &Graphics::Resolution800x600, "800x600");
 	TestOne->AddDDButton(MyGraph, &Graphics::Resolution1280x720, "1280x720");
 	TestOne->AddDDButton(MyGraph, &Graphics::Resolution1600x900, "1600x900");
 
-	NewRect.y = 400;
+	TestCoord.Y = 0.5;
+
+	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit", &TestCoord);
 
 
-	TestOne = MyGraph->AddDDMenu("Screen Mode", &NewRect);
-	TestOne->AddDDButton(MyGraph, &Graphics::WindFullscreen, "Fullscreen");
-	TestOne->AddDDButton(MyGraph, &Graphics::WindWindowed, "Windowed");
 }
 
 void GM_StartMenu::GM_End()
@@ -116,15 +122,19 @@ void GM_StartMenu::GM_End()
 
 void GM_StartMenu::LevelChooseMenu()
 {
-	SDL_Rect NewRect;
-	NewRect.x = 50;
-	NewRect.y = 350;
-	NewRect.w = 250;
-	NewRect.h = 64;
+	Coordinates TestCoord;
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeY = true;
+
+	TestCoord.X = 0.6;
+	TestCoord.W = 0.3;
+	TestCoord.Y = 0.8;
+	TestCoord.H = 50;
 
 	MyGame->PlaceLevelButtons();
 
-	MyGraph->AddButton(this, &GM_StartMenu::GM_Start, "Back", &NewRect);
+	MyGraph->AddButton(this, &GM_StartMenu::GM_Start, "Back", &TestCoord);
 }
 
 

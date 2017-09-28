@@ -20,11 +20,9 @@ GM_Game::~GM_Game()
 
 void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 {
-	SDL_Rect MyRect;
-	MyRect.x = 50;
-	MyRect.y = 50;
-	MyRect.w = 64;
-	MyRect.h = 64;
+	Coordinates MyCoord;
+	MyCoord.H = 64;
+	MyCoord.W = 64;
 
 	switch (WhichTest)
 	{
@@ -33,7 +31,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DUB_Test* TestTest = new DUB_Test(&TestsVector, 10.f);
 
-		TestTest->MyThing = MyGraph->AddDynamicImage("../DUTB/Textures/Pointers.png", &MyRect, &TestTest->IntPointer, RenCanvas1, 0, &TestTest->TextColor);
+		TestTest->MyThing = MyGraph->AddDynamicImage("../DUTB/Textures/Pointers.png", &MyCoord, &TestTest->IntPointer, RenCanvas1, 0, &TestTest->TextColor);
 
 		TestsVector.push_back(TestTest);
 
@@ -44,7 +42,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DUB_Test* TestTest = new DUB_Test(&TestsVector, 10.f, false);
 
-		TestTest->MyThing = MyGraph->AddDynamicText(TestTest->ButtonString.c_str(), &TestTest->TextColor, &MyRect, RenCanvas1);
+		TestTest->MyThing = MyGraph->AddDynamicText(TestTest->ButtonString.c_str(), &TestTest->TextColor, &MyCoord, RenCanvas1);
 
 		TestsVector.push_back(TestTest);
 
@@ -55,7 +53,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DPB_test* TestTest = new DPB_test(&TestsVector, true, 2000, 1500);
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect, RenCanvas2);
+		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyCoord, RenCanvas2);
 
 		TestsVector.push_back(TestTest);
 
@@ -66,7 +64,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		DPB_test* TestTest = new DPB_test(&TestsVector, false, 2000, 1500);
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyRect, RenCanvas2);
+		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyCoord, RenCanvas2);
 
 		TestsVector.push_back(TestTest);
 
@@ -77,7 +75,7 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	{
 		PNTButtons_Test* TestTest = new PNTButtons_Test(&TestsVector, 4, 2500, 1700);
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyRect, RenCanvas2);
+		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyCoord, RenCanvas2);
 
 		TestsVector.push_back(TestTest);
 
@@ -120,9 +118,9 @@ void GM_Game::TickEveryTest(float DeltaTime)
 
 	GameTime -= DeltaTime;
 
-	TextGameTime = "Level Time : ";
-	TextGameTime += to_string(int(GameTime / 1000.f));
-	
+
+	TextGameTime = to_string(int(GameTime / 1000.f));
+
 	if (GameTime < 0)
 		WinGameMenu();
 
@@ -139,39 +137,60 @@ void GM_Game::GM_Start()
 
 	bTickTests = true;
 
-	SDL_Rect TestRect;
-	TestRect.x = 50;
-	TestRect.y = 50;
-	TestRect.w = 500;
-	TestRect.h = 200;
+	Coordinates TestCoord;
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeY = true;
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeH = true;
 
-	RenCanvas1 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
+	TestCoord.X = 0.1;
+	TestCoord.W = 0.8;
+	TestCoord.Y = 0.1;
+	TestCoord.H = 0.3;
 
-	TestRect.y = 200;
+	SDL_Color NewColor = { 13, 13, 120, 100 };
 
-	RenCanvas2 = MyGraph->AddCanvas(&TestRect, true, "..\DUTB\Textures\SimpleWhite.png");
+	RenCanvas1 = MyGraph->AddCanvas(&TestCoord, "../DUTB/Textures/SimpleWhite.png", &NewColor);
+
+	TestCoord.Y = 0.45;
+
+	RenCanvas2 = MyGraph->AddCanvas(&TestCoord, "../DUTB/Textures/SimpleWhite.png", &NewColor);
 
 	MyLevel->StartLevel();
 
 	GamePoints = MaxPoints;
 
-	SDL_Color NewColor = { 225, 225, 225, 225 };
+	NewColor = { 225, 225, 225, 225 };
 
+	TestCoord.bRelativeH = false;
+
+	TestCoord.W = 0.6;
+	TestCoord.Y = 0.8;
+	TestCoord.H = 50;
 	
-	TestRect.y = 400;
+	MyGraph->AddDynamicText(TextPoints.c_str(), &NewColor, &TestCoord);
 
-	MyGraph->AddDynamicText(TextPoints.c_str(), &NewColor, &TestRect);
+	TestCoord.bRelativeX = true;
+	TestCoord.X = 0.4;
 
-	TestRect.x = 300;
+	RenThing_Canvas* TestCanvas = MyGraph->AddCanvas(&TestCoord);
+	
+	MyGraph->AddStaticText("Level time : ", NewColor, &TestCoord, TestCanvas);
 
-	MyGraph->AddStaticText(TextGameTime.c_str(), NewColor, &TestRect);
+	TestCoord.X = 0.7;
 
-	TestRect.x = 50;
-	TestRect.y = 500;
-	TestRect.h = 50;
-	TestRect.w = 700;
+	MyGraph->AddStaticText(TextGameTime.c_str(), NewColor, &TestCoord, TestCanvas);
 
-	MyGraph->AddPercentBar(&TestRect, &Percent);
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeH = true;
+
+	TestCoord.X = 0.1;
+	TestCoord.W = 0.8;
+	TestCoord.Y = 0.9;
+	TestCoord.H = 0.08;
+
+	MyGraph->AddPercentBar(&TestCoord, &Percent);
 }
 
 void GM_Game::GM_End()
@@ -307,35 +326,43 @@ void GM_Game::GP_Pause()
 {
 	bTickTests = false;
 
-	SDL_Rect TestRect;
-	TestRect.x = 0;
-	TestRect.y = 0;
-	TestRect.w = 800;
-	TestRect.h = 600;
+	Coordinates TestCoord;
+
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeH = true;
+
+	TestCoord.X = 0;
+	TestCoord.W = 1;
+	TestCoord.Y = 0;
+	TestCoord.H = 1;
 
 	SDL_Color TestColor = { 180,180,180,60 };
 
-	PauseRenThings.push_back(MyGraph->AddStaticImage("../DUTB/Textures/SimpleWhite.png", &TestRect, nullptr, &TestColor));
+	PauseRenThings.push_back(MyGraph->AddStaticImage("../DUTB/Textures/SimpleWhite.png", &TestCoord, nullptr, &TestColor));
 
-	TestRect.x = 50;
-	TestRect.y = 30;
+	TestCoord.bRelativeH = false;
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeY = true;
+	TestCoord.X = 0.1;
+	TestCoord.W = 0.35;
+	TestCoord.Y = 0.1;
+	TestCoord.H = 50;
 	
 	TestColor = { 200,200,200,225 };
 
-	PauseRenThings.push_back(MyGraph->AddStaticText("Pause Menu", TestColor, &TestRect));
+	PauseRenThings.push_back(MyGraph->AddStaticText("Pause Menu", TestColor, &TestCoord));
 
-	TestRect.y = 100;
-	TestRect.w = 240;
-	TestRect.h = 50;
-	PauseRenThings.push_back(MyGraph->AddButton(this, &GM_Game::UnPause, "Return", &TestRect));
+	TestCoord.Y = 0.2;
 
-	TestRect.y = 170;
+	PauseRenThings.push_back(MyGraph->AddButton(this, &GM_Game::UnPause, "Return", &TestCoord));
 
-	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::GoStartMenu, "Main Menu", &TestRect));
+	TestCoord.Y = 0.3;
 
-	TestRect.y = 250;
+	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::GoStartMenu, "Main Menu", &TestCoord));
 
-	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &TestRect));
+	TestCoord.Y = 0.4;
+
+	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &TestCoord));
 }
 
 void GM_Game::UnPause()
@@ -352,59 +379,75 @@ void GM_Game::GameOverMenu()
 {
 	GM_End();
 
-	SDL_Rect NewRect;
-	NewRect.x = 50;
-	NewRect.y = 50;
-	NewRect.w = 200;
-	NewRect.h = 64;
+	Coordinates TestCoord;
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeY = true;
 
-	MyGraph->AddStaticText("Game Over", { 225, 0, 0 }, &NewRect);
+	TestCoord.X = 0.3;
+	TestCoord.W = 0.4;
+	TestCoord.Y = 0.05;
+	TestCoord.H = 50;
 
-	NewRect.y = 120;
+	MyGraph->AddStaticText("Game Over", { 225, 0, 0 }, &TestCoord);
 
-	MyGraph->AddButton(this, &GM_Game::GM_Start, "Try Again", &NewRect);
+	TestCoord.X = 0.2;
+	TestCoord.W = 0.3;
+	TestCoord.Y = 0.1;
 
-	NewRect.y = 200;
+	MyGraph->AddButton(this, &GM_Game::GM_Start, "Try Again", &TestCoord);
 
-	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::GoStartMenu, "Main Menu", &NewRect));
+	TestCoord.Y = 0.3;
 
-	NewRect.y = 280;
+	PauseRenThings.push_back(MyGraph->AddButton(MyGame, &Game::GoStartMenu, "Main Menu", &TestCoord));
 
-	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &NewRect);
+	TestCoord.Y = 0.4;
+
+	MyGraph->AddButton(MyGame, &Game::ExitGame, "Exit Game", &TestCoord);
 }
 
 void GM_Game::WinGameMenu()
 {
 	GM_End();
 
-	SDL_Rect NewRect;
-	NewRect.x = 50;
-	NewRect.y = 50;
-	NewRect.w = 200;
-	NewRect.h = 50;
+	Coordinates TestCoord;
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeY = true;
 
-	MyGraph->AddStaticText("Level passed", { 15,225,15,225 }, &NewRect);
+	TestCoord.X = 0.3;
+	TestCoord.W = 0.4;
+	TestCoord.Y = 0.05;
+	TestCoord.H = 50;
 
-	NewRect.y = 150;
+	MyGraph->AddStaticText("Level passed", { 15,225,15,225 }, &TestCoord);
 
-	MyGraph->AddButton(this, &GM_Game::LevelChooseMenu, "Choose level", &NewRect);
+	TestCoord.X = 0.2;
+	TestCoord.W = 0.3;
+	TestCoord.Y = 0.2;
 
-	NewRect.y = 220;
+	MyGraph->AddButton(this, &GM_Game::LevelChooseMenu, "Choose level", &TestCoord);
 
-	MyGraph->AddButton(MyGame, &Game::ExitGame, "ExitGame", &NewRect);
+	TestCoord.Y = 0.3;
+
+	MyGraph->AddButton(MyGame, &Game::ExitGame, "ExitGame", &TestCoord);
 }
 
 void GM_Game::LevelChooseMenu()
 {
-	SDL_Rect NewRect;
-	NewRect.x = 50;
-	NewRect.y = 350;
-	NewRect.w = 250;
-	NewRect.h = 64;
+	Coordinates TestCoord;
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeY = true;
+
+	TestCoord.X = 0.6;
+	TestCoord.W = 0.3;
+	TestCoord.Y = 0.8;
+	TestCoord.H = 50;
 
 	MyGame->PlaceLevelButtons();
 
-	MyGraph->AddButton(this, &GM_Game::WinGameMenu, "Back", &NewRect);
+	MyGraph->AddButton(this, &GM_Game::WinGameMenu, "Back", &TestCoord);
 }
 
 

@@ -9,17 +9,19 @@ class RenThing_Canvas : public RenThing
 {
 public:
 
-	RenThing_Canvas(SDL_Rect* InRect, bool DoBackGround = false, SDL_Renderer* RenRef = nullptr, const char* BackGroundFile = nullptr, int LevelRenderRef = 1) {
+	RenThing_Canvas(Coordinates* InCoordinates, int* ResolXRef, int* ResolYRef,
+		SDL_Renderer* RenRef = nullptr, const char* BackGroundFile = nullptr, SDL_Color* ColorRef = nullptr, int LevelRenderRef = 1) {
 	
+		MyCoordinates = *InCoordinates;
+		XResol = ResolXRef;
+		YResol = ResolYRef;
+
 		LevelRender = LevelRenderRef;
 
-		MyRect = *InRect;
+		
 
-		if (DoBackGround && RenRef != nullptr && BackGroundFile != nullptr)
-			MyBackground = new RenThing_Image(RenRef, BackGroundFile, InRect);
-
-
-	
+		if (ColorRef != nullptr && RenRef != nullptr && BackGroundFile != nullptr)
+			MyBackground = new RenThing_Image(RenRef, BackGroundFile, &MyCoordinates, ResolXRef, ResolYRef, ColorRef);
 	}
 
 	void CleanupThing() override {
@@ -46,8 +48,13 @@ public:
 
 	void PrepareThing(SDL_Renderer* RenRef) override {
 	
+		if (MyBackground != nullptr)
+			MyBackground->PrepareThing(RenRef);
+
 		for (int i = 0; i < MyThingVector.size(); i++)
 			MyThingVector.at(i)->PrepareThing(RenRef);
+
+		ResetCoord();
 
 		SDL_Rect LocalRect;
 		LocalRect.x = MyRect.x;
@@ -79,8 +86,46 @@ public:
 	}
 
 	void SetPosition(int x, int y) override {
-		MyRect.x = x;
-		MyRect.y = y;
+
+		int LocalX = x;
+		int LocalY = y;
+
+
+		if (MyCoordinates.bRelativeX)
+			MyCoordinates.X = float(LocalX) / *XResol;
+		else
+			MyCoordinates.X = LocalX;
+
+		if (MyCoordinates.bRelativeY)
+			MyCoordinates.Y = float(LocalY) / *YResol;
+		else
+			MyCoordinates.Y = LocalY;
+	}
+
+	virtual void ResetCoord() {
+
+		if (MyCoordinates.bRelativeX)
+			MyRect.x = *XResol * MyCoordinates.X;
+		else
+			MyRect.x = MyCoordinates.X;
+
+		if (MyCoordinates.bRelativeY)
+			MyRect.y = *YResol * MyCoordinates.Y;
+		else
+			MyRect.y = MyCoordinates.Y;
+
+		if (MyCoordinates.bRelativeW)
+			MyRect.w = *XResol * MyCoordinates.W;
+		else
+			MyRect.w = MyCoordinates.W;
+
+		if (MyCoordinates.bRelativeH)
+			MyRect.h = *YResol * MyCoordinates.H;
+		else
+			MyRect.h = MyCoordinates.H;
+
+		if (MyBackground != nullptr)
+			MyBackground->MyCoordinates = MyCoordinates;
 	}
 
 	float DeltaTime = 0.00001f;

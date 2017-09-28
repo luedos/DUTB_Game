@@ -24,21 +24,26 @@ void Game::PlaceLevelButtons()
 {
 	GameGraphics.ClearEverything();
 
-	SDL_Rect NewRect;
-	NewRect.x = 50;
-	NewRect.y = 50;
-	NewRect.w = 250;
-	NewRect.h = 64;
+	Coordinates TestCoord;
+	TestCoord.bRelativeX = true;
+	TestCoord.bRelativeW = true;
+	TestCoord.bRelativeY = true;
 
-	GameGraphics.AddStaticText("Choose Level", { 225,225,225,225 }, &NewRect);
+	TestCoord.X = 0.1;
+	TestCoord.W = 0.4;
+	TestCoord.Y = 0.05;
+	TestCoord.H = 50;
 
-	NewRect.y = 150;
+	GameGraphics.AddStaticText("Choose Level", { 225,225,225,225 }, &TestCoord);
 
-	GameGraphics.AddButton(&Level2, &Level_1::FireLevel, "First Level", &NewRect);
+	TestCoord.W = 0.3;
+	TestCoord.Y = 0.2;
+
+	GameGraphics.AddButton(&Level2, &Level_1::FireLevel, "First Level", &TestCoord);
 	
-	NewRect.y = 250;
+	TestCoord.Y = 0.3;
 	
-	GameGraphics.AddButton(&Level1, &TestLevel::FireLevel, "Test Level", &NewRect);
+	GameGraphics.AddButton(&Level1, &TestLevel::FireLevel, "Test Level", &TestCoord);
 
 }
 

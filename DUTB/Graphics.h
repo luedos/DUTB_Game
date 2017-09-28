@@ -19,69 +19,69 @@ public:
 	Graphics();
 	~Graphics();
 
-	RenThing* AddStaticText(const char* InCharRef, SDL_Color InStatColor, SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1) {
+	RenThing* AddStaticText(const char* InCharRef, SDL_Color InStatColor, Coordinates* InCoord, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, RenLevel));
+			RestThings.push_back(new RenThing_Text(InCharRef, InStatColor, InCoord, &X_Resolution, &Y_Resolution, RenLevel));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InStatColor, InRect, RenLevel));
+			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InStatColor, InCoord, &X_Resolution, &Y_Resolution, RenLevel));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}		
 	}
 
-	RenThing* AddDynamicText(const char* InCharRef, SDL_Color* InDynColor, SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1) {
+	RenThing* AddDynamicText(const char* InCharRef, SDL_Color* InDynColor, Coordinates* InCoord, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_Text(InCharRef, InDynColor, InRect, RenLevel));
+			RestThings.push_back(new RenThing_Text(InCharRef, InDynColor, *InCoord, &X_Resolution, &Y_Resolution, RenLevel));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InDynColor, InRect, RenLevel));
+			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InDynColor, *InCoord, &X_Resolution, &Y_Resolution, RenLevel));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
 	}
 
-	RenThing* AddStaticImage(char *FileName ,SDL_Rect* InRect, RenThing_Canvas* CanvasRef = nullptr, SDL_Color* ColorRef = nullptr, int RenLevel = 0) {
+	RenThing* AddStaticImage(char *FileName , Coordinates* InCoord, RenThing_Canvas* CanvasRef = nullptr, SDL_Color* ColorRef = nullptr, int RenLevel = 0) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_Image(MyRenderer, FileName, InRect, ColorRef, RenLevel));
+			RestThings.push_back(new RenThing_Image(MyRenderer, FileName, InCoord, &X_Resolution, &Y_Resolution, ColorRef, RenLevel));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_Image(MyRenderer, FileName, InRect, ColorRef, RenLevel));
+			CanvasRef->MyThingVector.push_back(new RenThing_Image(MyRenderer, FileName, InCoord, &X_Resolution, &Y_Resolution, ColorRef, RenLevel));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
 	}
 
-	RenThing* AddDynamicImage(char *FileName, SDL_Rect* InRect, int* InIntRef, RenThing_Canvas* CanvasRef = nullptr, int RenderMode_X_Y_Both_Ref= 0, SDL_Color* ColoRef = nullptr, int RenLevel = 1) {
+	RenThing* AddDynamicImage(char *FileName, Coordinates* InCoord, int* InIntRef, RenThing_Canvas* CanvasRef = nullptr, int RenderMode_X_Y_Both_Ref= 0, SDL_Color* ColoRef = nullptr, int RenLevel = 1) {
 		
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, RenderMode_X_Y_Both_Ref, ColoRef, RenLevel));
+			RestThings.push_back(new RenThing_ImageChangable(MyRenderer, FileName,  InIntRef, InCoord, &X_Resolution, &Y_Resolution, RenderMode_X_Y_Both_Ref, ColoRef, RenLevel));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InRect, InIntRef, RenderMode_X_Y_Both_Ref, ColoRef, RenLevel));
+			CanvasRef->MyThingVector.push_back(new RenThing_ImageChangable(MyRenderer, FileName, InIntRef, InCoord, &X_Resolution, &Y_Resolution, RenderMode_X_Y_Both_Ref, ColoRef, RenLevel));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}		
@@ -89,42 +89,42 @@ public:
 
 	RenThing* AddCanvas_TextText(const char* InCharToLocate_UpRef, SDL_Color* NewDynamicColor_UpRef,
 		const char* InCharToLocate_BottomRef, SDL_Color* NewDynamicColor_BottomRef,
-		SDL_Rect* InRectRef, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1) {
+		Coordinates* InCoord, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef, RenLevel));
+			RestThings.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InCoord, &X_Resolution, &Y_Resolution, RenLevel));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InRectRef, RenLevel));
+			CanvasRef->MyThingVector.push_back(new RenThing_EasyCanvas(InCharToLocate_UpRef, NewDynamicColor_UpRef, InCharToLocate_BottomRef, NewDynamicColor_BottomRef, InCoord, &X_Resolution, &Y_Resolution, RenLevel));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
 
 	}
 
-	RenThing_Canvas* AddCanvas(SDL_Rect* InRect, bool DoBackGround = false, const char* BackGroundFile = nullptr, int RenLevel = 1)
+	RenThing_Canvas* AddCanvas(Coordinates* InCoord, const char* BackGroundFile = nullptr, SDL_Color* ColorRef = nullptr, int RenLevel = 1)
 	{
-		CanvasVector.push_back(new RenThing_Canvas(InRect, DoBackGround, MyRenderer, BackGroundFile, RenLevel));
+		CanvasVector.push_back(new RenThing_Canvas(InCoord, &X_Resolution, &Y_Resolution, MyRenderer, BackGroundFile, ColorRef, RenLevel));
 		RenderOrder.push_back(CanvasVector.back());
 		return CanvasVector.back();
 	}
 
-	RenThing* AddPercentBar(SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1)
+	RenThing* AddPercentBar(Coordinates* InCoord, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1)
 	{
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_PercentBar(MyRenderer, InRect, PercetRef, BackColorRef, FrontColorRef, RenLevel));
+			RestThings.push_back(new RenThing_PercentBar(MyRenderer, PercetRef, InCoord, &X_Resolution, &Y_Resolution, BackColorRef, FrontColorRef, RenLevel));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
-			CanvasRef->MyThingVector.push_back(new RenThing_PercentBar(MyRenderer, InRect, PercetRef, BackColorRef, FrontColorRef, RenLevel));
+			CanvasRef->MyThingVector.push_back(new RenThing_PercentBar(MyRenderer, PercetRef, InCoord, &X_Resolution, &Y_Resolution, BackColorRef, FrontColorRef, RenLevel));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}
@@ -132,10 +132,10 @@ public:
 
 	template<class T, class M>
 	RenThing_Button* AddButton(T* MyClass, M MyMethod, const char* ButtonTextRef, 
-		SDL_Rect* InRect, SDL_Color BGColorRef = { 150,150,150,120 }, SDL_Color BGColor_PressedRef = { 100,100,100,180 }, 
+		Coordinates* InCoord, SDL_Color BGColorRef = { 150,150,150,120 }, SDL_Color BGColor_PressedRef = { 100,100,100,180 },
 		SDL_Color BGColor_HoveredRef = {120,120,120,150}, int RenLevel = 1) {
 		
-		RenThing_Button* TestTest = new RenThing_Button(ButtonTextRef, InRect, &BGColorRef, &BGColor_PressedRef, &BGColor_HoveredRef, RenLevel);
+		RenThing_Button* TestTest = new RenThing_Button(ButtonTextRef, &BGColorRef, &BGColor_PressedRef, &BGColor_HoveredRef, InCoord, &X_Resolution, &Y_Resolution, RenLevel);
 
 		TestTest->ConnectNew(MyClass, MyMethod);
 
@@ -145,9 +145,10 @@ public:
 
 	}
 
-	RenThing_Button_DDMenu* AddDDMenu(const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color BGColorRef = { 150,150,150,120 }, 
+	RenThing_Button_DDMenu* AddDDMenu(const char* ButtonTextRef, Coordinates* InCoord, SDL_Color BGColorRef = { 150,150,150,120 },
 		SDL_Color BGColor_PressedRef = { 100,100,100,180 }, SDL_Color BGColor_HoveredRef = { 120,120,120,150 }, int LevelRenderRef = 1) {
-		RenThing_Button_DDMenu* TestTest = new RenThing_Button_DDMenu(ButtonTextRef, InRect, &BGColorRef, &BGColor_PressedRef, &BGColor_HoveredRef, LevelRenderRef);
+
+		RenThing_Button_DDMenu* TestTest = new RenThing_Button_DDMenu(ButtonTextRef, &BGColorRef, &BGColor_PressedRef, &BGColor_HoveredRef, InCoord, &X_Resolution, &Y_Resolution, LevelRenderRef);
 
 		ButtonsArray.push_back(TestTest);
 		RenderOrder.push_back(ButtonsArray.back());

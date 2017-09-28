@@ -8,21 +8,24 @@ public:
 
 	RenThing_EasyCanvas(const char* InCharToLocate_Up, SDL_Color* NewDynamicColor_Up,
 		const char* InCharToLocate_Bottom, SDL_Color* NewDynamicColor_Bottom, 
-		SDL_Rect* InRect, int LevelRenderRef = 1) {
+		Coordinates* InCoordinates, int* ResolXRef, int* ResolYRef, int LevelRenderRef = 1) {
+
+		MyCoordinates = *InCoordinates;
+		XResol = ResolXRef;
+		YResol = ResolYRef;
 
 		LevelRender = LevelRenderRef;
 
-		MyRect = *InRect;
+		
+		Up_H = 0.55;
 
-		UpRect.h = 0.55 * MyRect.h;
+		Bottom_H = 0.3;
 
-		BottomRect.h = 0.3 * MyRect.h;
-
-		UpText = new RenThing_Text(InCharToLocate_Up, NewDynamicColor_Up, InRect);
+		UpText = new RenThing_Text(InCharToLocate_Up, NewDynamicColor_Up, MyCoordinates, ResolXRef, ResolYRef);
 
 		UpText->SetFont(48);
 
-		BottomText = new RenThing_Text(InCharToLocate_Bottom, NewDynamicColor_Bottom, InRect);
+		BottomText = new RenThing_Text(InCharToLocate_Bottom, NewDynamicColor_Bottom, MyCoordinates, ResolXRef, ResolYRef);
 
 		BottomText->SetFont(48);
 	}
@@ -46,26 +49,40 @@ public:
 
 	void PrepareThing(SDL_Renderer* RenRef) override {
 	
-		
+		ResetCoord();
 
 		UpText->PrepareThing(RenRef);
 
-		float Coefficient = float(UpRect.h) / float(UpText->MyRect.h);
-		UpText->MyRect.h = UpRect.h;
+		float Coefficient = float(MyRect.h * Up_H) / float(UpText->MyRect.h);
+		UpText->MyRect.h = MyRect.h * Up_H;
 		UpText->MyRect.w = UpText->MyRect.w * Coefficient;
 
 
 		BottomText->PrepareThing(RenRef);
 
-		Coefficient = float(BottomRect.h) / float(BottomText->MyRect.h);
-		BottomText->MyRect.h = BottomRect.h;
+		Coefficient = float(MyRect.h * Bottom_H) / float(BottomText->MyRect.h);
+		BottomText->MyRect.h = MyRect.h * Bottom_H;
 		BottomText->MyRect.w = BottomText->MyRect.w * Coefficient;
 
 	}
 
 	void SetPosition(int x, int y) override {
-		MyRect.x = x;
-		MyRect.y = y;
+
+		int LocalX = x;
+		int LocalY = y;
+
+
+		if (MyCoordinates.bRelativeX)
+			MyCoordinates.X = float(LocalX) / *XResol;
+		else
+			MyCoordinates.X = LocalX;
+
+		if (MyCoordinates.bRelativeY)
+			MyCoordinates.Y = float(LocalY) / *YResol;
+		else
+			MyCoordinates.Y = LocalY;
+
+		ResetCoord();
 
 		UpText->SetPosition(x + (MyRect.w - UpText->MyRect.w) / 2, y + 0.05 * MyRect.h);
 
@@ -74,10 +91,11 @@ public:
 
 private:
 
-	SDL_Rect UpRect;
+
+	float Up_H;
 	RenThing_Text* UpText = nullptr;
 
-	SDL_Rect BottomRect;
+	float Bottom_H;
 	RenThing_Text* BottomText = nullptr;
 
 };

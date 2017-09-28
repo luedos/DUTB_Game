@@ -4,7 +4,13 @@
 class RenThing_ImageChangable : public RenThing
 {
 public:
-	RenThing_ImageChangable(SDL_Renderer* Ren, const char *File, SDL_Rect* InRect, int* InInt, int RenderMode_X_Y_Both = 0, SDL_Color* ColorRef = nullptr, int LevelRenderRef = 1) {
+	RenThing_ImageChangable(SDL_Renderer* Ren, const char *File, int* InInt,
+		Coordinates* InCoordinates, int* ResolXRef, int* ResolYRef,
+		int RenderMode_X_Y_Both = 0, SDL_Color* ColorRef = nullptr, int LevelRenderRef = 1) {
+
+		MyCoordinates = *InCoordinates;
+		XResol = ResolXRef;
+		YResol = ResolYRef;
 
 		LevelRender = LevelRenderRef;
 
@@ -23,13 +29,12 @@ public:
 
 		MyTexture = IMG_LoadTexture(Ren, File);
 
-		
-
-		MyRect = *InRect;
 
 		StandartRect.w = MyRect.w;
 		StandartRect.h = MyRect.h;
 	}
+
+	void PrepareThing(SDL_Renderer* RenRef) override { ResetCoord(); }
 
 	void RenderThing(SDL_Renderer* RenRef) override { 
 
@@ -67,8 +72,20 @@ public:
 	void CleanupThing() override { SDL_DestroyTexture(MyTexture); }
 
 	void SetPosition(int x, int y) override {
-		MyRect.x = x;
-		MyRect.y = y;
+
+		int LocalX = x;
+		int LocalY = y;
+
+
+		if (MyCoordinates.bRelativeX)
+			MyCoordinates.X = float(LocalX) / *XResol;
+		else
+			MyCoordinates.X = LocalX;
+
+		if (MyCoordinates.bRelativeY)
+			MyCoordinates.Y = float(LocalY) / *YResol;
+		else
+			MyCoordinates.Y = LocalY;
 	}
 
 private:

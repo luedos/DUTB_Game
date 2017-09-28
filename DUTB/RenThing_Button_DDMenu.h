@@ -8,11 +8,19 @@ class RenThing_Button_DDMenu : public RenThing_Button
 {
 public:
 
-	RenThing_Button_DDMenu(const char* ButtonTextRef, SDL_Rect* InRect, SDL_Color* BGColorRef, SDL_Color* BGColor_PressedRef, SDL_Color* BGColor_HoveredRef, int LevelRenderRef = 1) {
+	RenThing_Button_DDMenu(const char* ButtonTextRef, 
+		SDL_Color* BGColorRef, SDL_Color* BGColor_PressedRef, SDL_Color* BGColor_HoveredRef, 
+		Coordinates* InCoordinates, int* ResolXRef, int* ResolYRef, int LevelRenderRef = 1) {
+
+		MyCoordinates = *InCoordinates;
+		XResol = ResolXRef;
+		YResol = ResolYRef;
 		
 		LevelRender = LevelRenderRef;
 
-		RealButtonRect = *InRect;
+		ResetCoord();
+
+		MyRect = RealButtonRect;
 
 		ButtonText = ButtonTextRef;
 
@@ -50,6 +58,8 @@ public:
 		SDL_FreeSurface(Surface);
 
 		SDL_QueryTexture(MyTexture, NULL, NULL, &TextRect.w, &TextRect.h);
+
+		ResetCoord();
 
 		TextRect.x = RealButtonRect.x + float(RealButtonRect.w - TextRect.w) / 2;
 
@@ -123,28 +133,71 @@ public:
 
 	void OpenDDFunc(bool InPoint) {
 		OpenDD = InPoint;
+
 		if (OpenDD)
-		{
-			MyRect = RealButtonRect;
-			MyRect.h = (DDButtonVector.size() * 0.8f + 1.f) * RealButtonRect.h;
-			LevelRender++;
-		}
+			LevelRender = 2;
 		else
-		{
-			MyRect = RealButtonRect;
-			LevelRender--;
-		}
+			LevelRender = 1;
 	}
+	
 
 	template<typename T, typename M>
 	void AddDDButton(T* ClassRef, M MethodRef, const char* DDName) {
-		SDL_Rect NewRect;
-		
-		NewRect.h = RealButtonRect.h * 0.8f;
-		NewRect.w = RealButtonRect.w;
 
-		DDButtonVector.push_back(new RenThing_Button(DDName, &NewRect, &BGColor_Idle, &BGColor_Pressed, &BGColor_Hovered));
+		Coordinates NewCoord = MyCoordinates;
+		NewCoord.bRelativeX = false;
+		NewCoord.bRelativeY = false;
+		NewCoord.H = NewCoord.H * 0.8;
+	
+
+		DDButtonVector.push_back(new RenThing_Button(DDName, &BGColor_Idle, &BGColor_Pressed, &BGColor_Hovered, &NewCoord, XResol, YResol));
 		DDButtonVector.back()->ConnectNew(ClassRef, MethodRef);
+	}
+
+	void ResetCoord() override {
+
+		if (MyCoordinates.bRelativeX)
+			RealButtonRect.x = *XResol * MyCoordinates.X;
+		else
+			RealButtonRect.x = MyCoordinates.X;
+
+		if (MyCoordinates.bRelativeY)
+			RealButtonRect.y = *YResol * MyCoordinates.Y;
+		else
+			RealButtonRect.y = MyCoordinates.Y;
+
+		if (MyCoordinates.bRelativeW)
+			RealButtonRect.w = *XResol * MyCoordinates.W;
+		else
+			RealButtonRect.w = MyCoordinates.W;
+
+		if (MyCoordinates.bRelativeH)
+			RealButtonRect.h = *YResol * MyCoordinates.H;
+		else
+			RealButtonRect.h = MyCoordinates.H;
+
+		MyRect = RealButtonRect;
+
+		if (OpenDD)
+			MyRect.h = (DDButtonVector.size() * 0.8f + 1.f) * RealButtonRect.h;
+		
+	}
+
+	void SetPosition(int x, int y) override {
+
+		int LocalX = x;
+		int LocalY = y;
+
+
+		if (MyCoordinates.bRelativeX)
+			MyCoordinates.X = float(LocalX) / *XResol;
+		else
+			MyCoordinates.X = LocalX;
+
+		if (MyCoordinates.bRelativeY)
+			MyCoordinates.Y = float(LocalY) / *YResol;
+		else
+			MyCoordinates.Y = LocalY;
 	}
 
 	bool OpenDD;

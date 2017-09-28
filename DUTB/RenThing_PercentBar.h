@@ -6,7 +6,13 @@ class RenThing_PercentBar : public RenThing
 public:
 
 
-	RenThing_PercentBar(SDL_Renderer* Ren, SDL_Rect* InRect, float* PercetRef, SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, int LevelRenderRef = 1) {
+	RenThing_PercentBar(SDL_Renderer* Ren, float* PercetRef,
+		Coordinates* InCoordinates, int* ResolXRef, int* ResolYRef,
+		SDL_Color* BackColorRef = nullptr, SDL_Color* FrontColorRef = nullptr, int LevelRenderRef = 1) {
+
+		MyCoordinates = *InCoordinates;
+		XResol = ResolXRef;
+		YResol = ResolYRef;
 
 		LevelRender = LevelRenderRef;
 
@@ -15,8 +21,6 @@ public:
 		MyTexture = IMG_LoadTexture(Ren, "../DUTB/Textures/SimpleWhite.png");
 
 		FrontTexture = IMG_LoadTexture(Ren, "../DUTB/Textures/SimpleWhite.png");
-
-		MyRect = *InRect;
 
 
 
@@ -38,6 +42,7 @@ public:
 
 	void PrepareThing(SDL_Renderer* RenRef) override {
 
+		ResetCoord();
 		FrontRect = MyRect;
 		FrontRect.w = *Percent * MyRect.w;
 	}
@@ -53,11 +58,20 @@ public:
 	}
 
 	void SetPosition(int x, int y) override {
-		MyRect.x = x;
-		MyRect.y = y;
 
-		FrontRect.x = x;
-		FrontRect.y = y;
+		int LocalX = x;
+		int LocalY = y;
+
+
+		if (MyCoordinates.bRelativeX)
+			MyCoordinates.X = float(LocalX) / *XResol;
+		else
+			MyCoordinates.X = LocalX;
+
+		if (MyCoordinates.bRelativeY)
+			MyCoordinates.Y = float(LocalY) / *YResol;
+		else
+			MyCoordinates.Y = LocalY;
 	}
 
 private:
