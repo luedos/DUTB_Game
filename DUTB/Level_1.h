@@ -14,5 +14,7 @@ public:
 	void FireLevel() override;
 
 	void PlaceLevel() override;
+
+	void PassLevel(int Points) override;
 };
 

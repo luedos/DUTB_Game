@@ -2,8 +2,7 @@
 
 #include "DUB_Test.h"
 #include "DPB_test.h"
-#include "TestLevel.h"
-#include "Level_1.h"
+#include "LevelClass.h"
 #include "PNTButtons_Test.h"
 #include "GameMode.h"
 
@@ -63,10 +62,11 @@ public:
 
 	void AddTest(ETests WhichTest, int PowerLevel);
 
-	void SetLevelVars(float MaxPointsRef, float GameTimeRef) {
+	void SetLevelVars(float MaxPointsRef, float GameTimeRef, int MaxTests) {
 		MaxPoints = MaxPointsRef;
 		GameTime = GameTimeRef;
 		GamePoints = MaxPoints;
+		MaxTestsCount = MaxTests;
 	}
 
 	void ClearTests();
@@ -111,6 +111,8 @@ public:
 	void WinGameMenu();
 
 	void LevelChooseMenu();
+
+	int MaxTestsCount;
 
 private:
 	void TickEveryTest(float DeltaTime);

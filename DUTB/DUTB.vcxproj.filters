@@ -90,6 +90,18 @@
     <ClInclude Include="RenThing_Button_DDMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Level_2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level_3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Alphabets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CountSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -123,6 +135,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Level_1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level_2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level_3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

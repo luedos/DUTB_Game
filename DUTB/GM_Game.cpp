@@ -29,7 +29,20 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	//Do not unpress button :: Pointers
 	case ETests::DUBPointers:
 	{
-		DUB_Test* TestTest = new DUB_Test(&TestsVector, 10.f);
+		DUB_Test* TestTest;
+
+		switch (PowerLevel)
+		{
+		case 1: {
+			TestTest = new DUB_Test(&TestsVector, 10.f, true, 1500.f, 1000.f, 2000.f);
+			break; }
+		case 2: {
+			TestTest = new DUB_Test(&TestsVector, 12.f, true, 1100.f, 750.f, 1800.f);
+			break; }
+		default: {
+			TestTest = new DUB_Test(&TestsVector, 20.f, true, 900.f, 750.f, 1500.f);
+			break; }
+		}
 
 		TestTest->MyThing = MyGraph->AddDynamicImage("../DUTB/Textures/Pointers.png", &MyCoord, &TestTest->IntPointer, RenCanvas1, 0, &TestTest->TextColor);
 
@@ -40,7 +53,20 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	//Do not unpress button :: Buttons
 	case ETests::DUBButtons:
 	{
-		DUB_Test* TestTest = new DUB_Test(&TestsVector, 10.f, false);
+		DUB_Test* TestTest;
+
+		switch (PowerLevel)
+		{
+		case 1: {
+			TestTest = new DUB_Test(&TestsVector, 10.f, false, 1500.f, 1000.f, 2000.f);
+			break; }
+		case 2: {
+			TestTest = new DUB_Test(&TestsVector, 12.f, false, 1100.f, 750.f, 1800.f);
+			break; }
+		default: {
+			TestTest = new DUB_Test(&TestsVector, 20.f, false, 900.f, 750.f, 1500.f);
+			break; }
+		}
 
 		TestTest->MyThing = MyGraph->AddDynamicText(TestTest->ButtonString.c_str(), &TestTest->TextColor, &MyCoord, RenCanvas1);
 
@@ -51,33 +77,82 @@ void GM_Game::AddTest(ETests WhichTest, int PowerLevel)
 	// Do press button
 	case ETests::DPButton:
 	{
-		DPB_test* TestTest = new DPB_test(&TestsVector, true, 2000, 1500);
+		if (MaxTestsCount > TestsVector.size())
+		{
+			DPB_test* TestTest;
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyCoord, RenCanvas2);
+			switch (PowerLevel)
+			{
+			case 1: {
+				TestTest = new DPB_test(&TestsVector, true, 2500, 2000, 30);
+				break; }
+			case 2: {
+				TestTest = new DPB_test(&TestsVector, true, 2200, 1700);
+				break; }
+			default: {
+				TestTest = new DPB_test(&TestsVector, true, 2000, 1500, 70);
+				break; }
+			}
 
-		TestsVector.push_back(TestTest);
+			TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyCoord, RenCanvas2);
 
+			TestsVector.push_back(TestTest);
+		}
 		break;
 	}
 	// Do not press button
 	case ETests::DNPButton:
 	{
-		DPB_test* TestTest = new DPB_test(&TestsVector, false, 2000, 1500);
+		if (MaxTestsCount > TestsVector.size())
+		{
+			DPB_test* TestTest;
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyCoord, RenCanvas2);
+			switch (PowerLevel)
+			{
+			case 1: {
+				TestTest = new DPB_test(&TestsVector, false, 2500, 2000, 30);
+				break; }
+			case 2: {
+				TestTest = new DPB_test(&TestsVector, false, 2200, 1700);
+				break; }
+			default: {
+				TestTest = new DPB_test(&TestsVector, false, 2000, 1500, 70);
+				break; }
+			}
 
-		TestsVector.push_back(TestTest);
+			TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->ColorToRender, TestTest->SideString.c_str(), &TestTest->ColorToRender, &MyCoord, RenCanvas2);
+
+			TestsVector.push_back(TestTest);
+		}
 
 		break;
 	}
 	// Press N times Button
 	case ETests::PNTButton:
 	{
-		PNTButtons_Test* TestTest = new PNTButtons_Test(&TestsVector, 4, 2500, 1700);
+		if (MaxTestsCount > TestsVector.size())
+		{
+			int NTChanse = rand() % 3 - 1;
 
-		TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyCoord, RenCanvas2);
+			PNTButtons_Test* TestTest;
 
-		TestsVector.push_back(TestTest);
+			switch (PowerLevel)
+			{
+			case 1: {
+				TestTest = new PNTButtons_Test(&TestsVector, 1 + NTChanse, 2500, 2000, 30);
+				break; }
+			case 2: {
+				TestTest = new PNTButtons_Test(&TestsVector, 2 + NTChanse, 2200, 1700);
+				break; }
+			default: {
+				TestTest = new PNTButtons_Test(&TestsVector, 3 + NTChanse, 2000, 1500, 70);
+				break; }
+			}
+
+			TestTest->MyThing = MyGraph->AddCanvas_TextText(TestTest->ButtonString.c_str(), &TestTest->MyColor, TestTest->SideString.c_str(), &TestTest->MyColor, &MyCoord, RenCanvas2);
+
+			TestsVector.push_back(TestTest);
+		}
 
 		break;
 	}
@@ -144,7 +219,7 @@ void GM_Game::GM_Start()
 	TestCoord.bRelativeH = true;
 
 	TestCoord.X = 0.1;
-	TestCoord.W = 0.8;
+	TestCoord.W = 0.35;
 	TestCoord.Y = 0.1;
 	TestCoord.H = 0.3;
 
@@ -152,9 +227,11 @@ void GM_Game::GM_Start()
 
 	RenCanvas1 = MyGraph->AddCanvas(&TestCoord, "../DUTB/Textures/SimpleWhite.png", &NewColor);
 
-	TestCoord.Y = 0.45;
+	TestCoord.X = 0.55;
 
 	RenCanvas2 = MyGraph->AddCanvas(&TestCoord, "../DUTB/Textures/SimpleWhite.png", &NewColor);
+
+	MaxTestsCount = 0;
 
 	MyLevel->StartLevel();
 
@@ -164,6 +241,7 @@ void GM_Game::GM_Start()
 
 	TestCoord.bRelativeH = false;
 
+	TestCoord.X = 0.1;
 	TestCoord.W = 0.6;
 	TestCoord.Y = 0.8;
 	TestCoord.H = 50;
@@ -393,7 +471,7 @@ void GM_Game::GameOverMenu()
 
 	TestCoord.X = 0.2;
 	TestCoord.W = 0.3;
-	TestCoord.Y = 0.1;
+	TestCoord.Y = 0.2;
 
 	MyGraph->AddButton(this, &GM_Game::GM_Start, "Try Again", &TestCoord);
 
@@ -410,20 +488,22 @@ void GM_Game::WinGameMenu()
 {
 	GM_End();
 
+	MyLevel->PassLevel(GamePoints);
+
 	Coordinates TestCoord;
 	TestCoord.bRelativeX = true;
 	TestCoord.bRelativeW = true;
 	TestCoord.bRelativeY = true;
 
 	TestCoord.X = 0.3;
-	TestCoord.W = 0.4;
+	TestCoord.W = 0.45;
 	TestCoord.Y = 0.05;
 	TestCoord.H = 50;
 
 	MyGraph->AddStaticText("Level passed", { 15,225,15,225 }, &TestCoord);
 
-	TestCoord.X = 0.2;
-	TestCoord.W = 0.3;
+	TestCoord.X = 0.1;
+	TestCoord.W = 0.35;
 	TestCoord.Y = 0.2;
 
 	MyGraph->AddButton(this, &GM_Game::LevelChooseMenu, "Choose level", &TestCoord);

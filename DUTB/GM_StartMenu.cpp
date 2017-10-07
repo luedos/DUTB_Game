@@ -82,7 +82,7 @@ void GM_StartMenu::GM_Start()
 	TestCoord.bRelativeW = true;
 	TestCoord.bRelativeY = true;
 
-	TestCoord.X = 0.1;
+	TestCoord.X = 0.05;
 	TestCoord.W = 0.8;
 	TestCoord.Y = 0.05;
 	TestCoord.H = 50;
@@ -90,7 +90,7 @@ void GM_StartMenu::GM_Start()
 	MyGraph->AddDynamicText("Don't Unpress That Button", &HeaderTextColor, &TestCoord);
 
 	TestCoord.Y = 0.2;
-	TestCoord.W = 0.3;
+	TestCoord.W = 0.35;
 
 	MyGraph->AddButton(this, &GM_StartMenu::LevelChooseMenu, "Chose level", &TestCoord);
 

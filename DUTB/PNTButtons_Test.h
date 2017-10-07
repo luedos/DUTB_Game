@@ -22,7 +22,7 @@ public:
 
 	int MaxPressNumber;
 
-	int PressNumber = 0;
+	int PressNumber;
 
 	SDL_Color MyColor;
 

@@ -149,7 +149,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alphabets.h" />
     <ClInclude Include="ButtonTest.h" />
+    <ClInclude Include="CountSystem.h" />
     <ClInclude Include="DPB_test.h" />
     <ClInclude Include="DUB_Test.h" />
     <ClInclude Include="Game.h" />
@@ -160,6 +162,8 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="LevelClass.h" />
     <ClInclude Include="Level_1.h" />
+    <ClInclude Include="Level_2.h" />
+    <ClInclude Include="Level_3.h" />
     <ClInclude Include="PNTButtons_Test.h" />
     <ClInclude Include="RenThing_Button.h" />
     <ClInclude Include="RenThing_Button_DDMenu.h" />
@@ -183,6 +187,8 @@
     <ClCompile Include="GM_StartMenu.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Level_1.cpp" />
+    <ClCompile Include="Level_2.cpp" />
+    <ClCompile Include="Level_3.cpp" />
     <ClCompile Include="PNTButtons_Test.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

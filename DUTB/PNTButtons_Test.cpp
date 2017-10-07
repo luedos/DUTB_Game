@@ -12,6 +12,8 @@ PNTButtons_Test::PNTButtons_Test(vector<GeneralTest*>* TestsVectorLocalRef, int 
 	PointsRate = PointsRateRef;
 	PressNumber = PressNumberRef;
 
+	PressNumber = 4;
+
 	ButtonChoser(EveryButton, 25, 15);
 
 	LastPressed = false;
@@ -46,7 +48,7 @@ bool PNTButtons_Test::EventTick(float DeltaMilliSeconds)
 		LastPressed = NewPressed;
 	}
 
-	if (PressNumber = 0)
+	if (PressNumber == 0)
 		MyColor = { 0,225,0,225 };
 	else
 		if (PressNumber < 0)
