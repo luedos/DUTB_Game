@@ -22,8 +22,6 @@ public:
 
 		FrontTexture = IMG_LoadTexture(Ren, "../DUTB/Textures/SimpleWhite.png");
 
-
-
 		if (FrontColorRef != nullptr)
 		{
 			SDL_SetTextureColorMod(FrontTexture, FrontColorRef->r, FrontColorRef->g, FrontColorRef->b);

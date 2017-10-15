@@ -54,9 +54,6 @@
     <ClInclude Include="LevelClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TestLevel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RenThing_EasyCanvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -117,9 +114,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DPB_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestLevel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PNTButtons_Test.cpp">

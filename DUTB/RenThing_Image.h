@@ -39,7 +39,6 @@ public:
 		int LocalX = x;
 		int LocalY = y;
 
-
 		if (MyCoordinates.bRelativeX)
 			MyCoordinates.X = float(LocalX) / *XResol;
 		else

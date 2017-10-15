@@ -62,13 +62,13 @@ public:
 
 	SDL_Rect MyRect;
 
-	Coordinates MyCoordinates;
+	int LevelRender;
 
 	SDL_Texture* MyTexture;
 
 	bool FirstCreated = true;
 
-	int LevelRender;
+	Coordinates MyCoordinates;
 
 	int* XResol;
 	int* YResol;

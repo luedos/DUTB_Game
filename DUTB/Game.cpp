@@ -21,8 +21,6 @@ void Game::NewGame()
 	if (!ReadSaves())
 		RecreateSaves();
 
-	cout << "Reading after recreating : " << ReadSaves() << endl;
-
 	GoStartMenu();
 }
 
@@ -43,7 +41,7 @@ void Game::PlaceLevelButtons()
 	TestCoord.H = 50;
 
 
-	GameGraphics.AddStaticText("Choose Level", { 225,225,225,225 }, &TestCoord);
+	GameGraphics.AddStaticText("Choose Level", &MyTextColor, &TestCoord);
 
 	TestCoord.W = 0.35;
 	TestCoord.Y = 0.2;
@@ -52,7 +50,7 @@ void Game::PlaceLevelButtons()
 	GameGraphics.AddButton(&Level1, &Level_1::FireLevel, "FirstLevel", &TestCoord);
 
 	TestCoord.X = 0.5;
-	GameGraphics.AddStaticText(Level1.StringPoints.c_str(), MyTextColor, &TestCoord);
+	GameGraphics.AddStaticText(Level1.StringPoints.c_str(), &MyTextColor, &TestCoord);
 	TestCoord.X = 0.05;
 
 	TestCoord.Y = 0.3;
@@ -61,7 +59,7 @@ void Game::PlaceLevelButtons()
 		GameGraphics.AddButton(&Level2, &Level_2::FireLevel, "SecondLevel", &TestCoord);
 
 		TestCoord.X = 0.5;
-		GameGraphics.AddStaticText(Level2.StringPoints.c_str(), MyTextColor, &TestCoord);
+		GameGraphics.AddStaticText(Level2.StringPoints.c_str(), &MyTextColor, &TestCoord);
 		TestCoord.X = 0.05;
 	}
 
@@ -72,13 +70,9 @@ void Game::PlaceLevelButtons()
 	if (Level2.LevelPassed) {
 		GameGraphics.AddButton(&Level3, &Level_3::FireLevel, "ThirdLevel", &TestCoord);
 		TestCoord.X = 0.5;
-		GameGraphics.AddStaticText(Level3.StringPoints.c_str(), MyTextColor, &TestCoord);
+		GameGraphics.AddStaticText(Level3.StringPoints.c_str(), &MyTextColor, &TestCoord);
 		TestCoord.X = 0.05;
 	}
-
-	TestCoord.Y = 0.5;
-	
-	GameGraphics.AddButton(&Level_Test, &TestLevel::FireLevel, "Test Level", &TestCoord);
 
 }
 

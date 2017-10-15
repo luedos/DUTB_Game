@@ -253,11 +253,11 @@ void GM_Game::GM_Start()
 
 	RenThing_Canvas* TestCanvas = MyGraph->AddCanvas(&TestCoord);
 	
-	MyGraph->AddStaticText("Level time : ", NewColor, &TestCoord, TestCanvas);
+	MyGraph->AddStaticText("Level time : ", &NewColor, &TestCoord, TestCanvas);
 
 	TestCoord.X = 0.7;
 
-	MyGraph->AddStaticText(TextGameTime.c_str(), NewColor, &TestCoord, TestCanvas);
+	MyGraph->AddStaticText(TextGameTime.c_str(), &NewColor, &TestCoord, TestCanvas);
 
 	TestCoord.bRelativeX = true;
 	TestCoord.bRelativeW = true;
@@ -428,7 +428,7 @@ void GM_Game::GP_Pause()
 	
 	TestColor = { 200,200,200,225 };
 
-	PauseRenThings.push_back(MyGraph->AddStaticText("Pause Menu", TestColor, &TestCoord));
+	PauseRenThings.push_back(MyGraph->AddStaticText("Pause Menu", &TestColor, &TestCoord));
 
 	TestCoord.Y = 0.2;
 
@@ -457,6 +457,8 @@ void GM_Game::GameOverMenu()
 {
 	GM_End();
 
+	SDL_Color MyColor = { 225,0,0,225 };
+
 	Coordinates TestCoord;
 	TestCoord.bRelativeX = true;
 	TestCoord.bRelativeW = true;
@@ -467,7 +469,7 @@ void GM_Game::GameOverMenu()
 	TestCoord.Y = 0.05;
 	TestCoord.H = 50;
 
-	MyGraph->AddStaticText("Game Over", { 225, 0, 0 }, &TestCoord);
+	MyGraph->AddStaticText("Game Over", &MyColor, &TestCoord);
 
 	TestCoord.X = 0.2;
 	TestCoord.W = 0.3;
@@ -488,6 +490,8 @@ void GM_Game::WinGameMenu()
 {
 	GM_End();
 
+	SDL_Color MyColor = { 225,0,0,225 };
+
 	MyLevel->PassLevel(GamePoints);
 
 	Coordinates TestCoord;
@@ -500,7 +504,7 @@ void GM_Game::WinGameMenu()
 	TestCoord.Y = 0.05;
 	TestCoord.H = 50;
 
-	MyGraph->AddStaticText("Level passed", { 15,225,15,225 }, &TestCoord);
+	MyGraph->AddStaticText("Level passed", &MyColor, &TestCoord);
 
 	TestCoord.X = 0.1;
 	TestCoord.W = 0.35;

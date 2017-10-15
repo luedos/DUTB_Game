@@ -1,4 +1,4 @@
-﻿  GM_Game.cpp
+﻿  DUTB.cpp
 c:\users\vlol\source\repos\dutb\dutb\renthing.h(37): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing.h(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
@@ -9,22 +9,22 @@ c:\users\vlol\source\repos\dutb\dutb\renthing.h(52): warning C4244: '=': convers
 c:\users\vlol\source\repos\dutb\dutb\renthing.h(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing.h(60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\buttontest.h(72): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\renthing_text.h(84): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_text.h(89): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_image.h(46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_image.h(51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_imagechangable.h(83): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_imagechangable.h(88): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(20): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(22): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\vlol\source\repos\dutb\dutb\renthing_text.h(81): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_text.h(86): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_image.h(45): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_image.h(50): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_imagechangable.h(80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_imagechangable.h(85): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(19): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(21): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(57): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(58): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(64): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(65): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(78): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(83): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(87): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(62): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(75): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(80): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_easycanvas.h(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(104): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(106): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing_button.h(135): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
@@ -61,89 +61,38 @@ c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(118): warning C4244: '=':
 c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(120): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(123): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\renthing_canvas.h(125): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(47): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(69): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(74): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(45): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(67): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\renthing_percentbar.h(72): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\alphabets.h(33): warning C4018: '<': signed/unsigned mismatch
 c:\users\vlol\source\repos\dutb\dutb\alphabets.h(39): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(50): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(64): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(86): warning C4018: '>=': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(106): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(119): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(120): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\game.h(138): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(148): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(153): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(158): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(165): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(181): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(189): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(194): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(199): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(206): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\game.h(222): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(80): warning C4018: '>': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(106): warning C4018: '>': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(133): warning C4018: '>': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(179): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(187): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(221): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(222): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(223): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(224): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(230): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(244): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(245): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(246): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(252): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(258): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(266): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(267): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(268): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(269): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(299): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(317): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(338): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(340): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(351): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(353): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(380): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(424): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(425): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(426): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(433): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(437): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(441): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(448): warning C4018: '<': signed/unsigned mismatch
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(465): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(466): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(467): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(472): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(473): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(474): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(478): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(482): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(491): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(498): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(499): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(500): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(505): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(506): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(507): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(511): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(523): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(524): warning C4305: '=': truncation from 'double' to 'float'
-c:\users\vlol\source\repos\dutb\dutb\gm_game.cpp(525): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\vlol\source\repos\dutb\dutb\game.h(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(61): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(83): warning C4018: '>=': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(103): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(116): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(117): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\vlol\source\repos\dutb\dutb\game.h(135): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(145): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(150): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(155): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(162): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(178): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(186): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(191): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(196): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(203): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\game.h(219): warning C4018: '<': signed/unsigned mismatch
+c:\users\vlol\source\repos\dutb\dutb\dutb.cpp(45): warning C4244: '=': conversion from '__int64' to 'float', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\countsystem.h(19): warning C4018: '<': signed/unsigned mismatch
   c:\users\vlol\source\repos\dutb\dutb\countsystem.h(18): note: while compiling class template member function 'void CountSystem<33>::Normalize(void)'
-  c:\users\vlol\source\repos\dutb\dutb\game.h(109): note: see reference to function template instantiation 'void CountSystem<33>::Normalize(void)' being compiled
-  c:\users\vlol\source\repos\dutb\dutb\game.h(76): note: see reference to class template instantiation 'CountSystem<33>' being compiled
+  c:\users\vlol\source\repos\dutb\dutb\game.h(106): note: see reference to function template instantiation 'void CountSystem<33>::Normalize(void)' being compiled
+  c:\users\vlol\source\repos\dutb\dutb\game.h(73): note: see reference to class template instantiation 'CountSystem<33>' being compiled
 c:\users\vlol\source\repos\dutb\dutb\countsystem.h(21): warning C4804: '<': unsafe use of type 'bool' in operation
 c:\users\vlol\source\repos\dutb\dutb\countsystem.h(22): warning C4018: '<': signed/unsigned mismatch
 c:\users\vlol\source\repos\dutb\dutb\countsystem.h(164): warning C4018: '<': signed/unsigned mismatch
-  c:\users\vlol\source\repos\dutb\dutb\game.h(76): note: see reference to function template instantiation 'CountSystem<33> CountSystem<26>::MakeNewCS<33>(void)' being compiled
-  c:\users\vlol\source\repos\dutb\dutb\game.h(76): note: see reference to function template instantiation 'CountSystem<33> CountSystem<26>::MakeNewCS<33>(void)' being compiled
+  c:\users\vlol\source\repos\dutb\dutb\game.h(73): note: see reference to function template instantiation 'CountSystem<33> CountSystem<26>::MakeNewCS<33>(void)' being compiled
+  c:\users\vlol\source\repos\dutb\dutb\game.h(73): note: see reference to function template instantiation 'CountSystem<33> CountSystem<26>::MakeNewCS<33>(void)' being compiled
 c:\users\vlol\source\repos\dutb\dutb\countsystem.h(165): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
 c:\users\vlol\source\repos\dutb\dutb\countsystem.h(175): warning C4018: '<': signed/unsigned mismatch
 c:\users\vlol\source\repos\dutb\dutb\countsystem.h(176): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data

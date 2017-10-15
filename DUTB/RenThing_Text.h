@@ -60,7 +60,6 @@ public:
 		else
 			ColorToUse = *DynamicColor;
 
-
 		Surface = TTF_RenderText_Blended(Font, SomeToRender, ColorToUse);
 		MyTexture = SDL_CreateTextureFromSurface(RenRef, Surface);
 		SDL_FreeSurface(Surface);
@@ -68,8 +67,6 @@ public:
 		ResetCoord();
 
 		SDL_QueryTexture(MyTexture, NULL, NULL, &MyRect.w, &MyRect.h);
-
-
 	}
 
 	void SetPosition(int x, int y) override {

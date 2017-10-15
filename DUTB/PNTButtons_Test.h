@@ -14,6 +14,9 @@ public:
 
 	bool EventTick(float DeltaMilliSeconds) override;
 
+	SDL_Color MyColor;
+
+private:
 	float StartTime;
 
 	float EndTime;
@@ -23,8 +26,6 @@ public:
 	int MaxPressNumber;
 
 	int PressNumber;
-
-	SDL_Color MyColor;
 
 	bool LastPressed;
 

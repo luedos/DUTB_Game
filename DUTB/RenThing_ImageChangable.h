@@ -21,14 +21,11 @@ public:
 		else
 			MyColor = ColorRef;
 
-		
-
 		RenderMode = RenderMode_X_Y_Both;
 
 		IntRef = InInt;
 
 		MyTexture = IMG_LoadTexture(Ren, File);
-
 
 		StandartRect.w = MyRect.w;
 		StandartRect.h = MyRect.h;

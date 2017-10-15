@@ -19,18 +19,18 @@ public:
 	Graphics();
 	~Graphics();
 
-	RenThing* AddStaticText(const char* InCharRef, SDL_Color InStatColor, Coordinates* InCoord, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1) {
+	RenThing* AddStaticText(const char* InCharRef, SDL_Color *InStatColor, Coordinates* InCoord, RenThing_Canvas* CanvasRef = nullptr, int RenLevel = 1) {
 
 		if (CanvasRef == nullptr)
 		{
-			RestThings.push_back(new RenThing_Text(InCharRef, InStatColor, InCoord, &X_Resolution, &Y_Resolution, RenLevel));
+			RestThings.push_back(new RenThing_Text(InCharRef, *InStatColor, InCoord, &X_Resolution, &Y_Resolution, RenLevel));
 			RenderOrder.push_back(RestThings.back());
 			return RestThings.back();
 		}
 		else
 		{
 
-			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, InStatColor, InCoord, &X_Resolution, &Y_Resolution, RenLevel));
+			CanvasRef->MyThingVector.push_back(new RenThing_Text(InCharRef, *InStatColor, InCoord, &X_Resolution, &Y_Resolution, RenLevel));
 			RenderOrder.push_back(CanvasRef->MyThingVector.back());
 			return CanvasRef->MyThingVector.back();
 		}		

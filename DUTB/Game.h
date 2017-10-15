@@ -4,7 +4,6 @@
 #include "Level_1.h"
 #include "Level_2.h"
 #include "Level_3.h"
-#include "TestLevel.h"
 #include "CountSystem.h"
 #include "Alphabets.h"
 #include <fstream>
@@ -24,8 +23,6 @@ public:
 	void ExitGame();
 
 	bool Quit = false;
-
-	TestLevel Level_Test= TestLevel(&GM_Gameplay);
 
 	Level_1 Level1 = Level_1(&GM_Gameplay);
 	Level_2 Level2 = Level_2(&GM_Gameplay);

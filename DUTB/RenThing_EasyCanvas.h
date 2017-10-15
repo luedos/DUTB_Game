@@ -16,7 +16,6 @@ public:
 
 		LevelRender = LevelRenderRef;
 
-		
 		Up_H = 0.55;
 
 		Bottom_H = 0.3;
@@ -57,7 +56,6 @@ public:
 		UpText->MyRect.h = MyRect.h * Up_H;
 		UpText->MyRect.w = UpText->MyRect.w * Coefficient;
 
-
 		BottomText->PrepareThing(RenRef);
 
 		Coefficient = float(MyRect.h * Bottom_H) / float(BottomText->MyRect.h);
@@ -70,7 +68,6 @@ public:
 
 		int LocalX = x;
 		int LocalY = y;
-
 
 		if (MyCoordinates.bRelativeX)
 			MyCoordinates.X = float(LocalX) / *XResol;
