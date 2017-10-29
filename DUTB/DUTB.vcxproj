@@ -90,6 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalUsingDirectories>C:\Users\vlol\Documents\Visual Studio 2015\Projects\DUTB\DUTB\SDL2\include;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalIncludeDirectories>C:\Users\vlol\source\repos\DUTB\DUTB\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
