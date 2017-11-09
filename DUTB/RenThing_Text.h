@@ -54,6 +54,8 @@ public:
 	}
 
 	void PrepareThing(SDL_Renderer* RenRef) override {
+		SDL_DestroyTexture(MyTexture);
+
 		SDL_Color ColorToUse;
 		if (UseStaticColor)
 			ColorToUse = StaticColor;

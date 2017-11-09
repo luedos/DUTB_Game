@@ -43,9 +43,9 @@ void Graphics::RenderEverything(float DeltaTime)
 	SDL_RenderClear(MyRenderer);
 
 	// Если текстура фона отсутствует, загрузить текстуру
-	if(BackGroundTexture == nullptr)
+	if (BackGroundTexture == nullptr)
 		BackGroundTexture = IMG_LoadTexture(MyRenderer, "../DUTB/Textures/Back.png");
-
+	
 
 	// Рендер фона
 	SDL_RenderCopy(MyRenderer, BackGroundTexture, NULL, &BackgroundRect);

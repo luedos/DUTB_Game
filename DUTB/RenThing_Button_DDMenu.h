@@ -51,6 +51,8 @@ public:
 
 	void PrepareThing(SDL_Renderer* RenRef) override {
 
+		SDL_DestroyTexture(MyTexture);
+
 		SDL_Color ColorToUse = { 225,225,225,225 };
 
 		Surface = TTF_RenderText_Blended(Font, ButtonText, ColorToUse);
